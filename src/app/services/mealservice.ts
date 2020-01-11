@@ -25,6 +25,7 @@ export class MealService {
             }
         })).subscribe(params =>{
         })
+        return this.allProductItems;
     }
 
     submitShortOrder(orderedItem:ItemOfOrder){

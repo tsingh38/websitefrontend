@@ -1,105 +1,56 @@
-<div class="container-fluid m auto w-100 border border-primary bg-dark 50" style="height: 30px;">
-
-</div>
 <div class="container">
-
-    <div class="row">
-        <div class="col">
-            <div class="row w-100 border border-success">
-                <nav class="navbar fixed-top navbar-expand-sm navbar-light bg-light mb-3" id="main-nav">
-                    <div class="container-fluid">
-                      <ul class="navbar-nav font-weight-normal">
-                          <li> <a class="text-primary">
-                            <span class=" mt-4 glyphicon glyphicon-chevron-left" (click)="navigateLeft()"></span>
-                          </a></li>
-                        <li class="nav-item w-10 active"  *ngFor='let item of categories |slice: start:end'>
-                          <a class="nav-link active" [routerLink]="[item]"  [routerLinkActive]="['activelink']"  fragment={{item}}>{{item}}</a>
+    <div class="row border border-success">
+        <div class="col" id="navcontainer">
+            <nav class="navbar fixed-top navbar-expand-sm navbar-light bg-light " id="main-nav">
+                <div class="container-fluid">
+                    <ul class="navbar-nav font-weight-normal">
+                        <li> <a class="text-primary">
+                                <span class=" mt-4 glyphicon glyphicon-chevron-left" (click)="navigateLeft()"></span>
+                            </a></li>
+                        <li class="nav-item w-10 active" *ngFor='let item of categories |slice: start:end'>
+                            <a class="nav-link active" [routerLink]="[item]" [routerLinkActive]="['activelink']"
+                                fragment={{item}}>{{item}}</a>
                         </li>
                         <li> <a class="text-primary">
-                            <span class=" mt-4 glyphicon glyphicon-chevron-right" (click)="navigateRight()"></span>
-                          </a></li>
-                    </ul> 
-                          
-                    </div>
-                  </nav>
+                                <span class=" mt-4 glyphicon glyphicon-chevron-right" (click)="navigateRight()"></span>
+                            </a></li>
+                    </ul>
+
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div id={{product.productCategory}} class=" productDetail row mb-1 mt-5 border border-bottom-primary border rounded"
+        *ngFor="let product of allProductItems">
+        <div class="row w-100">
+            <div class="col pull-right">
+                <a>
+                    <span  class=" glyphicon glyphicon-plus float-right text-primary"></span>
+                </a>
             </div>
-            <div class="row w-100 border border-info">
-                
-    <section id="Calzone">
-        <h3>Welcome</h3>
-        <p> Calzone Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, reiciendis ullam sit libero recusandae obcaecati modi,
-          iusto facere, distinctio corporis in officiis quidem vel veniam eum fugit quibusdam. Repellat quod explicabo repudiandae,
-          tenetur hic fugiat nostrum aperiam corrupti necessitatibus nulla! Nemo aperiam officiis velit nihil maiores provident
-          animi veniam error deserunt explicabo nobis et optio, labore commodi repudiandae soluta ratione numquam porro architecto
-         </p>
-      </section>
-      <section id="Indische_Vorspeisen">
-        <h3>Welcome</h3>
-        <p> Calzone Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, reiciendis ullam sit libero recusandae obcaecati modi,
-          iusto facere, distinctio corporis in officiis quidem vel veniam eum fugit quibusdam. Repellat quod explicabo repudiandae,
-          tenetur hic fugiat nostrum aperiam corrupti necessitatibus nulla! Nemo aperiam officiis velit nihil maiores provident
-          animi veniam error deserunt explicabo nobis et optio, labore commodi repudiandae soluta ratione numquam porro architecto
-         </p>
-      </section>
-      <section id="Salat">
-        <h3>Welcome</h3>
-        <p> Salat Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, reiciendis ullam sit libero recusandae obcaecati modi,
-          iusto facere, distinctio corporis in officiis quidem vel veniam eum fugit quibusdam. Repellat quod explicabo repudiandae,
-          tenetur hic fugiat nostrum aperiam corrupti necessitatibus nulla! Nemo aperiam officiis velit nihil maiores provident
-          animi veniam error deserunt explicabo nobis et optio, labore commodi repudiandae soluta ratione numquam porro architecto
-         </p>
-      </section>
-      <section id="Vegatarische_Pizza">
-        <h3>Welcome</h3>
-        <p> Vegatarische_Pizza Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, reiciendis ullam sit libero recusandae obcaecati modi,
-          iusto facere, distinctio corporis in officiis quidem vel veniam eum fugit quibusdam. Repellat quod explicabo repudiandae,
-          tenetur hic fugiat nostrum aperiam corrupti necessitatibus nulla! Nemo aperiam officiis velit nihil maiores provident
-          animi veniam error deserunt explicabo nobis et optio, labore commodi repudiandae soluta ratione numquam porro architecto
-         </p>
-      </section>
-      <section id="Pasta">
-        <h3>Welcome</h3>
-        <p> Pasta Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, reiciendis ullam sit libero recusandae obcaecati modi,
-          iusto facere, distinctio corporis in officiis quidem vel veniam eum fugit quibusdam. Repellat quod explicabo repudiandae,
-          tenetur hic fugiat nostrum aperiam corrupti necessitatibus nulla! Nemo aperiam officiis velit nihil maiores provident
-          animi veniam error deserunt explicabo nobis et optio, labore commodi repudiandae soluta ratione numquam porro architecto
-         </p>
-      </section>
-      <section id="International_Gerichte">
-        <h3>Welcome</h3>
-        <p> International_Gerichte Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, reiciendis ullam sit libero recusandae obcaecati modi,
-          iusto facere, distinctio corporis in officiis quidem vel veniam eum fugit quibusdam. Repellat quod explicabo repudiandae,
-          tenetur hic fugiat nostrum aperiam corrupti necessitatibus nulla! Nemo aperiam officiis velit nihil maiores provident
-          animi veniam error deserunt explicabo nobis et optio, labore commodi repudiandae soluta ratione numquam porro architecto
-         </p>
-      </section>
-      <section id="Calzone">
-        <h3>Welcome</h3>
-        <p> Calzone Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, reiciendis ullam sit libero recusandae obcaecati modi,
-          iusto facere, distinctio corporis in officiis quidem vel veniam eum fugit quibusdam. Repellat quod explicabo repudiandae,
-          tenetur hic fugiat nostrum aperiam corrupti necessitatibus nulla! Nemo aperiam officiis velit nihil maiores provident
-          animi veniam error deserunt explicabo nobis et optio, labore commodi repudiandae soluta ratione numquam porro architecto
-         </p>
-      </section>
-      <section id="Calzone">
-        <h3>Welcome</h3>
-        <p> Calzone Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, reiciendis ullam sit libero recusandae obcaecati modi,
-          iusto facere, distinctio corporis in officiis quidem vel veniam eum fugit quibusdam. Repellat quod explicabo repudiandae,
-          tenetur hic fugiat nostrum aperiam corrupti necessitatibus nulla! Nemo aperiam officiis velit nihil maiores provident
-          animi veniam error deserunt explicabo nobis et optio, labore commodi repudiandae soluta ratione numquam porro architecto
-         </p>
-      </section>
-      <section id="Pizza">
-        <h3>Welcome</h3>
-        <p>Pizza Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, reiciendis ullam sit libero recusandae obcaecati modi,
-          iusto facere, distinctio corporis in officiis quidem vel veniam eum fugit quibusdam. Repellat quod explicabo repudiandae,
-          tenetur hic fugiat nostrum aperiam corrupti necessitatibus nulla! Nemo aperiam officiis velit nihil maiores provident
-          animi veniam error deserunt explicabo nobis et optio, labore commodi repudiandae soluta ratione numquam porro architecto
-         </p>
-      </section>
+        </div>
+        <div class="row  w-100">
+            <div class="col">
+                <h3 class="text-center">{{product.description}}</h3>
+            </div>
+        </div>
+
+        <div class="row  w-100">
+            <div class="col">
+                <small class="text-center">{{product.optionDescription}}</small>
+            </div>
+        </div>
+
+        <div class="row  w-100 mb-2">
+            <div class="col">
+                <h3>{{getProductPrice(product)}}€</h3>
             </div>
         </div>
     </div>
-    <div class="fixed-bottom bg-primary justify-content-center">
-        Warenkorb</div>
+
 </div>
+
+
+
+
+
