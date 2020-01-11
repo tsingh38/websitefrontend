@@ -1,0 +1,41 @@
+
+
+<nav class="navbar navbar-default">
+  <div class="container.fluid">
+    <p>Menu <span style='color :blue' class="glyphicon glyphicon-align-justify"></span></p>
+  </div>
+  <div class="container">
+    <span style="position: absolute;top:0;right:0;margin-top: 3ex; margin-right: 2ex;"
+      class="glyphicon glyphicon-user"></span>
+  </div>
+
+  <div id="btn-cart" class="fr">
+    <a [routerLink]="['/cart']" 
+      style="margin-right: 5ex;"
+     title="View your Shopping Cart">
+      <span>{{quantity}} Items -
+        <span class="amount">€{{price}}</span>
+      </span>
+    </a>
+    </div>
+
+  <div class="nav-wrapper" style="position: absolute;top:0;right:0;margin-top: 2ex; margin-right: 9ex;">
+    <div class="row">
+    <div class="sl-nav">
+      <ul>
+        <li><b>DE</b> <i class="fa fa-angle-down" aria-hidden="true"></i><span class="caret"></span>
+          <div class="triangle"></div>
+          <ul>
+            <li><i class="sl-flag flag-de">
+                <div id="germany"></div>
+              </i> <span class="active">DE</span></li>
+            <li><i class="sl-flag flag-usa">
+                <div id="germany"></div>
+              </i> <span>EN</span></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+  </div>
+</nav>

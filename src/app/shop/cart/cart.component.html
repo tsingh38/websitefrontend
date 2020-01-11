@@ -1,0 +1,59 @@
+<div class="container-fluid" style="position:fixed;margin-right: 6ex;">
+    <div class="row" >
+        <div class="text-center">
+            <span>WarenKorb</span>
+        </div>
+        <hr>
+        <div *ngIf="this.orderedItems.length < 1">
+            <p style="text-align: center;"><span class="glyphicon glyphicon-shopping-cart"></span></p> <br>
+            <span class="emptybucket">Wähle leckere Gerichte aus der Karte und bestelle Dein Menü.</span>
+        </div>
+<div class="row" *ngFor="let item of orderedItems;let i = index" style="width:425px">
+    <div class="col-sm-1">
+    <span>{{item.quantity}}</span>
+    <span  style="color:#7d7d7d; font-size: 10px;">x</span>       
+</div>
+<div class="col-sm-4">
+        <div class="row">
+    <span >{{item.name}}</span></div>
+        <div class="row">
+            <span style="font-family: 'Courier New', Courier, monospace;font-style: italic;">  getProductDescription()</span>
+        </div>
+    <div class="row">
+        <span style="font-family: 'Courier New', Courier, monospace;font-style: italic;font-size: 12px;">{{getOderAdditionsText(i)}}</span></div>
+</div>
+    <div  class="col-sm-4" style="align-content: center;">
+        <button type="button" (click)="decreaseQuantity(item)" style="background-color: white;" class="btn btn-default btn-sm">
+            <span class=" glyphicon glyphicon-minus"></span>
+        </button>
+        <button type="button" (click)="increaseQuantity(item)" style="background-color: white;" class="btn btn-default btn-sm">
+            <span class="  glyphicon glyphicon-plus"></span>
+        </button>
+    </div>
+    <div class="col-sm-1">
+    <span>
+        <a>
+            <span  (click)="deleteTheItemFromOrder(item)" class="glyphicon glyphicon-trash"></span>
+        </a>
+    </span>
+    </div>
+    <div class="col-sm-1 pull-right">
+    <span>{{item.totalPrice}}€</span>
+</div>
+</div>
+<hr>
+
+
+<div class="row">
+    <span class="pull-left" style="margin-left: 3rem;font-size: 15px;"><b>Summe </b></span>
+    <span class="pull-right">{{OrderSum}}€</span>
+</div>
+<hr>
+<div class="row" style="margin-left: 3rem;color:#7d7d7d;">
+    <span *ngIf="orderCannotBeDelivered"> Leider kannst Du noch nicht bestellen. wir liefern erst ab einem
+        Mindestbestellwert von 15,00 € (exkl. Lieferkosten)</span>
+</div>
+<div>
+    <button style="margin-left:3rem;margin-right: -2px;" [disabled]="this.orderedItems.length < 1"
+        class="btn btn-primary btn-lg btn-block" (click)="submitOrder()">Bestellen</button>
+</div>

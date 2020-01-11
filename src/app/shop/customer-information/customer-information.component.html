@@ -1,0 +1,131 @@
+<div class="container">
+    <div>
+    <h3>Wohin soll Deine Bestellung geliefert werden?</h3>
+</div>
+    <hr>
+    <form (ngSubmit)="onSubmit()" #f='ngForm'>
+        <div class="row" id="user-data">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label>Adresse</label> <br>
+                    <input type="text" class="form-control" id="Address" name="Address" [(ngModel)]="customeraddress" required #address="ngModel">
+                    <span class="help-block" *ngIf="!address.valid && address.touched">*Bitte gultige Adresse eingeben</span>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label>Postlietzahl</label> <br>
+                    <input type="text" class="form-control" id="pincode" name="pincode" [(ngModel)]="customerpincode" required #pincode="ngModel">
+                    <span class="help-block" *ngIf="!pincode.valid && pincode.touched">*Bitte gultige Postleitzahl eingeben</span>
+
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label>Stadt</label> <br>
+                    <input type="text" class="form-control" id="city" name="city" [(ngModel)]="customerCity" required #city="ngModel">
+                    <span class="help-block" *ngIf="!city.valid && city.touched">*Bitte gultige Stadt eingeben</span>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 pull-left">
+                <div class="form-group">
+                    <label>ETage</label> <br>
+                    <input type="text" class="form-control" id="floor" name="floor" [(ngModel)]="floor">
+                </div>
+            </div>
+        </div>
+       
+        <div>
+            <h3> Wie können wir Dich erreichen?</h3>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-sm-6 pull-left">
+                <div class="form-group">
+                    <label>Name</label> <br>
+                    <input type="text" class="form-control" id="customerName" name="customerName" [(ngModel)]="customerName" required #name="ngModel">
+                    <span class="help-block" *ngIf="!name.valid && name.touched">*Bitte gultige Name eingeben</span>
+
+                </div>
+            </div> 
+            <div class="col-sm-6 pull-right">
+                <div class="form-group">
+                    <label>E-Mail</label> <br>
+                    <input type="text" class="form-control" id="email" name="email" [(ngModel)]="customerEmail" email #email="ngModel">
+                    <span class="help-block" *ngIf="!email.valid && email.touched">*Bitte gultige Email eingeben</span>
+
+                </div>
+            </div> 
+        </div>
+        <div class="row">
+            <div class="col-sm-6 pull-left">
+                <div class="form-group">
+                    <label>Telefonnummer</label> <br>
+                    <input type="text" class="form-control" id="telphonenumber" name="telphonenumber" [(ngModel)]="phonenumber" required #telefonnummer>
+                    <span class="help-block" *ngIf="!telefonnummer.valid && telefonnummer.touched">*Bitte gultige Telefonnummer eingeben</span>
+
+                </div>
+            </div> 
+            <div class="col-sm-6 pull-right">
+                <div class="form-group">
+                    <label>Firmenname</label> <br>
+                    <input type="text" class="form-control" id="companyname" name="companyname" [(ngModel)]="companyname">
+                </div>
+            </div> 
+        </div>
+        <div>
+            <h3> Wann möchtest du deine Bestellung erhalten?</h3>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-sm-4 pull-left">
+                <div class="form-group">
+                    <label>Gewünschte Lieferzeit</label> <br>
+                    <select id="wishdeliverytime" class="form-control"
+                    [(ngModel)]="defaultWishDeliveryTime" name="wishdeliverytime" required>
+                    <option  value="So schnell wie möglich">
+                        So schnell wie möglich</option>
+                        <option *ngFor="let currentTimeSlot of allTimeSlots;" [value]="currentTimeSlot">
+                            {{currentTimeSlot}}</option>
+                </select>
+                </div>
+            </div> 
+            <div class="col-sm-6 pull-right">
+                <div class="form-group">
+                    <label>Anmerkungen für das Restaurant</label> <br>
+                    <textarea rows="5"  cols="50" name="comment" [(ngModel)]="comment">Anmerkungen für uns...</textarea>
+                </div>
+            </div> 
+        </div>
+        <div>
+            <h3> Wie möchtest du bezahlen?</h3>
+        </div>
+        <div class="row">
+            <div class="col-sm-3 pull-left">
+                <div class="form-group">
+                    <label>Du Zahlst </label> <br>
+                    <select id="paymentmethod" class="form-control"
+                    [(ngModel)]="defaultPaymentType" name="paymenttype" required>
+                    <option  value="Bar">
+                        Bar</option>
+                        <option  value="bankcard">
+                            Girokarte</option>
+                </select>
+                </div>
+            </div> 
+        </div>
+<hr>
+        <div class="row">
+            <div class="col-sm-6 text-center" >
+                <div class="form-group">
+                 <button type="submit" [disabled]="!f.valid" style="position:absolute;left: 50%;"  class=" btn btn-primary form-control"> Bestellung abschließen</button>
+                </div>
+            </div> 
+        </div>
+        <hr>
+        <hr>
+    </form>
+</div>
