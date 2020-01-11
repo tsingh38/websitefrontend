@@ -23,8 +23,11 @@ import { OrdersOverviewComponent } from './controlpanel/orders-overview/orders-o
 import { ControlPanelService } from './services/controlpanel.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpUtil } from './services/httpUtil.service';
+import { HomeComponent } from './home/home/home.component';
 
 const appRoutes: Routes = [
+
+  {path:'home',component:HomeComponent},
   {
     path: 'shop', component: ShopComponent, children: [
       { path: ':id', component: MealComponent }
@@ -33,15 +36,15 @@ const appRoutes: Routes = [
     path:'controlpanel', component:ControlpanelComponent
   },{
     path: 'customer',canActivate:[AuthGuardService], component:CustomerInformationComponent},
-   {path: 'completed',canActivate:[AuthGuardService], component:OrdersuccessfulComponent},
+   {path: 'completed',canActivate:[AuthGuardService], component:OrdersuccessfulComponent}
+   ,
   {
-    path: '', redirectTo: '/shop', pathMatch:'full'},
+    path: '', redirectTo: '/home', pathMatch:'full'},
 ];
 @NgModule({
   declarations: [
     AppComponent,
     ShopComponent,
-    HeaderComponent,
     FooterComponent,
     NavbarComponent,
     NotFoundComponent,
@@ -51,7 +54,8 @@ const appRoutes: Routes = [
   MealComponent,
   DetailWindowComponent,
   ControlpanelComponent,
-  OrdersOverviewComponent
+  OrdersOverviewComponent,
+  HomeComponent
   ],
   imports: [
     BrowserModule, NgbModule, RouterModule, FormsModule,HttpClientModule, RouterModule.forRoot(appRoutes)
