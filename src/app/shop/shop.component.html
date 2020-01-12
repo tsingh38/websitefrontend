@@ -26,7 +26,7 @@
     </div>
 </nav>
 
-<!-- Cards-->
+<!-- Cards Products-->
 <div class="container">
 
     <div class="border"  id="imagecontainer">
@@ -35,29 +35,7 @@
     <div class="row ">
      
 <div class="card col-sm-6 mt-4" *ngFor="let $product of productsForSelectedCategory;">
-        <div class="card-body">
-            <h4 class="card-title">{{$product.description}}</h4>
-            <p class="card-text text-black-50">{{getProductDetailedDescription($product)}}</p>
-            <p class="card-text font-weight-bold">{{getProductPrice($product)}}€</p>
-            <select *ngIf="hasProductOptions($product)" id="selectProductCategory"  class="form-control" name="currentOption">
-                <option  *ngFor="let $productOptions of $product.productOptions;">
-                    {{$productOptions.productOptionDescription}}</option>
-            </select>
-            
-            <div *ngIf="hasProductAdditions($product)">
-                <p class="mt-3">Ihre Extras:</p>
-            <div *ngFor="let productAddition of $product.productAdditions | slice:0:show;let i = index">
-                <input type="checkbox" value="productAddition.additionDescription"
-                    (change)="fetchPriceForSelectedAddition(productAddition,$event)" />
-                <span> mit {{productAddition.additionDescription}}</span>
-                <span>({{displayProductAdditionPriceForSelectedOption(productAddition)}}€)</span><br>
-                <a *ngIf="i==2 && show == 3" (click)="show =  $product.productAdditions.length">
-                    <span class="glyphicon glyphicon-chevron-down"></span>
-                </a>
-            </div>
-           </div>
-            <a class="btn btn-success btn-block" href="#">Bestellen</a>
-        </div>
+  <app-cardproduct [product]="$product"></app-cardproduct>
 
     </div>
 </div>

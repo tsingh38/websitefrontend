@@ -24,6 +24,7 @@ import { ControlPanelService } from './services/controlpanel.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpUtil } from './services/httpUtil.service';
 import { HomeComponent } from './home/home/home.component';
+import { CardproductComponent } from './shop/cardproduct/cardproduct.component';
 
 const appRoutes: Routes = [
 
@@ -55,7 +56,8 @@ const appRoutes: Routes = [
   DetailWindowComponent,
   ControlpanelComponent,
   OrdersOverviewComponent,
-  HomeComponent
+  HomeComponent,
+  CardproductComponent
   ],
   imports: [
     BrowserModule, NgbModule, RouterModule, FormsModule,HttpClientModule, RouterModule.forRoot(appRoutes)

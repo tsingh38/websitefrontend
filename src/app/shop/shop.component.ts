@@ -43,7 +43,6 @@ export class ShopComponent implements OnInit {
 
 
 
-
   mainCategorySelected(event: Event) {
     var selectedCategory: string = (<HTMLTextAreaElement>event.target).value;
     console.log(selectedCategory);
@@ -56,39 +55,11 @@ export class ShopComponent implements OnInit {
 
   }
 
-  hasProductOptions($product:productItem){
-return $product.productOptions && $product.productOptions.length > 0 ?true:false;
-  }
-
-  hasProductAdditions($product:productItem){
-    return $product.productAdditions && $product.productAdditions.length > 0 ?true:false;
-  }
-
-  getProductDetailedDescription($product: productItem){
-    return $product.optionDescription;
-  }
+ 
   
-  fetchPriceForSelectedAddition(productAddition:productItemAddition,event:Event){
-//TODO
-  }
-  displayProductAdditionPriceForSelectedOption(productAddition:productItemAddition){
-//TODO
-  }
+ 
 
-  getProductPrice(product: productItem) {
-    if (product.productCategory && (product.productCategory === 'Pizza' || product.productCategory === 'Vegatarische_Pizza' || product.productCategory === 'Calzone')) {
-      if (product.productOptions) {
-        for (let currentProduct of product.productOptions) {
-          if (currentProduct.optionPriceForNormal) {
-            return currentProduct.optionPriceForNormal;
-          }
-        }
-      }
-    } else {
-      return product.productBasePrice;
-    }
-
-  }
+ 
 
 
 
