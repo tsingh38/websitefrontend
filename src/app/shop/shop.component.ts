@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../services/cart.service';
-import { ActivatedRoute, Router,NavigationEnd } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { MealService } from '../services/mealservice';
-import { productItem } from '../models/product.interface';
+import { productItem,productItemAddition,productItemOption } from '../models/product.interface';
 
 @Component({
   selector: 'app-shop',
@@ -13,15 +13,17 @@ export class ShopComponent implements OnInit {
 
   private fragment: string;
 
-  start=0;
-  end=7;
-  allProductItems:productItem[]=[];
-  categories:string[]=["Indische_Vorspeisen","Salat","Pizza","Vegatarische_Pizza","Calzone","PizzabrotØ30","Pasta,Pasta_al_Forno","Indische_Gerichte",
-    "Gyros_Spezialitäten","International_Gerichte","Rösti","Döner_kebab","Lahmacun","Vegatarische_Döner","Pide","Dessert",
-    "BenAndJerrys","Alkohalfrei_Getränke","Alkohlische_Getränke"]
+  show = 3;
+  allProductItems: productItem[] = [];
+  selectedCategory: "Beliebte";
+  productsForSelectedCategory: productItem[];
+  searchFieldActivated = false;
+  categories: string[] = ["Beliebte", "Indische_Vorspeisen", "Salat", "Pizza", "Vegatarische_Pizza", "Calzone", "PizzabrotØ30", "Pasta","Pasta_al_Forno", "Indische_Gerichte",
+    "Gyros_Spezialitäten", "International_Gerichte", "Rösti", "Döner_kebab", "Lahmacun", "Vegatarische_Döner", "Pide", "Dessert",
+    "BenAndJerrys", "Alkohalfrei_Getränke", "Alkohlische_Getränke"]
 
-  constructor(private route: ActivatedRoute,private router:Router,private mealService:MealService) { 
-    this.allProductItems=this.mealService.fetchAllItems();
+  constructor(private route: ActivatedRoute, private router: Router, private mealService: MealService) {
+    this.allProductItems = this.mealService.fetchAllItems();
     router.events.subscribe(s => {
       if (s instanceof NavigationEnd) {
         const tree = router.parseUrl(router.url);
@@ -34,42 +36,63 @@ export class ShopComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.fragment.subscribe(fragment => { this.fragment = fragment; });
+  if( !this.productsForSelectedCategory  || this.productsForSelectedCategory.length < 1){
+    this.productsForSelectedCategory=this.allProductItems;
+  }
   }
 
-  getProductPrice(product:productItem){
-if(product.productCategory && (product.productCategory==='Pizza' || product.productCategory==='Vegatarische_Pizza' || product.productCategory==='Calzone')){
-  if(product.productOptions){
-    for(let currentProduct of product.productOptions){
-      if(currentProduct.optionPriceForNormal){
-      return currentProduct.optionPriceForNormal;
+
+
+
+  mainCategorySelected(event: Event) {
+    var selectedCategory: string = (<HTMLTextAreaElement>event.target).value;
+    console.log(selectedCategory);
+    this.productsForSelectedCategory=[];
+    for (let currentProduct of this.allProductItems) {
+      if (currentProduct.productCategory === selectedCategory) { 
+        this.productsForSelectedCategory.push(currentProduct);
       }
     }
-  }
-}else{
-  return product.productBasePrice;
-}
 
-}
-
-  ngAfterViewInit(): void {
-    try {
-      document.querySelector('#' + this.fragment).scrollIntoView();
-    } catch (e) { }
   }
 
-
-  navigateLeft(){
-if(this.start > 0){
-  this.start=this.start-1;
-  this.end=this.end-1;
-}
+  hasProductOptions($product:productItem){
+return $product.productOptions && $product.productOptions.length > 0 ?true:false;
   }
 
-  navigateRight(){
-if(this.end < this.categories.length){
-this.start=this.start+1;
-this.end=this.end+1;
+  hasProductAdditions($product:productItem){
+    return $product.productAdditions && $product.productAdditions.length > 0 ?true:false;
   }
-}
+
+  getProductDetailedDescription($product: productItem){
+    return $product.optionDescription;
+  }
+  
+  fetchPriceForSelectedAddition(productAddition:productItemAddition,event:Event){
+//TODO
+  }
+  displayProductAdditionPriceForSelectedOption(productAddition:productItemAddition){
+//TODO
+  }
+
+  getProductPrice(product: productItem) {
+    if (product.productCategory && (product.productCategory === 'Pizza' || product.productCategory === 'Vegatarische_Pizza' || product.productCategory === 'Calzone')) {
+      if (product.productOptions) {
+        for (let currentProduct of product.productOptions) {
+          if (currentProduct.optionPriceForNormal) {
+            return currentProduct.optionPriceForNormal;
+          }
+        }
+      }
+    } else {
+      return product.productBasePrice;
+    }
+
+  }
+
+
+
+  
+
+ 
 }

@@ -5,14 +5,15 @@ import { CartService } from '../../../services/cart.service';
 import { MealService } from '../../../services/mealservice';
 import {ItemOfOrder } from '../../../models/itemorder.model';
 import { DeepcopyUtil } from '../../../services/Deepcopy';
+import { productItem } from 'src/app/models/product.interface';
 
 @Component({
   selector: 'app-detail-window',
   templateUrl: './detail-window.component.html',
   styleUrls: ['./detail-window.component.scss']
 })
-export class DetailWindowComponent implements OnInit {
-  @Input('product') product: Product;
+export class DetailWindowComponent  {
+  @Input('product') product: productItem;
   @Input('indexOfProduct')indexOfProduct:number;
   selectedOption:Options;
 
@@ -35,7 +36,7 @@ export class DetailWindowComponent implements OnInit {
   }
 
   constructor(private cartService:CartService,private mealService:MealService) { }
-
+/*
   ngOnInit() {
     this.allProductOptions=this.product.productOptions;
     this.isSelectedProductAPizza=this.product.categoryName==='Pizza';
@@ -150,5 +151,5 @@ return this.product.productUnitPrice;
       }
     }
   }
-
+*/
 }
