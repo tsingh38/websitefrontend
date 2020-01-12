@@ -12,6 +12,7 @@ export class CardproductComponent implements OnInit {
   show = 3;
   listOfCheckedProductAdditions: productItemAddition[] = [];
   selectedOption: productItemOption;
+  quantity:number=1;
   constructor() { }
 
   ngOnInit() {
@@ -21,6 +22,16 @@ export class CardproductComponent implements OnInit {
              this.selectedOption = currentProductOption;
       }
     }
+  }
+
+  increaseTheQuantity(){
+this.quantity=+this.quantity+1;
+  }
+
+  decreaseTheQuantity(){
+if(this.quantity>1){
+  this.quantity=+this.quantity-1;
+}
   }
 
   fetchPriceForSelectedAddition(productAddition: productItemAddition, event: Event) {

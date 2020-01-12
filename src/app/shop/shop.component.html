@@ -1,21 +1,23 @@
-
 <!-- Navbar dropdown and search-->
 <nav class="navbar navbar-expand-sm navbar-light bg-light sticky-top">
     <div class="container">
         <div class="row w-100">
             <div class="col-sm-1">
-                <button *ngIf="!searchFieldActivated" type="button" class="btn btn-primary btn-sm" (click)="searchFieldActivated='true'">
+                <button *ngIf="!searchFieldActivated" type="button" class="btn btn-primary btn-sm"
+                    (click)="searchFieldActivated='true'">
                     <span class="glyphicon glyphicon-search"></span>
                 </button>
-                <button  *ngIf="searchFieldActivated" type="button" class=" btn btn-primary btn-sm" (click)="searchFieldActivated=!searchFieldActivated">
+                <button *ngIf="searchFieldActivated" type="button" class=" btn btn-primary btn-sm"
+                    (click)="searchFieldActivated=!searchFieldActivated">
                     <span class="glyphicon glyphicon-remove"></span>
                 </button>
             </div>
             <div class="col-sm-11">
                 <div *ngIf="!searchFieldActivated">
-                    
-                    <select id="selectCatory" (change)='mainCategorySelected($event)' class="form-control" name="currentOption">
-                        <option  *ngFor="let $currentCategory of categories;">
+
+                    <select id="selectCatory" (change)='mainCategorySelected($event)' class="form-control"
+                        name="currentOption">
+                        <option *ngFor="let $currentCategory of categories;">
                             {{$currentCategory}}</option>
                     </select>
                 </div>
@@ -30,14 +32,18 @@
 <!-- Cards Products-->
 <div class="container">
 
-    <div class="border"  id="imagecontainer">
-       <img class="card-img-top img-fluid" src="https://source.unsplash.com/random/500x200" alt="Leckere gerichte">
+    <div class="border" id="imagecontainer">
+        <img class="card-img-top img-fluid" src="https://source.unsplash.com/random/500x200" alt="Leckere gerichte">
     </div>
     <div class="row ">
-     
-<div class="card col-sm-6 mt-4" *ngFor="let $product of productsForSelectedCategory;">
-  <app-cardproduct [product]="$product"></app-cardproduct>
 
+        <div class="card col-sm-6 mt-4" *ngFor="let $product of productsForSelectedCategory;">
+            <app-cardproduct [product]="$product"></app-cardproduct>
+        </div>
     </div>
 </div>
+
+<div  id = "shoppingcart" class="container fixed-bottom bg bg-info">
+<span class="text-center">Warenkorb</span>
+
 </div>
