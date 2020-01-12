@@ -23,6 +23,7 @@ export interface productItemOption{
     id: number;
 productOptionDescription: string;
 optionPrice: string;
+default:boolean;
 optionPriceForSmall: number;
 optionPriceForNormal: number;
 optionPriceForFamily: number;

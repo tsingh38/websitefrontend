@@ -2,8 +2,8 @@
     <h4 class="card-title">{{product.description}}</h4>
     <p class="card-text text-black-50">{{getProductDetailedDescription()}}</p>
     <p class="card-text font-weight-bold">{{getProductPrice()}}€</p>
-    <select *ngIf="hasProductOptions()" id="selectProductCategory"  class="form-control" (change)="setUserSelectedOption($event)" name="currentOption">
-        <option  [value]="$productOptions.id" *ngFor="let $productOptions of product.productOptions;">
+    <select *ngIf="hasProductOptions()" id="selectProductCategory" class="form-control" (change)="setUserSelectedOption($event)" name="currentOption">
+        <option  [selected]="$productOptions.isDefault"  [value]="$productOptions.id" *ngFor="let $productOptions of product.productOptions;">
             {{$productOptions.productOptionDescription}}</option>
     </select>
     

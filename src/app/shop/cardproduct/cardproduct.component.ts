@@ -15,7 +15,12 @@ export class CardproductComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.product);
+    // Setting the default selected value
+    for (let currentProductOption of this.product.productOptions) {
+      if (!this.selectedOption && currentProductOption.default) {
+             this.selectedOption = currentProductOption;
+      }
+    }
   }
 
   fetchPriceForSelectedAddition(productAddition: productItemAddition, event: Event) {
@@ -46,21 +51,21 @@ export class CardproductComponent implements OnInit {
   }
 
   displayProductAdditionPriceForSelectedOption(productAddition: productItemAddition) {
-    if (this.product.productCategory === 'Pizza' || this.product.productCategory === 'Calzone' ||this.product.productCategory === 'Vegatarische_Pizza') {
-      if(this.selectedOption.optionPriceForFamily){
+    if (this.selectedOption && (this.product.productCategory === 'Pizza' || this.product.productCategory === 'Calzone' || this.product.productCategory === 'Vegatarische_Pizza')) {
+      if (this.selectedOption.optionPriceForFamily) {
         return productAddition.additionsPriceForFamily;
       }
-      if(this.selectedOption.optionPriceForNormal){
+      if (this.selectedOption.optionPriceForNormal) {
         return productAddition.additionsPriceForNormal;
       }
-      if(this.selectedOption.optionPriceForParty){
+      if (this.selectedOption.optionPriceForParty) {
         return productAddition.additionsPriceForParty;
       }
-      if(this.selectedOption.optionPriceForSmall){
+      if (this.selectedOption.optionPriceForSmall) {
         return productAddition.additionsPriceForSmall;
       }
     } else {
-     return productAddition.additionPrice;
+      return productAddition.additionPrice;
     }
   }
 
