@@ -2,6 +2,7 @@ import { Component, OnInit, Input, ViewChild, ViewChildren,QueryList,ElementRef,
 import { productItem, productItemAddition, productItemOption } from 'src/app/models/product.interface';
 import { orderItem } from 'src/app/models/orderItem.interface';
 import { CartService } from 'src/app/services/cart.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cardproduct',
@@ -18,7 +19,7 @@ export class CardproductComponent implements OnInit {
   quantity:number=1;
   productDisplayPrice:number=0;
   totalPriceInShoppingCart:number;
-  constructor(private cartService:CartService,private render:Renderer2) { }
+  constructor(private cartService:CartService,private render:Renderer2,private router:Router) { }
 
   ngOnInit() {
     // Setting the default selected value
@@ -142,11 +143,30 @@ if(this.quantity>1){
 
   }
   
-  submitProductToACart(){
-      for(let currentelRef of this.selectReference.toArray()){
-        console.log(currentelRef);
-        this.render.setProperty(this.selectReference,'checked',false);
+
+  resetAProduct(){
+    for(let currentelRef of this.selectReference.toArray()){
+      console.log(currentelRef);
+      this.render.setProperty(currentelRef.nativeElement,'checked',false);
+    }
+    this.quantity=1;
+    for (let currentProductOption of this.product.productOptions) {
+      if (!this.selectedOption && currentProductOption.default) {
+             this.selectedOption = currentProductOption;
       }
+    }
+    if(this.product.productCategory==='Pizza' || this.product.productCategory==='Vegatarische_Pizza'  || this.product.productCategory==='Calzone'){
+      for(let currentOption of this.product.productOptions){
+        if(currentOption.default){
+         this.productDisplayPrice= this.getPriceFromSelectedOption(currentOption);
+        }
+      }
+    }else{
+      this.productDisplayPrice=this.product.productBasePrice;
+    }
+  }
+  submitProductToACart(){
+  
     var currentItem: orderItem={
       product:this.product,
     selectedOption:this.selectedOption,
@@ -155,11 +175,13 @@ if(this.quantity>1){
     totalPrice:0
     }
     this.cartService.addItemToACart(currentItem);
-    this.quantity=1;
-    this.listOfCheckedProductAdditions=[];
+    this.resetAProduct();
 
-    //TODO way to reset the checkbox
 
+  }
+
+  submitOrder(){
+    this.router.navigate(['/cart']);
   }
 
 

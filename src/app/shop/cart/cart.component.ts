@@ -14,12 +14,10 @@ import { orderItem } from 'src/app/models/orderItem.interface';
 export class CartComponent implements OnInit, OnDestroy {
 
   orderedItems:orderItem[] = [];
-  showEmptyShoppingCart: boolean = this.orderedItems.length <= 1;
   totalSum = 0;
-  deliveryCharges = 2;
-  OrderSum = 0;
-  orderCannotBeDelivered = false;
-  constructor(private cartService: CartService, private router: Router) { }
+  constructor(private cartService: CartService, private router: Router) {
+    this.orderedItems=this.cartService.order;
+   }
 
   ngOnInit() {
 /*

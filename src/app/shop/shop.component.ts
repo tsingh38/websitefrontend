@@ -23,7 +23,7 @@ export class ShopComponent implements OnInit {
     "Gyros_Spezialitäten", "International_Gerichte", "Rösti", "Döner_kebab", "Lahmacun", "Vegatarische_Döner", "Pide", "Dessert",
     "BenAndJerrys", "Alkohalfrei_Getränke", "Alkohlische_Getränke"]
 
-  constructor(private mealService: MealService,private cartService:CartService) {
+  constructor(private mealService: MealService,private cartService:CartService,private router:Router) {
     this.allProductItems = this.mealService.fetchAllItems();
   }
 
@@ -48,6 +48,11 @@ export class ShopComponent implements OnInit {
       }
     }
 
+  }
+
+
+  submitOrder(){
+    this.router.navigate(['/cart']);
   }
 
  

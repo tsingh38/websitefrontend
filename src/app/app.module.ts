@@ -32,7 +32,9 @@ const appRoutes: Routes = [
     ]
   },{
     path:'controlpanel', component:ControlpanelComponent
-  },{
+  },
+  {path:'cart',component:CartComponent},
+  {
     path: 'customer',canActivate:[AuthGuardService], component:CustomerInformationComponent},
    {path: 'completed',canActivate:[AuthGuardService], component:OrdersuccessfulComponent}
    ,
