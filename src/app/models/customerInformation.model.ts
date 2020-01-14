@@ -1,4 +1,5 @@
-import { ItemOfOrder } from './itemorder.model';
+import { orderItem } from './orderItem.interface';
+
 
 export class customerInformationAndOrderModel{
     address:string;
@@ -12,9 +13,9 @@ export class customerInformationAndOrderModel{
     wishDeliveryTime:string;
     comment:string;
     paymentType:string;
-    order:ItemOfOrder[];
+    order:orderItem[];
 
-    constructor(address:string,pincode:string,city:string,floor:number,customerName:string,email:string,telefonnummer:string,companyname:string,wishDeliveryTime:string,comment:string,paymentType:string,order:ItemOfOrder[]){
+    constructor(address:string,pincode:string,city:string,floor:number,customerName:string,email:string,telefonnummer:string,companyname:string,wishDeliveryTime:string,comment:string,paymentType:string,order:orderItem[]){
 this.address=address;
 this.pincode=pincode;
 this.city=city;

@@ -1,18 +1,18 @@
 <div class="card-body">
     <h4 class="card-title">{{product.description}}</h4>
     <p class="card-text text-black-50">{{getProductDetailedDescription()}}</p>
-    <p class="card-text font-weight-bold">{{getProductPrice()}}€</p>
-    <select *ngIf="hasProductOptions()" id="selectProductCategory" class="form-control"
+    <p class="card-text font-weight-bold">{{productDisplayPrice}}€</p>
+    <select  *ngIf="hasProductOptions()" id="selectProductCategory" class="form-control"
         (change)="setUserSelectedOption($event)" name="currentOption">
-        <option [selected]="$productOptions.isDefault" [value]="$productOptions.id"
-            *ngFor="let $productOptions of product.productOptions;">
+        <option  *ngFor="let $productOptions of product.productOptions;" [selected]="$productOptions.default == true" [value]="$productOptions.id"
+           >
             {{$productOptions.productOptionDescription}}</option>
     </select>
    
             <div *ngIf="hasProductAdditions()">
                 <p class="mt-3 text-black-50" id="Extrastext">Ihre Extras:</p>
                 <div *ngFor="let productAddition of product.productAdditions | slice:0:show;let i = index">
-                    <input type="checkbox" value="productAddition.additionDescription"
+                    <input #select type="checkbox"  value="productAddition.additionDescription"
                         (change)="fetchPriceForSelectedAddition(productAddition,$event)" />
                     <span> mit {{productAddition.additionDescription}}</span>
                     <span>({{displayProductAdditionPriceForSelectedOption(productAddition)}}€)</span><br>
@@ -25,6 +25,11 @@
                        
                            
 </div>
+<div *ngIf="show > 3" class="ml-3">
+    <button type="button" class="btn btn-default btn-sm" (click)="show=3">
+        <span class="glyphicon glyphicon-chevron-up"></span> 
+      </button>
+</div>
 
 <div class="row">
     <div class="col-sm-4   w-50">
@@ -35,6 +40,6 @@
           </div>
             </div>
             <div class="col-sm-8  w-50">
-                <a class="btn btn-success btn-block" href="#">Hinzufügen</a>
+                <a class="btn btn-success btn-block" (click)="submitProductToACart()">Hinzufügen</a>
                     </div>
 </div>

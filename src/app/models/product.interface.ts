@@ -3,7 +3,7 @@ id:number,
 description:string,
 productCategory:string,
 optionDescription:string,
-productBasePrice:string,
+productBasePrice:number,
 productAdditions:productItemAddition[],
 productOptions:productItemOption[]
 }
@@ -11,18 +11,18 @@ productOptions:productItemOption[]
 export interface productItemAddition{
     id:number;
 additionDescription: string,
-additionPrice: string,
-additionsPriceForSmall: string,
-additionsPriceForNormal: string,
-additionsPriceForFamily: string,
-additionsPriceForParty: string
+additionPrice: number,
+additionsPriceForSmall: number,
+additionsPriceForNormal: number,
+additionsPriceForFamily: number,
+additionsPriceForParty: number
 }
 
 
 export interface productItemOption{
     id: number;
 productOptionDescription: string;
-optionPrice: string;
+optionPrice: number;
 default:boolean;
 optionPriceForSmall: number;
 optionPriceForNormal: number;

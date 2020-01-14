@@ -1,10 +1,7 @@
 import { Component, OnInit, OnChanges, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { CartService } from '../../services/cart.service';
-import { PizzaAdditions } from '../../models/pizzaAdditions.model';
-import { PizzaUnit } from '../../models/pizzaunit.model';
-import { ItemOfOrder } from '../../models/itemorder.model';
 import { Router } from '@angular/router';
-import { Product } from 'src/app/models/product.model';
+import { orderItem } from 'src/app/models/orderItem.interface';
 
 
 
@@ -16,7 +13,7 @@ import { Product } from 'src/app/models/product.model';
 })
 export class CartComponent implements OnInit, OnDestroy {
 
-  orderedItems: ItemOfOrder[] = [];
+  orderedItems:orderItem[] = [];
   showEmptyShoppingCart: boolean = this.orderedItems.length <= 1;
   totalSum = 0;
   deliveryCharges = 2;
@@ -25,7 +22,7 @@ export class CartComponent implements OnInit, OnDestroy {
   constructor(private cartService: CartService, private router: Router) { }
 
   ngOnInit() {
-
+/*
     this.cartService.pizzaOrderEmitter.subscribe(params => {
       var recievedItem: ItemOfOrder;
       if (params) {
@@ -39,12 +36,14 @@ export class CartComponent implements OnInit, OnDestroy {
 
     this.cartService.priceCalculationEmitter.subscribe((params => {
       this.triggerPriceCalculation();
-    }));
+    }));*/
   }
 
   ngOnDestroy() {
-    this.cartService.pizzaOrderEmitter.unsubscribe();
+    //this.cartService.pizzaOrderEmitter.unsubscribe();
   }
+
+  /*
   triggerPriceCalculation() {
     this.cartService.triggerCalculationsInCart(this.orderedItems);
     this.totalSum = 0;
@@ -162,6 +161,6 @@ if( this.orderedItems[indexx].listOfAdditions===null){
 
   }
 
-
+*/
 
 }

@@ -15,9 +15,7 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { CartService } from './services/cart.service';
 import { CustomerInformationService } from './shop/customer-information/CustomerInformationService';
 import { OrdersuccessfulComponent } from './shop/ordersuccessful/ordersuccessful.component';
-import { MealComponent } from './shop/meal/meal.component';
 import { MealService } from './services/mealservice';
-import { DetailWindowComponent } from './shop/meal/detail-window/detail-window.component';
 import { ControlpanelComponent } from './controlpanel/controlpanel.component';
 import { OrdersOverviewComponent } from './controlpanel/orders-overview/orders-overview.component';
 import { ControlPanelService } from './services/controlpanel.service';
@@ -31,7 +29,6 @@ const appRoutes: Routes = [
   {path:'home',component:HomeComponent},
   {
     path: 'shop', component: ShopComponent, children: [
-      { path: ':id', component: MealComponent }
     ]
   },{
     path:'controlpanel', component:ControlpanelComponent
@@ -52,8 +49,6 @@ const appRoutes: Routes = [
     CartComponent,
   CustomerInformationComponent,
   OrdersuccessfulComponent,
-  MealComponent,
-  DetailWindowComponent,
   ControlpanelComponent,
   OrdersOverviewComponent,
   HomeComponent,
