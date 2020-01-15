@@ -9,22 +9,23 @@ export class CartService {
 
     order: orderItem[] = [];
     totalOrderPriceEmitter=new Subject<number>();
+    totalOrderPrice=0;
 
     constructor() {
     }
 
 
     triggerCalculationsInCart(allOrderItems: orderItem[]) {
-        var totalOrderPrice:number=0;
+         this.totalOrderPrice=0;
         for (let currentOrderItem of allOrderItems) {
                // Special items are pizza and calzone. THey are dependent upon their size.
         var isItemPizza: boolean = (currentOrderItem.product.productCategory === 'Pizza' || currentOrderItem.product.productCategory === 'Vegatarische_Pizza');
         var isItemCalzone: boolean = (currentOrderItem.product.productCategory === 'Calzone');  
             currentOrderItem.totalPrice = this.calculatePriceOfAProduct(currentOrderItem.product, currentOrderItem.selectedOption, currentOrderItem.listOfAdditions, currentOrderItem.quantity,isItemPizza,isItemCalzone );
             console.log(currentOrderItem.totalPrice);
-            var totalOrderPrice=totalOrderPrice+ currentOrderItem.totalPrice;
+             this.totalOrderPrice=this.totalOrderPrice+ currentOrderItem.totalPrice;
         }
-        this.totalOrderPriceEmitter.next(totalOrderPrice);
+        this.totalOrderPriceEmitter.next(this.totalOrderPrice);
     }
 
 

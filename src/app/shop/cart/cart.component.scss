@@ -1,20 +1,20 @@
-div h3 {
-    font-family: 'Courier New', Courier, monospace;
-    }
-
-.emptybucket{
-display:block;
-margin-top: 1rem;
-margin-left:1rem;
-color:#7d7d7d;
-    }
+*{
+	font-size: 1.4rem;
+}
 
 
-.cart-row{
-display:flex;
-justify-content: flex-start;
-align-content: center;
-transform: translateZ(0);
-align-items:center;
-width:100%
- }
+.description{
+	font-size: 1rem;
+	text-align: left;
+}
+
+.glyphicon.glyphicon-trash{
+	font-size: 10px;
+	top: -6px;
+}
+
+.btntrash{
+	height:20px;
+	top: -6px;
+}
+

@@ -14,12 +14,17 @@ import { orderItem } from 'src/app/models/orderItem.interface';
 export class CartComponent implements OnInit, OnDestroy {
 
   orderedItems:orderItem[] = [];
-  totalSum = 0;
+  totalSum:number;
   constructor(private cartService: CartService, private router: Router) {
     this.orderedItems=this.cartService.order;
    }
 
   ngOnInit() {
+
+    console.log(this.totalSum);
+    this.cartService.totalOrderPriceEmitter.subscribe((params)=>{
+    this.totalSum=params;
+    });
 /*
     this.cartService.pizzaOrderEmitter.subscribe(params => {
       var recievedItem: ItemOfOrder;
@@ -41,6 +46,22 @@ export class CartComponent implements OnInit, OnDestroy {
     //this.cartService.pizzaOrderEmitter.unsubscribe();
   }
 
+  decreaseTheQuantity(item: orderItem){
+    if(item.quantity > 1){
+item.quantity=item.quantity - 1;
+this.cartService.triggerCalculationsInCart(this.orderedItems);
+}
+  }
+
+  increaseTheQuantity(item:orderItem){
+    item.quantity=item.quantity + 1;
+    this.cartService.triggerCalculationsInCart(this.orderedItems);
+  }
+
+  deleteTheItem(index:number){
+    this.orderedItems.slice(index);
+    this.cartService.triggerCalculationsInCart(this.orderedItems);
+  }
   /*
   triggerPriceCalculation() {
     this.cartService.triggerCalculationsInCart(this.orderedItems);
@@ -78,15 +99,7 @@ export class CartComponent implements OnInit, OnDestroy {
           }
         }
         if (!matchFound) {
-          return false;
-        }
-      }
-    }
-
-    return matchFound;
-
-  }
-
+          return
 
   submitOrder() {
     this.cartService.order = this.orderedItems;
@@ -96,7 +109,7 @@ export class CartComponent implements OnInit, OnDestroy {
 
   addItemToOrder(order: ItemOfOrder) {
 
-    if (this.orderedItems.length < 1) {
+    if (this.orderedIems.length < 1) {
       this.orderedItems.push(order);
     }
     else {
