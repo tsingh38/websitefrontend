@@ -1,10 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CartService } from '../../services/cart.service';
 import { NgForm } from '@angular/forms';
-import { CustomerInformationService } from './CustomerInformationService';
 import { customerInformationAndOrderModel } from '../../models/customerInformation.model';
 import { DeepcopyUtil } from '../../services/Deepcopy';
 import { Router } from '@angular/router';
+import { customerOrder } from 'src/app/models/customerorder.interface';
+import { CustomerOrderService } from './CustomerOrderService';
 
 
 @Component({
@@ -22,14 +23,14 @@ export class CustomerInformationComponent implements OnInit {
   phonenumber:string;
   companyname:string;
   comment:string;
-  constructor( private router:Router, private customerInformationService:CustomerInformationService) { }
+  constructor( private router:Router, private customerOrderService:CustomerOrderService) { }
   @ViewChild('f', { static: false }) formRef: NgForm;
   allTimeSlots:string[]=[];
   defaultPaymentType='Bar';
   defaultWishDeliveryTime='So schnell wie möglich';
   
   ngOnInit() {
-  this.allTimeSlots=this.customerInformationService.fetchCurrentTimeSlots();
+  this.allTimeSlots=this.customerOrderService.fetchCurrentTimeSlots();
   }
 
   fetchCurrentTimeSlots(){
@@ -39,21 +40,23 @@ export class CustomerInformationComponent implements OnInit {
   onSubmit() {
     console.log(this.formRef);
     if(this.formRef.valid){
-     var  customerInformation:customerInformationAndOrderModel =new customerInformationAndOrderModel(
-       this.customeraddress,
-      this.customerpincode,
-      this.customerCity,
-      this.floor,
-      this.customerName,
-      this.customerEmail,
-      this.phonenumber,
-      this.companyname,
-       this.defaultWishDeliveryTime,
-      this.comment,
-      this.defaultPaymentType,this.customerInformationService.getCustomerOrder());
-      this.customerInformationService.processCustomerOrder(DeepcopyUtil.deepCopy(customerInformation));
+     var  customerInformation:customerOrder ={
+      address: this.customeraddress,
+      pincode:this.customerpincode,
+      city:this.customerCity,
+      floor:this.floor,
+      customerName:this.customerName,
+      email:this.customerEmail,
+      telefonnummer:this.phonenumber,
+      companyname:this.companyname,
+      wishDeliveryTime:this.defaultWishDeliveryTime,
+      comment:this.comment,
+      paymentType:this.defaultPaymentType,
+      order:this.customerOrderService.getCustomerOrder()}
+      this.customerOrderService.processCustomerOrder(DeepcopyUtil.deepCopy(customerInformation));
       this.router.navigate(['/completed']);
+    }
     }
   }
 
-}
+

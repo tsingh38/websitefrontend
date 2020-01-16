@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CustomerInformationService } from '../customer-information/CustomerInformationService';
+import { CustomerOrderService } from '../customer-information/CustomerOrderService';
+
 
 @Component({
   selector: 'app-ordersuccessful',
@@ -9,10 +10,10 @@ import { CustomerInformationService } from '../customer-information/CustomerInfo
 export class OrdersuccessfulComponent implements OnInit {
 
   orderNumber:string;
-  constructor(private customerOrderInformation:CustomerInformationService) { }
+  constructor(private customerOrderService:CustomerOrderService) { }
 
   ngOnInit() {
-    this.orderNumber=this.customerOrderInformation.fetchCompletedOrderNumber();
+    this.orderNumber=this.customerOrderService.fetchCompletedOrderNumber();
   }
 
 }

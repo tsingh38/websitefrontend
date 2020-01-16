@@ -1,19 +1,20 @@
 import { CartService } from '../../services/cart.service';
 import { Injectable } from '@angular/core';
-import { customerInformationAndOrderModel } from '../../models/customerInformation.model';
+import { customerOrder } from 'src/app/models/customerorder.interface';
+
 
 @Injectable()
-export class CustomerInformationService {
+export class CustomerOrderService {
 
 
-    customerOrderAndAddress:customerInformationAndOrderModel;
+    customerOrderAndAddress:customerOrder;
 
     constructor(private cartService: CartService) {
 
     }
 
 
-    processCustomerOrder(order:customerInformationAndOrderModel){
+    processCustomerOrder(order:customerOrder){
         //TODO Rest Aufruf
         this.customerOrderAndAddress=order;
     }

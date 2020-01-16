@@ -13,7 +13,6 @@ import { CartComponent } from './shop/cart/cart.component';
 import { CustomerInformationComponent } from './shop/customer-information/customer-information.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { CartService } from './services/cart.service';
-import { CustomerInformationService } from './shop/customer-information/CustomerInformationService';
 import { OrdersuccessfulComponent } from './shop/ordersuccessful/ordersuccessful.component';
 import { MealService } from './services/mealservice';
 import { ControlpanelComponent } from './controlpanel/controlpanel.component';
@@ -23,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpUtil } from './services/httpUtil.service';
 import { HomeComponent } from './home/home/home.component';
 import { CardproductComponent } from './shop/cardproduct/cardproduct.component';
+import { CustomerOrderService } from './shop/customer-information/CustomerOrderService';
 
 const appRoutes: Routes = [
 
@@ -59,7 +59,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule, NgbModule, RouterModule, FormsModule,HttpClientModule, RouterModule.forRoot(appRoutes)
   ],
-  providers: [AuthGuardService,CartService,CustomerInformationService,MealService,ControlPanelService,HttpUtil],
+  providers: [AuthGuardService,CartService,CustomerOrderService,MealService,ControlPanelService,HttpUtil],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
