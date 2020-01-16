@@ -68,7 +68,7 @@ this.cartService.triggerCalculationsInCart(this.orderedItems);
   }
 
   deleteTheItem(index:number){
-    this.orderedItems.slice(index);
+   this.orderedItems.splice(index,1);
     this.cartService.triggerCalculationsInCart(this.orderedItems);
   }
   
