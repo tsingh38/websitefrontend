@@ -6,7 +6,8 @@
                 <span>{{item.quantity}}x</span>
             </div>
             <div class="col-xs-6">
-                <small class="text-muted description"> {{item.product.description}}</small>
+                <small class="text-muted description"> {{item.product.description}}</small><br>
+                <small  *ngIf="item.selectedOption" class="text-muted description"> {{item.selectedOption.productOptionDescription}}</small>
             </div>
             <div class="col-xs-2">
                 <div class="btn-group" role="group" aria-label="quantity">

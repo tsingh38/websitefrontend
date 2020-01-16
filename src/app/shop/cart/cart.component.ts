@@ -2,6 +2,7 @@ import { Component, OnInit, OnChanges, OnDestroy, ChangeDetectionStrategy } from
 import { CartService } from '../../services/cart.service';
 import { Router } from '@angular/router';
 import { orderItem } from 'src/app/models/orderItem.interface';
+import { productItem, productItemOption } from 'src/app/models/product.interface';
 
 
 
@@ -14,37 +15,45 @@ import { orderItem } from 'src/app/models/orderItem.interface';
 export class CartComponent implements OnInit, OnDestroy {
 
   orderedItems:orderItem[] = [];
-  totalSum:number;
+  totalSum:number=0;
   constructor(private cartService: CartService, private router: Router) {
     this.orderedItems=this.cartService.order;
    }
 
   ngOnInit() {
-
-    console.log(this.totalSum);
+    this.totalSum=this.cartService.totalOrderPrice;
     this.cartService.totalOrderPriceEmitter.subscribe((params)=>{
-    this.totalSum=params;
+      this.totalSum=params;
     });
-/*
-    this.cartService.pizzaOrderEmitter.subscribe(params => {
-      var recievedItem: ItemOfOrder;
-      if (params) {
-        recievedItem = new ItemOfOrder(params.id, params.product, params.name, params.selectedOption, params.listOfAdditions, params.quantity, params.totalPrice);
-        this.addItemToOrder(recievedItem);
-      } else {
-        this.orderedItems = [];
-      }
-      this.triggerPriceCalculation();
-    });
+    console.log(this.totalSum);
 
-    this.cartService.priceCalculationEmitter.subscribe((params => {
-      this.triggerPriceCalculation();
-    }));*/
+
   }
+
+ /* getItemAdditionsDescription(item:orderItem){
+    var description="";
+    var counter:number=0;
+    var isLastItem:boolean=false;
+    if(item.listOfAdditions && item.listOfAdditions.length > 0){
+      description="(";
+      isLastItem=counter==item.listOfAdditions.length;
+      for(let currentAddition of item.listOfAdditions){
+        if(counter > 0 && !isLastItem){
+          description+=",";
+        }
+        description+=currentAddition.additionDescription;
+        counter++;
+      }
+      description+=")";
+    }
+    return description;
+  }*/
+
 
   ngOnDestroy() {
-    //this.cartService.pizzaOrderEmitter.unsubscribe();
+
   }
+
 
   decreaseTheQuantity(item: orderItem){
     if(item.quantity > 1){
@@ -62,116 +71,6 @@ this.cartService.triggerCalculationsInCart(this.orderedItems);
     this.orderedItems.slice(index);
     this.cartService.triggerCalculationsInCart(this.orderedItems);
   }
-  /*
-  triggerPriceCalculation() {
-    this.cartService.triggerCalculationsInCart(this.orderedItems);
-    this.totalSum = 0;
-    for (let currentItemInOrder of this.orderedItems) {
-      this.totalSum = Number(this.totalSum) + Number(currentItemInOrder.totalPrice);
-    }
-    this.orderCannotBeDelivered = this.totalSum < 15 ? true : false;
-    if (this.orderCannotBeDelivered) {
-      this.OrderSum = this.totalSum;
-    } else {
-      this.OrderSum = this.totalSum + this.deliveryCharges;
-    }
-  }
-  checkAdditionsInBothOrdersEqual(existingOrder: ItemOfOrder, newOrder: ItemOfOrder) {
-
-    if ((existingOrder.listOfAdditions.length < 1 && newOrder.listOfAdditions.length < 1)) {
-      return true;
-    }
-
-    if (existingOrder.listOfAdditions.length !== newOrder.listOfAdditions.length) {
-      return false;
-
-    }
-    var matchFound: boolean = false;
-
-    if (existingOrder.listOfAdditions.length === newOrder.listOfAdditions.length) {
-      for (let currentAdditionInExistingOrder of existingOrder.listOfAdditions) {
-
-        for (let currentAdditionInNewOrder of newOrder.listOfAdditions) {
-          if (currentAdditionInExistingOrder.additionsId == currentAdditionInNewOrder.additionsId) {
-            matchFound = true;
-          } else {
-            matchFound = false;
-          }
-        }
-        if (!matchFound) {
-          return
-
-  submitOrder() {
-    this.cartService.order = this.orderedItems;
-    this.router.navigate(['/customer']);
-
-  }
-
-  addItemToOrder(order: ItemOfOrder) {
-
-    if (this.orderedIems.length < 1) {
-      this.orderedItems.push(order);
-    }
-    else {
-      for (let currentExistingOrder of this.orderedItems) {
-        if (currentExistingOrder.id !== order.id) {
-          this.orderedItems.push(order);
-          break;
-        }
-        else if (currentExistingOrder.id === order.id) {
-          if (currentExistingOrder.selectedOption === order.selectedOption && this.checkAdditionsInBothOrdersEqual(currentExistingOrder, order)) {
-            currentExistingOrder.quantity = Number(currentExistingOrder.quantity) + Number(order.quantity);
-            currentExistingOrder.totalPrice = Number(currentExistingOrder.totalPrice) + Number(order.totalPrice);
-            break;
-          }
-          else {
-            this.orderedItems.push(order);
-            break;
-          }
-        }
-      }
-    }
-  }
-
-
-  getOderAdditionsText(indexx: string): String {
-    var existAdditionsInItem: boolean = this.orderedItems[indexx].listOfAdditions > 0;
-if( this.orderedItems[indexx].listOfAdditions===null){
-  return "";
-}
-    var orderItemText: string = existAdditionsInItem ? "mit(" : "";
-    for (let pizzaAddition of this.orderedItems[indexx].listOfAdditions) {
-      orderItemText += " " + pizzaAddition.additionsName;
-    }
-    orderItemText += existAdditionsInItem ? ")" : "";
-
-    return orderItemText;
-  }
-
-
-  getProductDescription(item:Product){
-    
-  }
-
-  increaseQuantity(orderItem: ItemOfOrder) {
-    orderItem.quantity = +orderItem.quantity + 1;
-    orderItem.totalPrice = Number((+orderItem.totalPrice * 2).toFixed(2));
-    this.cartService.priceCalculationEmitter.next(orderItem);
-  }
-  decreaseQuantity(orderItem: ItemOfOrder) {
-    if (orderItem.quantity > 1) {
-      orderItem.quantity = +orderItem.quantity - 1;
-      orderItem.totalPrice = Number((+orderItem.totalPrice / 2).toFixed(2));
-    }
-    this.cartService.priceCalculationEmitter.next(orderItem);
-  }
-  deleteTheItemFromOrder(orderItem: ItemOfOrder) {
-    this.orderedItems.splice(this.orderedItems.indexOf(orderItem), 1);
-    this.cartService.priceCalculationEmitter.next(orderItem);
-
-
-  }
-
-*/
+  
 
 }

@@ -28,6 +28,7 @@ export class ShopComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.totalPriceInShoppingCart=this.cartService.totalOrderPrice;
   if( !this.productsForSelectedCategory  || this.productsForSelectedCategory.length < 1){
     this.productsForSelectedCategory=this.allProductItems;
   }

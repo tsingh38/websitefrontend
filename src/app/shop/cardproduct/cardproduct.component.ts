@@ -146,7 +146,6 @@ if(this.quantity>1){
 
   resetAProduct(){
     for(let currentelRef of this.selectReference.toArray()){
-      console.log(currentelRef);
       this.render.setProperty(currentelRef.nativeElement,'checked',false);
     }
     this.quantity=1;
