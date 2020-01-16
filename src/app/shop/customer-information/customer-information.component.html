@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container w-60">
     <div>
-    <h3>Wohin soll Deine Bestellung geliefert werden?</h3>
+    <h3 class="text-black-50">Wohin soll Deine Bestellung geliefert werden?</h3>
 </div>
     <hr>
     <form (ngSubmit)="onSubmit()" #f='ngForm'>
@@ -8,14 +8,14 @@
             <div class="col-sm-6">
                 <div class="form-group">
                     <label>Adresse</label> <br>
-                    <input type="text" class="form-control" id="Address" name="Address" [(ngModel)]="customeraddress" required #address="ngModel">
-                    <span class="help-block" *ngIf="!address.valid && address.touched">*Bitte gultige Adresse eingeben</span>
+                    <input type="text" class="form-control"  placeholder="Address Eingeben" id="Address" name="Address" [(ngModel)]="customeraddress" required #address="ngModel">
+                    <span class="help-block"  *ngIf="!address.valid && address.touched">*Bitte gultige Adresse eingeben</span>
                 </div>
             </div>
             <div class="col-sm-3">
                 <div class="form-group">
                     <label>Postlietzahl</label> <br>
-                    <input type="text" class="form-control" id="pincode" name="pincode" [(ngModel)]="customerpincode" required #pincode="ngModel">
+                    <input type="text" class="form-control" id="pincode" placeholder="Postleitzahl"  name="pincode" [(ngModel)]="customerpincode" required #pincode="ngModel">
                     <span class="help-block" *ngIf="!pincode.valid && pincode.touched">*Bitte gultige Postleitzahl eingeben</span>
 
                 </div>
@@ -23,7 +23,7 @@
             <div class="col-sm-3">
                 <div class="form-group">
                     <label>Stadt</label> <br>
-                    <input type="text" class="form-control" id="city" name="city" [(ngModel)]="customerCity" required #city="ngModel">
+                    <input type="text" class="form-control" id="city" placeholder="Stadt" name="city" [(ngModel)]="customerCity" required #city="ngModel">
                     <span class="help-block" *ngIf="!city.valid && city.touched">*Bitte gultige Stadt eingeben</span>
 
                 </div>
@@ -46,7 +46,7 @@
             <div class="col-sm-6 pull-left">
                 <div class="form-group">
                     <label>Name</label> <br>
-                    <input type="text" class="form-control" id="customerName" name="customerName" [(ngModel)]="customerName" required #name="ngModel">
+                    <input type="text" class="form-control" id="customerName" placeholder="Deine Name" name="customerName" [(ngModel)]="customerName" required #name="ngModel">
                     <span class="help-block" *ngIf="!name.valid && name.touched">*Bitte gultige Name eingeben</span>
 
                 </div>
@@ -54,7 +54,7 @@
             <div class="col-sm-6 pull-right">
                 <div class="form-group">
                     <label>E-Mail</label> <br>
-                    <input type="text" class="form-control" id="email" name="email" [(ngModel)]="customerEmail" email #email="ngModel">
+                    <input type="text" class="form-control" id="email" placeholder="*Deine Email" name="email" [(ngModel)]="customerEmail" email #email="ngModel">
                     <span class="help-block" *ngIf="!email.valid && email.touched">*Bitte gultige Email eingeben</span>
 
                 </div>
@@ -64,7 +64,7 @@
             <div class="col-sm-6 pull-left">
                 <div class="form-group">
                     <label>Telefonnummer</label> <br>
-                    <input type="text" class="form-control" id="telphonenumber" name="telphonenumber" [(ngModel)]="phonenumber" required #telefonnummer>
+                    <input type="text" class="form-control" id="telphonenumber" placeholder="*Deine Telefonnummer" name="telphonenumber" [(ngModel)]="phonenumber" required #telefonnummer>
                     <span class="help-block" *ngIf="!telefonnummer.valid && telefonnummer.touched">*Bitte gultige Telefonnummer eingeben</span>
 
                 </div>
@@ -119,10 +119,13 @@
         </div>
 <hr>
         <div class="row">
-            <div class="col-sm-6 text-center" >
+            <div class="col text-center" >
                 <div class="form-group">
-                 <button type="submit" [disabled]="!f.valid" style="position:absolute;left: 50%;"  class=" btn btn-primary form-control"> Bestellung abschließen</button>
+                 <button type="submit" [disabled]="!f.valid"  class=" btn btn-primary form-control pull-center btn-lg text-white w-100"> Bestellung abschließen</button>
                 </div>
+
+              
+    
             </div> 
         </div>
         <hr>

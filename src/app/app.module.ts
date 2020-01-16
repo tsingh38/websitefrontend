@@ -35,7 +35,7 @@ const appRoutes: Routes = [
   },
   {path:'cart',component:CartComponent},
   {
-    path: 'customer',canActivate:[AuthGuardService], component:CustomerInformationComponent},
+    path: 'submit',canActivate:[AuthGuardService], component:CustomerInformationComponent},
    {path: 'completed',canActivate:[AuthGuardService], component:OrdersuccessfulComponent}
    ,
   {
