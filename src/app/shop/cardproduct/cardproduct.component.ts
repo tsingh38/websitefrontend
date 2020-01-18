@@ -126,6 +126,9 @@ if(this.quantity>1){
     else if($option.optionPriceForParty){
       return $option.optionPriceForParty;
     }
+    else{
+      return this.product.productBasePrice;
+    }
 
   }
   getProductPrice() {
