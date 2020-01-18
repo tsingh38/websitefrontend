@@ -8,8 +8,9 @@ import { productItem, productItemOption, productItemAddition } from '../models/p
 export class CartService {
 
     order: orderItem[] = [];
-    totalOrderPriceEmitter=new Subject<number>();
+    totalOrderPriceEmitter=new Subject<{quantity:number,price:number}>();
      totalOrderPrice:number=0;
+     totalNumberOfItems=0;
 
     constructor() {
     }
@@ -17,15 +18,17 @@ export class CartService {
 
     triggerCalculationsInCart(allOrderItems: orderItem[]) {
       this.totalOrderPrice=0;
+      this.totalNumberOfItems=0;
         for (let currentOrderItem of allOrderItems) {
                // Special items are pizza and calzone. THey are dependent upon their size.
+               this.totalNumberOfItems+=currentOrderItem.quantity;
         var isItemPizza: boolean = (currentOrderItem.product.productCategory === 'Pizza' || currentOrderItem.product.productCategory === 'Vegatarische_Pizza');
         var isItemCalzone: boolean = (currentOrderItem.product.productCategory === 'Calzone');  
             currentOrderItem.totalPrice = this.calculatePriceOfAProduct(currentOrderItem.product, currentOrderItem.selectedOption, currentOrderItem.listOfAdditions, currentOrderItem.quantity,isItemPizza,isItemCalzone );
             console.log(currentOrderItem.totalPrice);
             this.totalOrderPrice=+Number(this.totalOrderPrice+ currentOrderItem.totalPrice).toFixed(2);
         }
-        this.totalOrderPriceEmitter.next(this.totalOrderPrice);
+        this.totalOrderPriceEmitter.next({quantity: this.totalNumberOfItems,price:this.totalOrderPrice});
         console.log(this.totalOrderPrice);
     }
 

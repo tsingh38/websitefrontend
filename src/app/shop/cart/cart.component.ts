@@ -23,7 +23,7 @@ export class CartComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.totalSum=this.cartService.totalOrderPrice;
     this.cartService.totalOrderPriceEmitter.subscribe((params)=>{
-      this.totalSum=params;
+      this.totalSum=params.price;
     });
     console.log(this.totalSum);
 

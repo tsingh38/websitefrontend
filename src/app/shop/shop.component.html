@@ -38,6 +38,12 @@
     </div>
 </div>
 
-<div *ngIf="totalPriceInShoppingCart > 0" class="bg-primary fixed-bottom  m-auto">
-<button type="button" class="btn pull-center text-white w-100" (click)="submitOrder()">{{totalPriceInShoppingCart}}€</button>
+<div class="row border border-secondary" *ngIf="totalPriceInShoppingCart > 0" class="bg-primary fixed-bottom text-center">
+
+
+    <i class="fa icon">&#xf07a;</i>
+         <span class='badge badge-warning' id='lblCartCount'> {{totalNumberOfItemsInCart}} </span>
+        <button type="button" class="btn text-white" (click)="submitOrder()">{{totalPriceInShoppingCart}}€</button>  
+
+  
 </div>

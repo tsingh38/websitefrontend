@@ -22,3 +22,24 @@ height:10rem;
 #shoppingcart{
 	height:6rem;
 }
+
+
+#lblCartCount {
+    font-size: 9px;
+    background: coral;
+    color: black;
+    padding: 0 5px;
+    vertical-align: top;
+    margin-left: -10px;
+}
+.badge {
+  padding-left: 9px;
+  padding-right: 9px;
+  -webkit-border-radius: 9px;
+  -moz-border-radius: 9px;
+  border-radius: 9px;
+}
+.icon{
+  font-size:14px;
+  color:black;
+}
