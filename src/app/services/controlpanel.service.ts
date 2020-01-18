@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { customerInformationAndOrderModel } from '../models/customerInformation.model';
 
 
 @Injectable()

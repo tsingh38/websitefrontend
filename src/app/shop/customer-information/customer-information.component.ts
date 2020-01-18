@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CartService } from '../../services/cart.service';
 import { NgForm } from '@angular/forms';
-import { customerInformationAndOrderModel } from '../../models/customerInformation.model';
 import { DeepcopyUtil } from '../../services/Deepcopy';
 import { Router } from '@angular/router';
 import { customerOrder } from 'src/app/models/customerorder.interface';
@@ -53,7 +52,9 @@ export class CustomerInformationComponent implements OnInit {
       comment:this.comment,
       paymentType:this.defaultPaymentType,
       order:this.customerOrderService.getCustomerOrder()}
+      console.log("customer order ->"+ customerInformation);
       this.customerOrderService.processCustomerOrder(DeepcopyUtil.deepCopy(customerInformation));
+      this.customerOrderService.delay(1000);
       this.router.navigate(['/completed']);
     }
     }

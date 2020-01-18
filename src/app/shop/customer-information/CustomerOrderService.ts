@@ -1,6 +1,9 @@
 import { CartService } from '../../services/cart.service';
 import { Injectable } from '@angular/core';
 import { customerOrder } from 'src/app/models/customerorder.interface';
+import { HttpUtil } from 'src/app/services/httpUtil.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { throwError } from 'rxjs';
 
 
 @Injectable()
@@ -8,15 +11,18 @@ export class CustomerOrderService {
 
 
     customerOrderAndAddress:customerOrder;
+    orderNumberFromServer:number;
+    serverError:string;
 
-    constructor(private cartService: CartService) {
+    constructor(private cartService: CartService,private httpUtil: HttpUtil) {
 
     }
 
 
     processCustomerOrder(order:customerOrder){
-        //TODO Rest Aufruf
-        this.customerOrderAndAddress=order;
+     this.httpUtil.saveOrder(order).subscribe((param)=>{
+         this.orderNumberFromServer=param;
+     },error =>this.serverError=error);
     }
     fetchCurrentTimeSlots(): string[] {
         var allTimeSlots: string[] = [];
@@ -46,8 +52,12 @@ export class CustomerOrderService {
     }
     fetchCompletedOrderNumber(){
         //TODO Rest aufruf
-        return '1459685';
+        console.log("fetching order number"+this.orderNumberFromServer);
+        return this.orderNumberFromServer;
     }
 
-
+     delay(ms: number) {
+        return new Promise( resolve => setTimeout(resolve, ms) );
+    }
+   
 }

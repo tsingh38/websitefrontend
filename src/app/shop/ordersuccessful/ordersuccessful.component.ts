@@ -9,7 +9,7 @@ import { CustomerOrderService } from '../customer-information/CustomerOrderServi
 })
 export class OrdersuccessfulComponent implements OnInit {
 
-  orderNumber:string;
+  orderNumber:number;
   constructor(private customerOrderService:CustomerOrderService) { }
 
   ngOnInit() {
