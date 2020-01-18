@@ -24,6 +24,12 @@ export class CustomerOrderService {
      this.httpUtil.saveOrder(order).pipe(map(responseData=>{
         this.orderNumberFromServer=responseData;
         console.log( this.orderNumberFromServer);
+        if( this.orderNumberFromServer > 0){
+            this.cartService.order=[];
+            this.cartService.totalOrderPrice=0;
+            this.cartService.totalNumberOfItems=0;
+
+        }
     })).subscribe(params =>{
     })
     }
