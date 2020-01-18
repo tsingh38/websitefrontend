@@ -1,30 +1,25 @@
 <!-- Navbar dropdown and search-->
 <nav class="navbar navbar-expand-sm navbar-light bg-light sticky-top">
     <div class="container">
-        <div class="row w-100">
-            <div class="col-sm-1">
-                <button *ngIf="!searchFieldActivated" type="button" class="btn btn-primary btn-sm"
+        <div class="row input-group">
+            
+            <div class="input-group-prepend">
+                <button *ngIf="!searchFieldActivated" type="button" class="input-group-text btn btn-primary btn-sm"
                     (click)="searchFieldActivated='true'">
                     <span class="glyphicon glyphicon-search"></span>
                 </button>
                 <button *ngIf="searchFieldActivated" type="button" class=" btn btn-primary btn-sm"
-                    (click)="searchFieldActivated=!searchFieldActivated">
-                    <span class="glyphicon glyphicon-remove"></span>
-                </button>
+                (click)="searchFieldActivated=!searchFieldActivated">
+                <span class="glyphicon glyphicon-remove"></span>
+            </button>
             </div>
-            <div class="col-sm-11">
-                <div *ngIf="!searchFieldActivated">
-
-                    <select id="selectCatory" (change)='mainCategorySelected($event)' class="form-control"
+                <select  *ngIf="!searchFieldActivated" id="selectCatory" (change)='mainCategorySelected($event)' class="form-control"
                         name="currentOption">
                         <option *ngFor="let $currentCategory of categories;">
                             {{$currentCategory}}</option>
                     </select>
-                </div>
-                <div *ngIf="searchFieldActivated">
-                    <input type="text" class="form-control" name="searchFieldActivated">
-                </div>
-            </div>
+                    <input *ngIf="searchFieldActivated" type="text" class="form-control" name="searchFieldActivated">
+           
         </div>
     </div>
 </nav>
@@ -43,5 +38,6 @@
     </div>
 </div>
 
-
+<div>
 <button *ngIf="totalPriceInShoppingCart > 0"  type="button" class="btn btn-primary fixed-bottom pull-center text-white w-100" (click)="submitOrder()">{{totalPriceInShoppingCart}}€</button>
+</div>
