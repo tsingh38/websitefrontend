@@ -38,6 +38,6 @@
     </div>
 </div>
 
-<div>
-<button *ngIf="totalPriceInShoppingCart > 0"  type="button" class="btn btn-primary fixed-bottom pull-center text-white w-100" (click)="submitOrder()">{{totalPriceInShoppingCart}}€</button>
+<div *ngIf="totalPriceInShoppingCart > 0" class="bg-primary fixed-bottom  m-auto">
+<button type="button" class="btn pull-center text-white w-100" (click)="submitOrder()">{{totalPriceInShoppingCart}}€</button>
 </div>
