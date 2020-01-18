@@ -4,6 +4,7 @@ import { customerOrder } from 'src/app/models/customerorder.interface';
 import { HttpUtil } from 'src/app/services/httpUtil.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { throwError } from 'rxjs';
+import {map} from 'rxjs/operators';
 
 
 @Injectable()
@@ -20,9 +21,11 @@ export class CustomerOrderService {
 
 
     processCustomerOrder(order:customerOrder){
-     this.httpUtil.saveOrder(order).subscribe((param)=>{
-         this.orderNumberFromServer=param;
-     },error =>this.serverError=error);
+     this.httpUtil.saveOrder(order).pipe(map(responseData=>{
+        this.orderNumberFromServer=responseData;
+        console.log( this.orderNumberFromServer);
+    })).subscribe(params =>{
+    })
     }
     fetchCurrentTimeSlots(): string[] {
         var allTimeSlots: string[] = [];
@@ -57,7 +60,7 @@ export class CustomerOrderService {
     }
 
      delay(ms: number) {
-        return new Promise( resolve => setTimeout(resolve, ms) );
+        return new Promise(resolve => setTimeout(resolve, ms) );
     }
    
 }

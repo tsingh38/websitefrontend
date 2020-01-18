@@ -36,7 +36,7 @@ export class CustomerInformationComponent implements OnInit {
 
   }
 
-  onSubmit() {
+  async onSubmit() {
     console.log(this.formRef);
     if(this.formRef.valid){
      var  customerInformation:customerOrder ={
@@ -54,7 +54,7 @@ export class CustomerInformationComponent implements OnInit {
       order:this.customerOrderService.getCustomerOrder()}
       console.log("customer order ->"+ customerInformation);
       this.customerOrderService.processCustomerOrder(DeepcopyUtil.deepCopy(customerInformation));
-      this.customerOrderService.delay(1000);
+      await this.customerOrderService.delay(500);
       this.router.navigate(['/completed']);
     }
     }
