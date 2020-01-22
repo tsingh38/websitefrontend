@@ -17,7 +17,7 @@
 </nav>
 <div class="container">
   <div class="row">
-    <div class="col-3 border border-secondary sticky-top"> 
+    <div class="col-2 sticky-top"> 
       <ul class="list-group">
         
         <li class="list-group-item active" [ngClass]="{'active': step=='step1'}" (click)="step='step1'" [routerLink]="['orders']">Bestellungen</li>
@@ -25,6 +25,6 @@
         <li class="list-group-item" [ngClass]="{'active': step=='step3'}" (click)="step='step3'">Einstellungen</li>
       </ul>
     </div>
-    <div class="col-9 border border-primary"><router-outlet></router-outlet></div>
+    <div class="col-10 border border-secondary"><router-outlet></router-outlet></div>
   </div>
 </div>
