@@ -27,19 +27,14 @@ import { CustomerOrderService } from './shop/customer-information/CustomerOrderS
 const appRoutes: Routes = [
 
   {path:'home',component:HomeComponent},
-  {
-    path: 'shop', component: ShopComponent, children: [
-    ]
-  },{
-    path:'controlpanel', component:ControlpanelComponent
-  },
+  {path:'control',component:ControlpanelComponent},
+  {path: 'shop', component: ShopComponent, children: []},
+  {path:'controlpanel', component:ControlpanelComponent},
   {path:'cart',component:CartComponent},
-  {
-    path: 'submit',canActivate:[AuthGuardService], component:CustomerInformationComponent},
-   {path: 'completed',canActivate:[AuthGuardService], component:OrdersuccessfulComponent}
-   ,
-  {
-    path: '', redirectTo: '/home', pathMatch:'full'},
+  {path: 'submit',canActivate:[AuthGuardService], component:CustomerInformationComponent},
+  {path: 'completed',canActivate:[AuthGuardService], component:OrdersuccessfulComponent},
+  { path: '', redirectTo: '/home', pathMatch:'full'},
+  
 ];
 @NgModule({
   declarations: [
