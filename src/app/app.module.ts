@@ -23,18 +23,22 @@ import { HttpUtil } from './services/httpUtil.service';
 import { HomeComponent } from './home/home/home.component';
 import { CardproductComponent } from './shop/cardproduct/cardproduct.component';
 import { CustomerOrderService } from './shop/customer-information/CustomerOrderService';
+import { CatalogComponent } from './controlpanel/catalog/catalog.component';
 
 const appRoutes: Routes = [
 
   {path:'home',component:HomeComponent},
-  {path:'control',component:ControlpanelComponent},
   {path: 'shop', component: ShopComponent, children: []},
-  {path:'controlpanel', component:ControlpanelComponent},
+  {path:'control', component:ControlpanelComponent,children:[
+    {path:'orders',component:OrdersOverviewComponent},
+    {path:'catalog',component:CatalogComponent},
+    {path:'', redirectTo: 'orders', pathMatch:'full'}
+  ]},
   {path:'cart',component:CartComponent},
   {path: 'submit',canActivate:[AuthGuardService], component:CustomerInformationComponent},
   {path: 'completed',canActivate:[AuthGuardService], component:OrdersuccessfulComponent},
   { path: '', redirectTo: '/home', pathMatch:'full'},
-  
+
 ];
 @NgModule({
   declarations: [
@@ -49,7 +53,8 @@ const appRoutes: Routes = [
   ControlpanelComponent,
   OrdersOverviewComponent,
   HomeComponent,
-  CardproductComponent
+  CardproductComponent,
+  CatalogComponent
   ],
   imports: [
     BrowserModule, NgbModule, RouterModule, FormsModule,HttpClientModule, RouterModule.forRoot(appRoutes)
