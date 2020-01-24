@@ -4,18 +4,25 @@ import { Observable, throwError } from 'rxjs';
 import { productItem } from '../models/product.interface';
 import { catchError, retry } from 'rxjs/operators';
 import { customerOrder } from '../models/customerorder.interface';
+import { CustOrderStatus } from '../models/custOrderStatus.interface';
 
 @Injectable()
 export class HttpUtil{
 
  getItemsURL:string="http://localhost:8080/allitems";
  saveOrderURL:string="http://localhost:8080/saveOrder";
+ getCustOrderURL:string="http://localhost:8080/getOrders";
 
     constructor(private http:HttpClient){
     }
 
 fetchAllItems(){
     return this.http.get<productItem>(this.getItemsURL);
+}
+
+
+fetchAllCustOrders(){
+  return this.http.get<CustOrderStatus>(this.getCustOrderURL);
 }
 
 saveOrder(order:customerOrder){

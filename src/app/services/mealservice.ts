@@ -17,7 +17,7 @@ export class MealService {
     fetchAllItems() {
         this.http.fetchAllItems().pipe(map(responseData =>{
             for(let item in responseData){
-               this. allProductItems.push(responseData[item]);
+               this.allProductItems.push(responseData[item]);
             }
         })).subscribe(params =>{
         })

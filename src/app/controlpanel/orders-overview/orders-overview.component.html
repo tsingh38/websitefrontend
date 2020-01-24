@@ -23,49 +23,24 @@
             <th>Postleitzahl</th>
             <th>Adresse</th>
             <th>Email</th>
-            <th>Lieferzeit</th>
+            <th>Zeit</th>
             <th>Telefonnummer</th>
             <th>Status</th>
         </tr>
     </thead>
     <tbody>
-        <tr class="bg-success">
-          <td><a href="#">1564</a></td>
-            <td>22.01.2019</td>
-            <td>Albert Meister sr</td>
-            <td>Ravensburg</td>
-            <td>88214</td>
-            <td>Franz Bayer Straße 15</td>
-            <td>er.tajinder89@gmail.com</td>
-            <td>11:45</td>
-            <td>017621361443</td>
-            <td>bearbeitet</td>
-        </tr>
-        <tr>
-          <td><a href="#">1564</a></td>
-          <td>22.01.2019</td>
-          <td>Albert Meister sr</td>
-          <td>Ravensburg</td>
-          <td>88214</td>
-          <td>Franz Bayer Straße 15</td>
-          <td>er.tajinder89@gmail.com</td>
-          <td>11:45</td>
-          <td>017621361443</td>
-          <td>bearbeitet</td>
-      </tr>
-      <tr>
-        <td><a href="#">1564</a></td>
-        <td>22.01.2019</td>
-        <td>Albert Meister sr</td>
-        <td>Ravensburg</td>
-        <td>88214</td>
-        <td>Franz Bayer Straße 15</td>
-        <td>er.tajinder89@gmail.com</td>
-        <td>11:45</td>
-        <td>017621361443</td>
-        <td>bearbeitet</td>
-    </tr>
-       
+        <tr *ngFor="let currentOrder of customerOrders">
+          <td><a href="#">{{currentOrder.orderNumber}}</a></td>
+            <td>{{currentOrder.orderDate}}</td>
+            <td>{{currentOrder.custOrder.customerName}}</td>
+            <td>{{currentOrder.custOrder.city}}</td>
+            <td>{{currentOrder.custOrder.pincode}}</td>
+            <td>{{currentOrder.custOrder.address}}</td>
+            <td>{{currentOrder.custOrder.email}}</td>
+            <td>{{currentOrder.orderTime}}</td>
+            <td>{{currentOrder.custOrder.telefonnummer}}</td>
+            <td>{{currentOrder.status}}</td>
+        </tr>  
     </tbody>
 </table>
 
