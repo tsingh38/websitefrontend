@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ControlpanelComponent implements OnInit {
 
+
+  step:string;
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit()  {
+    this.step='step1';
+ 
   }
 
 }

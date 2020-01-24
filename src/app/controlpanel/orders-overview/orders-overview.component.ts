@@ -3,6 +3,7 @@ import { ControlPanelService } from 'src/app/services/controlpanel.service';
 import { CustOrderStatus } from 'src/app/models/custOrderStatus.interface';
 import { interval } from 'rxjs';
 import { map } from 'rxjs/operators'
+import { StaticDataService } from 'src/app/models/StaticDataService';
 
 @Component({
   selector: 'app-orders-overview',
@@ -14,11 +15,15 @@ export class OrdersOverviewComponent implements OnInit {
   private customerOrders:CustOrderStatus[]=[];
   private alive: boolean;
   private interval: number;
+  private orderViewCategory:string[];
+  private selectedOrderViewCategory:string;
 
 
-  constructor(private controlPanelService:ControlPanelService) {
+  constructor(private controlPanelService:ControlPanelService,private staticDataService: StaticDataService) {
     this.alive = true;
-    this.interval = 20000;
+    this.interval = staticDataService.getIntervalTimeBetweenTheGetOrderRequests();
+    this.orderViewCategory=staticDataService.getOrdersViewCategory();
+    this.selectedOrderViewCategory='Von Heute';
    }
 
   ngOnInit() {
@@ -31,6 +36,12 @@ export class OrdersOverviewComponent implements OnInit {
 
   ngOnDestroy(){
     this.alive = false; // switches your TimerObservable off
+  }
+
+
+  eventOrderViewOptionTrigger(event:Event){
+    var selectedCategory: string = (<HTMLTextAreaElement>event.target).value;
+    this.selectedOrderViewCategory=selectedCategory;
   }
 
 

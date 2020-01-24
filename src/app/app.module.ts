@@ -24,6 +24,7 @@ import { HomeComponent } from './home/home/home.component';
 import { CardproductComponent } from './shop/cardproduct/cardproduct.component';
 import { CustomerOrderService } from './shop/customer-information/CustomerOrderService';
 import { CatalogComponent } from './controlpanel/catalog/catalog.component';
+import { StaticDataService } from './models/StaticDataService';
 
 const appRoutes: Routes = [
 
@@ -59,7 +60,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule, NgbModule, RouterModule, FormsModule,HttpClientModule, RouterModule.forRoot(appRoutes)
   ],
-  providers: [AuthGuardService,CartService,CustomerOrderService,MealService,ControlPanelService,HttpUtil],
+  providers: [AuthGuardService,CartService,CustomerOrderService,MealService,ControlPanelService,HttpUtil,StaticDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

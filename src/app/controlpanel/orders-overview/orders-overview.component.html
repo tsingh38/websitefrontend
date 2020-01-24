@@ -3,14 +3,8 @@
 
   <div class="row  overflow-auto">
     <select  id="ordersViewCategory"  class="form-control"
-    name="currentOption">
-    <option>Von Heute</option>
-    <option>Bearbeitet</option>
-    <option>Unbearbeitet</option>
-    <option>Erst 10</option>
-    <option>Erst 100</option>
-    <option>Von dieser Woche</option>
-    <option>Von diesen Monat</option>
+    name="currentOption"  (change)="eventOrderViewOptionTrigger($event)">
+    <option *ngFor="let $option of orderViewCategory">{{$option}}</option>
 </select>
   </div>
   <table class="table table-striped">
