@@ -18,14 +18,15 @@ export class OrdersOverviewComponent implements OnInit {
 
   constructor(private controlPanelService:ControlPanelService) {
     this.alive = true;
-    this.interval = 10000;
+    this.interval = 20000;
    }
 
   ngOnInit() {
-    interval(5000)
+    this.customerOrders=this.controlPanelService.getAllTheOrders();
+    interval( this.interval)
     .subscribe(() => {
     this.customerOrders=this.controlPanelService.getAllTheOrders();
-    });
+    }); 
   }
 
   ngOnDestroy(){
