@@ -172,7 +172,7 @@ if(this.quantity>1){
     var currentItem: orderItem={
       product:this.product,
     selectedOption:this.selectedOption,
-    listOfAdditions:this.listOfCheckedProductAdditions= [],
+    listOfAdditions:this.listOfCheckedProductAdditions,
     quantity:this.quantity,
     totalPrice:0
     }
