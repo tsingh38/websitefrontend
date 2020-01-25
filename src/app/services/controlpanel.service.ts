@@ -3,6 +3,7 @@ import { HttpUtil } from './httpUtil.service';
 import { CustOrderStatus } from '../models/custOrderStatus.interface';
 import {map} from 'rxjs/operators';
 import { customerOrder } from '../models/customerorder.interface';
+import { DeepcopyUtil } from './Deepcopy';
 
 
 
@@ -16,11 +17,21 @@ export class ControlPanelService{
 
     }
 
-    getAllTheOrders(){
+    getAllTheOrders(ordersFetchCategory:string){
       this.customerOrders=[];
-       this.http.fetchAllCustOrders().pipe(map(responseData =>{
+       this.http.fetchAllCustOrders(ordersFetchCategory).pipe(map(responseData =>{
          for(let item in responseData){
-            this.customerOrders.push(responseData[item]);
+               var tempFetchedResponseItem:CustOrderStatus =  responseData[item];
+                 if(responseData[item].status===0){
+                  tempFetchedResponseItem.status='unbearbeitet';
+                 }else if(responseData[item].status===1){
+                  tempFetchedResponseItem.status='bearbeitet';
+                 }else if(responseData[item].status===2){
+                  tempFetchedResponseItem.status='ungültig';
+                 }
+               
+         
+            this.customerOrders.push(tempFetchedResponseItem);
          }
      })).subscribe(responseData =>{
        })
@@ -29,6 +40,20 @@ export class ControlPanelService{
 
     }
 
+
+    updateOrderStatus( currentCustOrder:CustOrderStatus,status:string){
+      var tempcurrentCustOrder:CustOrderStatus= DeepcopyUtil.deepCopy(currentCustOrder);
+      if(status==='unbearbeitet'){
+        tempcurrentCustOrder.status='0';
+       }else if(status==='bearbeitet'){
+        tempcurrentCustOrder.status='1';
+       }else if(status==='ungültig'){
+        tempcurrentCustOrder.status='2';
+       }
+       console.log("tempcurrentCustOrder is going to Server" +tempcurrentCustOrder);
+     this.http.updateCustOrderStatus(tempcurrentCustOrder).subscribe(params =>{
+    });
+    }
 
     }
     

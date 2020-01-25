@@ -23,14 +23,14 @@ export class OrdersOverviewComponent implements OnInit {
     this.alive = true;
     this.interval = staticDataService.getIntervalTimeBetweenTheGetOrderRequests();
     this.orderViewCategory=staticDataService.getOrdersViewCategory();
-    this.selectedOrderViewCategory='Von Heute';
+    this.selectedOrderViewCategory='Alle';
    }
 
   ngOnInit() {
-    this.customerOrders=this.controlPanelService.getAllTheOrders();
+    this.customerOrders=this.controlPanelService.getAllTheOrders(this.selectedOrderViewCategory);
     interval( this.interval)
     .subscribe(() => {
-    this.customerOrders=this.controlPanelService.getAllTheOrders();
+    this.customerOrders=this.controlPanelService.getAllTheOrders(this.selectedOrderViewCategory);
     }); 
   }
 
@@ -38,10 +38,17 @@ export class OrdersOverviewComponent implements OnInit {
     this.alive = false; // switches your TimerObservable off
   }
 
+  setCustOrderStatus($event:MouseEvent, currentOrder:CustOrderStatus){
+    var selectedText= $event.target.text;
+    currentOrder.status=selectedText;
+    this.controlPanelService.updateOrderStatus(currentOrder,selectedText);
+  }
 
   eventOrderViewOptionTrigger(event:Event){
+
     var selectedCategory: string = (<HTMLTextAreaElement>event.target).value;
     this.selectedOrderViewCategory=selectedCategory;
+    this.customerOrders=this.controlPanelService.getAllTheOrders(this.selectedOrderViewCategory);
   }
 
 

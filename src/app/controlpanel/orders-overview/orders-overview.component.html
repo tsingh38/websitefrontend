@@ -35,15 +35,15 @@
             <td>{{currentOrder.custOrder.telefonnummer}}</td>
             <td>
               <div class="btn-group" dropdown>
-                <button id="button-basic" dropdownToggle type="button" class="btn btn-secondary dropdown-toggle"
+                <button id="button-basic" dropdownToggle type="button"  class="btn btn-secondary "
                         aria-controls="dropdown-basic">
                         {{currentOrder.status}}<span class="caret"></span>
                 </button>
-                <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+                <ul id="dropdown-basic" *dropdownMenu  class="dropdown-menu" 
                     role="menu" aria-labelledby="button-basic">
-                  <li role="menuitem"><a class="dropdown-item">bearbeitet</a></li>
-                  <li role="menuitem"><a class="dropdown-item">nicht bearbeitet</a></li>
-                  <li role="menuitem"><a class="dropdown-item">ungültig</a></li>
+                  <li role="menuitem"><a class="dropdown-item" (click)="setCustOrderStatus($event,currentOrder)">bearbeitet</a></li>
+                  <li role="menuitem"><a class="dropdown-item" (click)="setCustOrderStatus($event,currentOrder)"> unbearbeitet</a></li>
+                  <li role="menuitem"><a class="dropdown-item" (click)="setCustOrderStatus($event,currentOrder)">ungültig</a></li>
                  
                 </ul>
               </div>
