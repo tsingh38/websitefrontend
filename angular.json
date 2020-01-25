@@ -27,7 +27,8 @@
               "src/favicon.ico",
               "src/assets"
             ],
-            "styles": ["./node_modules/bootstrap/dist/css/bootstrap.min.css",
+            "styles": [
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -93,6 +94,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -124,6 +126,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "websiteFrontend"
 }

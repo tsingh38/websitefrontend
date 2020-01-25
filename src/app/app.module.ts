@@ -25,6 +25,8 @@ import { CardproductComponent } from './shop/cardproduct/cardproduct.component';
 import { CustomerOrderService } from './shop/customer-information/CustomerOrderService';
 import { CatalogComponent } from './controlpanel/catalog/catalog.component';
 import { StaticDataService } from './models/StaticDataService';
+import { BsDropdownModule } from 'ngx-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const appRoutes: Routes = [
 
@@ -58,7 +60,7 @@ const appRoutes: Routes = [
   CatalogComponent
   ],
   imports: [
-    BrowserModule, NgbModule, RouterModule, FormsModule,HttpClientModule, RouterModule.forRoot(appRoutes)
+    BrowserModule, NgbModule, RouterModule, FormsModule,HttpClientModule, RouterModule.forRoot(appRoutes), BsDropdownModule.forRoot(), BrowserAnimationsModule
   ],
   providers: [AuthGuardService,CartService,CustomerOrderService,MealService,ControlPanelService,HttpUtil,StaticDataService],
   bootstrap: [AppComponent]
