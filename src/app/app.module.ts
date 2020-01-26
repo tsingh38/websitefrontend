@@ -28,6 +28,7 @@ import { StaticDataService } from './models/StaticDataService';
 import { BsDropdownModule } from 'ngx-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OrderHistoryViewModalComponent } from './controlpanel/order-history-view-modal/order-history-view-modal.component';
+import { AppViewContainerDirective } from './directives/app-view-container.directive';
 
 const appRoutes: Routes = [
 
@@ -50,6 +51,7 @@ const appRoutes: Routes = [
     ShopComponent,
     FooterComponent,
     NavbarComponent,
+    AppViewContainerDirective,
     NotFoundComponent,
     CartComponent,
   CustomerInformationComponent,
@@ -59,12 +61,15 @@ const appRoutes: Routes = [
   HomeComponent,
   CardproductComponent,
   CatalogComponent,
+  AppViewContainerDirective,
   OrderHistoryViewModalComponent
+
   ],
   imports: [
     BrowserModule, NgbModule, RouterModule, FormsModule,HttpClientModule, RouterModule.forRoot(appRoutes), BsDropdownModule.forRoot(), BrowserAnimationsModule
   ],
   providers: [AuthGuardService,CartService,CustomerOrderService,MealService,ControlPanelService,HttpUtil,StaticDataService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[OrderHistoryViewModalComponent]
 })
 export class AppModule { }

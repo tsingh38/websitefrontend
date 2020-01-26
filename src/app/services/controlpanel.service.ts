@@ -9,8 +9,9 @@ import { DeepcopyUtil } from './Deepcopy';
 
 
 @Injectable()
-export class ControlPanelService{
 
+export class ControlPanelService{
+    
     private customerOrders:CustOrderStatus[]=[];
     private interval:number=5000;
     constructor(private http:HttpUtil){
@@ -39,7 +40,6 @@ export class ControlPanelService{
     return this.customerOrders;
 
     }
-
 
     updateOrderStatus( currentCustOrder:CustOrderStatus,status:string){
       var tempcurrentCustOrder:CustOrderStatus= DeepcopyUtil.deepCopy(currentCustOrder);

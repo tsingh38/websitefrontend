@@ -1,8 +1,31 @@
-<div class="backdrop"></div>
-<div class="alert-box">
-    <p>Modal is working as i want it</p>
-    <div class="alert-box-actions">
-        <button class="btn btn-primary">Close</button>
-    </div>
+<div class="backdrop" (click)="onClose()"></div>
+<div class="alert-box my-auto">
+    <div class="container w-60 border border-secondary">
+        <h1 class="text-black-50 text-center mb-5 bg bg-light">Bestellung</h1>
+        <hr />
+        <div class="row mt-5" *ngFor="let item of custorder.order;let i=index">
+            <div class="col-xs-1">
+                <span>{{item.quantity}}x</span>
+            </div>
+            <div class="col-xs-6">
+                <small class="text-muted description"> {{item.product.description}}</small><br>
+                <small *ngIf="item.selectedOption" class="text-muted description">
+                    {{item.selectedOption.productOptionDescription}}</small>
+            </div>
+            <div class="col-xs-1 float-right">
+                {{item.totalPrice}}€
+            </div>
+        </div>
+        <div>
+            <hr />
+            <span class="text-black-50">Gesamt Summe</span>
+            <span class="float-right">{{totalSum}}€</span>
+        </div>
 
+
+    </div>
+    <div class="alert-box-actions">
+    <button class="btn btn-primary" (click)="onClose()">Close</button>
+    </div>
 </div>
+

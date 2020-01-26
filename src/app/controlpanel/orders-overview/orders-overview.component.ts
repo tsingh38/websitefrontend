@@ -1,30 +1,37 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ComponentFactoryResolver, ViewChild, OnDestroy } from '@angular/core';
 import { ControlPanelService } from 'src/app/services/controlpanel.service';
 import { CustOrderStatus } from 'src/app/models/custOrderStatus.interface';
-import { interval } from 'rxjs';
+import { interval,Subscription } from 'rxjs';
 import { map } from 'rxjs/operators'
 import { StaticDataService } from 'src/app/models/StaticDataService';
+import { OrderHistoryViewModalComponent } from '../order-history-view-modal/order-history-view-modal.component';
+import { AppViewContainerDirective } from 'src/app/directives/app-view-container.directive';
 
 @Component({
   selector: 'app-orders-overview',
   templateUrl: './orders-overview.component.html',
   styleUrls: ['./orders-overview.component.scss']
 })
-export class OrdersOverviewComponent implements OnInit {
+export class OrdersOverviewComponent implements OnInit,OnDestroy {
+
+  @ViewChild(AppViewContainerDirective,{static:false}) viewContainerRef:AppViewContainerDirective;
 
   private customerOrders:CustOrderStatus[]=[];
   private alive: boolean;
   private interval: number;
   private orderViewCategory:string[];
   private selectedOrderViewCategory:string;
+  openHistory=false;
+  private closeSub:Subscription;
 
 
-  constructor(private controlPanelService:ControlPanelService,private staticDataService: StaticDataService) {
+  constructor(private controlPanelService:ControlPanelService,private staticDataService: StaticDataService,private componentFactoryResolver:ComponentFactoryResolver) {
     this.alive = true;
     this.interval = staticDataService.getIntervalTimeBetweenTheGetOrderRequests();
     this.orderViewCategory=staticDataService.getOrdersViewCategory();
     this.selectedOrderViewCategory='Alle';
    }
+
 
   ngOnInit() {
     this.customerOrders=this.controlPanelService.getAllTheOrders(this.selectedOrderViewCategory);
@@ -35,9 +42,13 @@ export class OrdersOverviewComponent implements OnInit {
   }
 
   ngOnDestroy(){
-    this.alive = false; // switches your TimerObservable off
+    if(this.closeSub){
+      this.closeSub.unsubscribe();
+    }
+  
   }
 
+  
   setCustOrderStatus(selectedValue:string, currentOrder:CustOrderStatus){
     console.log(selectedValue);
    
@@ -50,6 +61,21 @@ export class OrdersOverviewComponent implements OnInit {
     var selectedCategory: string = (<HTMLTextAreaElement>event.target).value;
     this.selectedOrderViewCategory=selectedCategory;
     this.customerOrders=this.controlPanelService.getAllTheOrders(this.selectedOrderViewCategory);
+  }
+
+
+  openProductHistory(currentOrder:CustOrderStatus){
+   const orderHistoryView=this.componentFactoryResolver.resolveComponentFactory(OrderHistoryViewModalComponent);
+   const viewContainerReff= this.viewContainerRef.viewContainerRef;
+   viewContainerReff.clear();
+   const compRef= viewContainerReff.createComponent(orderHistoryView);
+   compRef.instance.custorder=currentOrder.custOrder;
+   this.closeSub= compRef.instance.close.subscribe(()=>{
+    this.closeSub.unsubscribe;
+    viewContainerReff.clear(); 
+  });
+
+
   }
 
 
