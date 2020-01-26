@@ -23,8 +23,9 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let currentOrder of customerOrders" [ngClass]="{'unbearbeitet': currentOrder.status=='unbearbeitet'}" >
-          <td><a href="#">{{currentOrder.orderNumber}}</a></td>
+        <tr *ngFor="let currentOrder of customerOrders" (click)="openHistory=true" [ngClass]="{'unbearbeitet': currentOrder.status=='unbearbeitet'}" >
+          <td class="text-primary">{{currentOrder.orderNumber}}</td>
+          <app-order-history-view-modal *ngIf="oppenHistory"></app-order-history-view-modal>
             <td>{{currentOrder.orderDate}}</td>
             <td>{{currentOrder.custOrder.customerName}}</td>
             <td>{{currentOrder.custOrder.city}}</td>
@@ -41,9 +42,9 @@
                 </button>
                 <ul id="dropdown-basic" *dropdownMenu  class="dropdown-menu" 
                     role="menu" aria-labelledby="button-basic">
-                  <li role="menuitem"><a class="dropdown-item" (click)="setCustOrderStatus($event,currentOrder)">bearbeitet</a></li>
-                  <li role="menuitem"><a class="dropdown-item" (click)="setCustOrderStatus($event,currentOrder)">unbearbeitet</a></li>
-                  <li role="menuitem"><a class="dropdown-item" (click)="setCustOrderStatus($event,currentOrder)">ungültig</a></li>
+                  <li role="menuitem"><a class="dropdown-item" (click)="setCustOrderStatus($event.target.innerText,currentOrder)">bearbeitet</a></li>
+                  <li role="menuitem"><a class="dropdown-item" (click)="setCustOrderStatus($event.target.innerText,currentOrder)">unbearbeitet</a></li>
+                  <li role="menuitem"><a class="dropdown-item" (click)="setCustOrderStatus($event.target.innerText,currentOrder)">ungültig</a></li>
                  
                 </ul>
               </div>
@@ -52,5 +53,22 @@
         </tr>  
     </tbody>
 </table>
+</div>
 
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal Title</h5>
+        <button class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus unde veniam harum magnam molestias dignissimos omnis
+        architecto, quod, obcaecati dolorum debitis dolore porro qui, iusto quo accusantium voluptates pariatur illo.
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>

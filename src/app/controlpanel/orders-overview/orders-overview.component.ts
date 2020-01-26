@@ -38,10 +38,11 @@ export class OrdersOverviewComponent implements OnInit {
     this.alive = false; // switches your TimerObservable off
   }
 
-  setCustOrderStatus($event:MouseEvent, currentOrder:CustOrderStatus){
-    var selectedText= $event.target.text;
-    currentOrder.status=selectedText;
-    this.controlPanelService.updateOrderStatus(currentOrder,selectedText);
+  setCustOrderStatus(selectedValue:string, currentOrder:CustOrderStatus){
+    console.log(selectedValue);
+   
+    currentOrder.status=selectedValue;
+    this.controlPanelService.updateOrderStatus(currentOrder,selectedValue);
   }
 
   eventOrderViewOptionTrigger(event:Event){

@@ -27,6 +27,7 @@ import { CatalogComponent } from './controlpanel/catalog/catalog.component';
 import { StaticDataService } from './models/StaticDataService';
 import { BsDropdownModule } from 'ngx-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { OrderHistoryViewModalComponent } from './controlpanel/order-history-view-modal/order-history-view-modal.component';
 
 const appRoutes: Routes = [
 
@@ -57,7 +58,8 @@ const appRoutes: Routes = [
   OrdersOverviewComponent,
   HomeComponent,
   CardproductComponent,
-  CatalogComponent
+  CatalogComponent,
+  OrderHistoryViewModalComponent
   ],
   imports: [
     BrowserModule, NgbModule, RouterModule, FormsModule,HttpClientModule, RouterModule.forRoot(appRoutes), BsDropdownModule.forRoot(), BrowserAnimationsModule
