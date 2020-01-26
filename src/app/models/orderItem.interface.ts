@@ -3,6 +3,7 @@ import { productItem,productItemOption,productItemAddition } from './product.int
 export interface orderItem{
     product:productItem,
     selectedOption : productItemOption,
+    selectedOptionStr:string,
     listOfAdditions: productItemAddition[],
     quantity: number,
     totalPrice: number

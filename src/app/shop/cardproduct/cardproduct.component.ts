@@ -172,9 +172,13 @@ if(this.quantity>1){
     var currentItem: orderItem={
       product:this.product,
     selectedOption:this.selectedOption,
+    selectedOptionStr:'',
     listOfAdditions:this.listOfCheckedProductAdditions,
     quantity:this.quantity,
     totalPrice:0
+    }
+    if(this.selectedOption){
+      currentItem.selectedOptionStr=this.selectedOption.productOptionDescription;
     }
     this.cartService.addItemToACart(currentItem);
     this.resetAProduct();

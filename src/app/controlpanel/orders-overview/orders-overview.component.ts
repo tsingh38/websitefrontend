@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators'
 import { StaticDataService } from 'src/app/models/StaticDataService';
 import { OrderHistoryViewModalComponent } from '../order-history-view-modal/order-history-view-modal.component';
 import { AppViewContainerDirective } from 'src/app/directives/app-view-container.directive';
+import { customerOrder } from 'src/app/models/customerorder.interface';
 
 @Component({
   selector: 'app-orders-overview',
@@ -78,5 +79,16 @@ export class OrdersOverviewComponent implements OnInit,OnDestroy {
 
   }
 
+  productComment(customerOrder : customerOrder){
+    return customerOrder.comment;
+  }
+
+  wishDeliveryTime(customerOrder : customerOrder){
+    return customerOrder.wishDeliveryTime;
+  }
+
+  paymentMethod(customerOrder : customerOrder){
+    return customerOrder.paymentType;
+  }
 
 }

@@ -27,17 +27,6 @@ for(let item of this.custorder.order){
     this.close.emit();
   }
 
-  productComment(){
-    return this.custorder.comment;
-  }
-
-  wishDeliveryTime(){
-    return this.custorder.wishDeliveryTime;
-  }
-
-  paymentMethod(){
-    return this.custorder.paymentType;
-  }
 
 
 
@@ -50,12 +39,9 @@ for(let item of this.custorder.order){
 
   */
   getProductOptionDescription(orderItem:orderItem){
-var OptionDesc="";
-    if(orderItem.selectedOption){
-      var OptionDesc=orderItem.selectedOption.productOptionDescription;
 
-    }
-return OptionDesc;
+      return orderItem.selectedOptionStr;
+
   }
 
   getProductAdditionDescription(orderItem:orderItem){

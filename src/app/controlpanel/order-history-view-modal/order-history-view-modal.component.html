@@ -11,20 +11,16 @@
                 <th>Menge</th>
                 <th>Artikel</th>
                 <th>Extras</th>
-                <th>Anmerkungen</th>
-                <th>Wünsch LieferZeit</th>
-                <th>Zahlungs Methode</th>
                 <th>Preis</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let currentOrder of custorder.order"  [ngClass]="{'unbearbeitet': currentOrder.status=='unbearbeitet'}" >
            <td>{{currentOrder.quantity}}</td>
-           <td>{{currentOrder.product.description}} {{getProductOptionDescription(currentOrder)}}</td>
+           <td>
+            <div> {{currentOrder.product.description}}</div>   
+            <div>{{getProductOptionDescription(currentOrder)}}</div>  </td>
            <td>{{getProductAdditionDescription(currentOrder)}}</td>
-           <td>{{productComment()}}</td>
-           <td>{{wishDeliveryTime()}}</td>
-           <td>{{paymentMethod()}}</td>
            <td>{{currentOrder.totalPrice}}€</td>
             </tr>  
         </tbody>

@@ -19,6 +19,9 @@
             <th>Email</th>
             <th>Zeit</th>
             <th>Telefonnummer</th>
+            <th>Anmerkungen</th>
+            <th>Wünsch LieferZeit</th>
+            <th>Zahlungs Methode</th>
             <th>Status</th>
         </tr>
     </thead>
@@ -34,6 +37,9 @@
             <td>{{currentOrder.custOrder.email}}</td>
             <td>{{currentOrder.orderTime}}</td>
             <td>{{currentOrder.custOrder.telefonnummer}}</td>
+            <td>{{productComment(currentOrder.custOrder)}}</td>
+            <td>{{wishDeliveryTime(currentOrder.custOrder)}}</td>
+            <td>{{paymentMethod(currentOrder.custOrder)}}</td>
             <td>
               <div class="btn-group" dropdown>
                 <button id="button-basic" dropdownToggle type="button"  class="btn btn-secondary "

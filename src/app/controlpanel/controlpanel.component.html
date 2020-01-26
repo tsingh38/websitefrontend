@@ -15,7 +15,7 @@
     </ul>
   </div>
 </nav>
-<div class="container">
+<div class="container-fluid">
   <div class="row">
     <div class="col-2"> 
       <ul class="list-group">      
@@ -24,6 +24,6 @@
         <li class="list-group-item" [ngClass]="{'active': step=='step3'}" (click)="step='step3'">Einstellungen</li>
       </ul>
     </div>
-    <div class="col-10 border border-secondary "><router-outlet></router-outlet></div>
+    <div class="col-10 "><router-outlet></router-outlet></div>
   </div>
 </div>
