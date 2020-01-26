@@ -1,8 +1,8 @@
 .alert-box{
     position:fixed;
-    width:30%;
+    width:60%;
     height:60%;
-    padding:16px;
+    padding:16px,16px,0px,16px;
     z-index:100;
     overflow-y: auto;
     background:white;
@@ -24,3 +24,4 @@ background:black;
 .alert-box-actions{
     text-align:right;
 }
+

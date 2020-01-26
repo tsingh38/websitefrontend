@@ -1,31 +1,40 @@
 <div class="backdrop" (click)="onClose()"></div>
-<div class="alert-box my-auto">
-    <div class="container w-60 border border-secondary">
-        <h1 class="text-black-50 text-center mb-5 bg bg-light">Bestellung</h1>
+
+<div class="container alert-box">
+    <div class="float-right">
+    <button class="btn btn-secondary" (click)="onClose()"><span class="glyphicon glyphicon-remove float-right"></span></button></div>
+    <h1 class="text-black-50 text-center mb-5 bg bg-light">Bestellung {{custorder.id}}</h1>
+    <hr />
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Menge</th>
+                <th>Artikel</th>
+                <th>Extras</th>
+                <th>Anmerkungen</th>
+                <th>Wünsch LieferZeit</th>
+                <th>Zahlungs Methode</th>
+                <th>Preis</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let currentOrder of custorder.order"  [ngClass]="{'unbearbeitet': currentOrder.status=='unbearbeitet'}" >
+           <td>{{currentOrder.quantity}}</td>
+           <td>{{currentOrder.product.description}} {{getProductOptionDescription(currentOrder)}}</td>
+           <td>{{getProductAdditionDescription(currentOrder)}}</td>
+           <td>{{productComment()}}</td>
+           <td>{{wishDeliveryTime()}}</td>
+           <td>{{paymentMethod()}}</td>
+           <td>{{currentOrder.totalPrice}}€</td>
+            </tr>  
+        </tbody>
+    </table>
+
+    <div class="mt-10">
         <hr />
-        <div class="row mt-5" *ngFor="let item of custorder.order;let i=index">
-            <div class="col-xs-1">
-                <span>{{item.quantity}}x</span>
-            </div>
-            <div class="col-xs-6">
-                <small class="text-muted description"> {{item.product.description}}</small><br>
-                <small *ngIf="item.selectedOption" class="text-muted description">
-                    {{item.selectedOption.productOptionDescription}}</small>
-            </div>
-            <div class="col-xs-1 float-right">
-                {{item.totalPrice}}€
-            </div>
-        </div>
-        <div>
-            <hr />
-            <span class="text-black-50">Gesamt Summe</span>
-            <span class="float-right">{{totalSum}}€</span>
-        </div>
-
-
+        <span class="text-black-50">Gesamt Summe</span>
+        <span class="float-right">{{totalBestellungSum}}€</span>
     </div>
-    <div class="alert-box-actions">
-    <button class="btn btn-primary" (click)="onClose()">Close</button>
-    </div>
+
+  
 </div>
-

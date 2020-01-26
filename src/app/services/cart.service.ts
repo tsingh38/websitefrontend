@@ -42,17 +42,17 @@ export class CartService {
                 if (isItemPizza) {
                     switch (selectedOption.productOptionDescription) {
                         case 'klein, Ø26cm:':
-                            additionsCalculation = Number(additionsCalculation + (Number(currentAddition.additionsPriceForSmall) * quantity).toFixed(2));
+                           additionsCalculation = +additionsCalculation+Number((currentAddition.additionsPriceForSmall * quantity).toFixed(2)) ;
                             break;
                         case 'Groß, Ø30cm:':
-                            additionsCalculation = Number(additionsCalculation + (Number(currentAddition.additionsPriceForNormal) * quantity).toFixed(2));
-                            break;
+                          additionsCalculation = +additionsCalculation+Number((currentAddition.additionsPriceForNormal * quantity).toFixed(2)) ;
+                          break;
                         case 'Familie,46cm x 33cm:':
-                            additionsCalculation = Number(additionsCalculation + (Number(currentAddition.additionsPriceForFamily) * quantity).toFixed(2));
-                            break;
+                          additionsCalculation = +additionsCalculation+Number((currentAddition.additionsPriceForFamily * quantity).toFixed(2)) ;
+                          break;
                         case 'Party,60cm x 40cm:':
-                            additionsCalculation = Number(additionsCalculation + (Number(currentAddition.additionsPriceForParty) * quantity).toFixed(2));
-                    }
+                          additionsCalculation = +additionsCalculation+Number((currentAddition.additionsPriceForParty * quantity).toFixed(2)) ;
+                        }
                 } else {
                     additionsCalculation = +additionsCalculation + Number(Number(+currentAddition.additionPrice * quantity).toFixed(2));
                 }
