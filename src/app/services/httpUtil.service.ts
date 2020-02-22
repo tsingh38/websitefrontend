@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse,HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse,HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { productItem } from '../models/product.interface';
 import { catchError, retry } from 'rxjs/operators';
@@ -8,7 +8,7 @@ import { CustOrderStatus } from '../models/custOrderStatus.interface';
 
 @Injectable()
 export class HttpUtil{
-
+loginURL:string="http://localhost:8080/login";
  getItemsURL:string="http://localhost:8080/allitems";
  saveOrderURL:string="http://localhost:8080/saveOrder";
  getCustOrderURL:string="http://localhost:8080/getOrders";
@@ -44,7 +44,15 @@ saveOrder(order:customerOrder){
 updateCustOrderStatus(custOrder:CustOrderStatus){
   return  this.http.post<number>(this.updateCustOrderUL,custOrder);
 }
-    
+
+loginUser(username:string,password:string){
+
+  const payload = new HttpParams()
+  .set('username', username)
+  .set('password', password);
+return this.http.post(this.loginURL, payload);
+}
+
 private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       console.error('An error occurred:', error.error.message);

@@ -41,6 +41,9 @@ export class ControlPanelService{
 
     }
 
+    loginUser(username:string,password:string){
+      return this.http.loginUser(username,password);
+    }
     updateOrderStatus( currentCustOrder:CustOrderStatus,status:string){
       var tempcurrentCustOrder:CustOrderStatus= DeepcopyUtil.deepCopy(currentCustOrder);
       if(status==='unbearbeitet'){

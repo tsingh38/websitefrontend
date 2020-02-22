@@ -29,14 +29,17 @@ import { BsDropdownModule } from 'ngx-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OrderHistoryViewModalComponent } from './controlpanel/order-history-view-modal/order-history-view-modal.component';
 import { AppViewContainerDirective } from './directives/app-view-container.directive';
+import { AuthComponent } from './controlpanel/auth/auth.component';
 
 const appRoutes: Routes = [
 
   {path:'home',component:HomeComponent},
   {path: 'shop', component: ShopComponent, children: []},
+  {path:'login',component:AuthComponent},
   {path:'control', component:ControlpanelComponent,children:[
     {path:'orders',component:OrdersOverviewComponent},
     {path:'catalog',component:CatalogComponent},
+    {path:'login',component:AuthComponent},
     {path:'', redirectTo: 'orders', pathMatch:'full'}
   ]},
   {path:'cart',component:CartComponent},
@@ -62,7 +65,8 @@ const appRoutes: Routes = [
   CardproductComponent,
   CatalogComponent,
   AppViewContainerDirective,
-  OrderHistoryViewModalComponent
+  OrderHistoryViewModalComponent,
+  AuthComponent
 
   ],
   imports: [
