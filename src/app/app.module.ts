@@ -30,6 +30,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OrderHistoryViewModalComponent } from './controlpanel/order-history-view-modal/order-history-view-modal.component';
 import { AppViewContainerDirective } from './directives/app-view-container.directive';
 import { AuthComponent } from './controlpanel/auth/auth.component';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 
 const appRoutes: Routes = [
 
@@ -66,7 +67,8 @@ const appRoutes: Routes = [
   CatalogComponent,
   AppViewContainerDirective,
   OrderHistoryViewModalComponent,
-  AuthComponent
+  AuthComponent,
+  LoadingSpinnerComponent
 
   ],
   imports: [
