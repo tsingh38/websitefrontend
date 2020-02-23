@@ -14,6 +14,7 @@ export class ControlPanelService{
     
     private customerOrders:CustOrderStatus[]=[];
     private interval:number=5000;
+     token:string=null;
     constructor(private http:HttpUtil){
 
     }
@@ -44,6 +45,12 @@ export class ControlPanelService{
     loginUser(username:string,password:string){
       return this.http.loginUser(username,password);
     }
+
+    processLogout(){
+      return this.http.logoutUser();
+    }
+
+
     updateOrderStatus( currentCustOrder:CustOrderStatus,status:string){
       var tempcurrentCustOrder:CustOrderStatus= DeepcopyUtil.deepCopy(currentCustOrder);
       if(status==='unbearbeitet'){

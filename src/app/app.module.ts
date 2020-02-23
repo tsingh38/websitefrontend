@@ -18,7 +18,7 @@ import { MealService } from './services/mealservice';
 import { ControlpanelComponent } from './controlpanel/controlpanel.component';
 import { OrdersOverviewComponent } from './controlpanel/orders-overview/orders-overview.component';
 import { ControlPanelService } from './services/controlpanel.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpUtil } from './services/httpUtil.service';
 import { HomeComponent } from './home/home/home.component';
 import { CardproductComponent } from './shop/cardproduct/cardproduct.component';
@@ -31,6 +31,7 @@ import { OrderHistoryViewModalComponent } from './controlpanel/order-history-vie
 import { AppViewContainerDirective } from './directives/app-view-container.directive';
 import { AuthComponent } from './controlpanel/auth/auth.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
+import { AuthInterceptorService } from './controlpanel/auth/auth-interceptor.service';
 
 const appRoutes: Routes = [
 
@@ -74,7 +75,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule, NgbModule, RouterModule, FormsModule,HttpClientModule, RouterModule.forRoot(appRoutes), BsDropdownModule.forRoot(), BrowserAnimationsModule
   ],
-  providers: [AuthGuardService,CartService,CustomerOrderService,MealService,ControlPanelService,HttpUtil,StaticDataService],
+  providers: [AuthGuardService,CartService,CustomerOrderService,MealService,{provide:HTTP_INTERCEPTORS,useClass:AuthInterceptorService,multi:true}, ControlPanelService,HttpUtil,StaticDataService],
   bootstrap: [AppComponent],
   entryComponents:[OrderHistoryViewModalComponent]
 })

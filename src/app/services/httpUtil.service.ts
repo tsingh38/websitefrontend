@@ -8,11 +8,12 @@ import { CustOrderStatus } from '../models/custOrderStatus.interface';
 
 @Injectable()
 export class HttpUtil{
-loginURL:string="http://localhost:8080/validateLogin";
+loginURL:string="http://localhost:8080/authenticate";
  getItemsURL:string="http://localhost:8080/allitems";
  saveOrderURL:string="http://localhost:8080/saveOrder";
  getCustOrderURL:string="http://localhost:8080/getOrders";
  updateCustOrderUL:string="http://localhost:8080/updateOrder";
+ logoutURL:string="http://localhost:8080/logout";
 
 
     constructor(private http:HttpClient){
@@ -46,11 +47,15 @@ updateCustOrderStatus(custOrder:CustOrderStatus){
 }
 
 loginUser(username:string,password:string){
-  const httpOptions = {
-    headers: new HttpHeaders({Authorization:'Basic ' + btoa(username + ':' + password)})
-  };
+  const payload = new HttpParams()
+  .set('username', username)
+  .set('password', password);
 
-return this.http.get(this.loginURL, httpOptions);
+return this.http.post<string>(this.loginURL, payload);
+}
+
+logoutUser(){
+  return this.http.get(this.logoutURL);
 }
 
 private handleError(error: HttpErrorResponse) {

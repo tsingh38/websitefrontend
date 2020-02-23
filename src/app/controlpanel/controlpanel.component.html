@@ -10,7 +10,7 @@
         <a class="nav-link" href="#">Account</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="#">Logout</a>
+        <a class="nav-link"  (click)="doLogout()" [routerLink]="['/login']">Logout</a>
       </li>
     </ul>
   </div>

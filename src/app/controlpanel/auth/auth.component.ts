@@ -25,12 +25,17 @@ export class AuthComponent implements OnInit {
     this.isLoading=true;
    this.controlPanelService.loginUser(authForm.value.username,authForm.value.password).subscribe(response=>{
      console.log(response);
+     if(response){
+     this.controlPanelService.token=response['jwtToken'];
+     localStorage.setItem('token', response['jwtToken']);
      this.isLoading=false;
+     }
    },error =>{
      this.error="Falsche Benutzer Name oder Passwort!";
      this.isLoading=false;
    },
    () => {
+
      this.router.navigate(['/control']);
    });
     
