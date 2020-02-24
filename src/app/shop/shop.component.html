@@ -26,10 +26,18 @@
 
 <!-- Cards Products-->
 <div class="container">
+    <div class="row">
+        <div class="col-sm">
+        </div>
+        <div class="col-sm">
+            <div class="border portrait"  id="imagecontainer">
+                <img   class="card-img mx-auto d-block" src={{getCategoryImageSource()}} alt="Leckere gerichte">
+            </div>
+        </div>
+        <div class="col-sm">
+        </div>
+      </div>
 
-    <div class="border portrait"  id="imagecontainer">
-        <img   class="card-img mx-auto d-block" src={{getCategoryImageSource()}} alt="Leckere gerichte">
-    </div>
     <div class="row ">
         <div class="card col-sm-6 mt-4" *ngFor="let $product of productsForSelectedCategory;">
             <app-cardproduct [product]="$product"></app-cardproduct>
