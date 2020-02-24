@@ -15,7 +15,7 @@ export class ShopComponent implements OnInit {
 
   show = 3;
   allProductItems: productItem[] = [];
-  selectedCategory: "Beliebte";
+  selectedCategory:string= "Beliebte";
   productsForSelectedCategory: productItem[];
   totalPriceInShoppingCart:number;
   totalNumberOfItemsInCart:number;
@@ -40,9 +40,38 @@ export class ShopComponent implements OnInit {
   }
 
 
+  getCategoryImageSource(){
+if(this.selectedCategory){
+  switch(this.selectedCategory){
+ case "Indische_Vorspeisen" :return "../../assets/indischevorspeise.jpg";
+ case "Salat" :return "../../assets/salat.jpg";
+ case "Pizza" :return "../../assets/pizza.jpg";
+ case "Vegatarische_Pizza" :return "../../assets/vegpizza.jpg";
+ case "Calzone" :return "../../assets/calzone.jpg";
+ case "PizzabrotØ30" :return "../../assets/pizzabrot.jpg";
+ case "Pasta" :return "../../assets/pasta.jpg";
+ case "Pasta_al_Forno" :return "../../assets/pasta.jpg";
+ case "Indische_Gerichte" :return "../../assets/indischegerichte.jpg";
+ case "Gyros_Spezialitäten" :return "../../assets/gyrosspezialitäten.jpg";
+ case "International_Gerichte" :return "../../assets/international.jpg";
+ case "Rösti" :return "../../assets/roesti.jpg";
+ case "Döner_kebab" :return "../../assets/dönerkebab.jpg";
+ case "Lahmacun" :return "../../assets/lahmacun.jpg";
+ case "Vegatarische_Döner" :return "../../assets/dönerkebab.jpg";
+ case "Pide" :return "../../assets/pide.jpg";
+ case "Dessert" :return "../../assets/dessert.jpg";
+ case "BenAndJerrys" :return "../../assets/benAndJerrys.jpg";
+ case "Alkohalfrei_Getränke" :return "../../assets/alkohalfreiGetränke.jpg";
+ case "Alkohlische_Getränke" :return "../../assets/liqor.jpg";
+
+ default: return "../assets/pasta.jpg";
+}   
+}
+  }
 
   mainCategorySelected(event: Event) {
     var selectedCategory: string = (<HTMLTextAreaElement>event.target).value;
+    this.selectedCategory=selectedCategory;
     console.log(selectedCategory);
     this.productsForSelectedCategory=[];
     for (let currentProduct of this.allProductItems) {

@@ -27,11 +27,10 @@
 <!-- Cards Products-->
 <div class="container">
 
-    <div class="border" id="imagecontainer">
-        <img class="card-img-top img-fluid" src="https://source.unsplash.com/random/500x200" alt="Leckere gerichte">
+    <div class="border portrait"  id="imagecontainer">
+        <img   class="card-img mx-auto d-block" src={{getCategoryImageSource()}} alt="Leckere gerichte">
     </div>
     <div class="row ">
-
         <div class="card col-sm-6 mt-4" *ngFor="let $product of productsForSelectedCategory;">
             <app-cardproduct [product]="$product"></app-cardproduct>
         </div>
