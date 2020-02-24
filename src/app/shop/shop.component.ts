@@ -61,7 +61,7 @@ if(this.selectedCategory){
  case "Pide" :return "../../assets/pide.jpg";
  case "Dessert" :return "../../assets/dessert.jpg";
  case "BenAndJerrys" :return "../../assets/benAndJerrys.jpg";
- case "Alkohalfrei_Getränke" :return "../../assets/alkohalfreiGetränke.jpg";
+ case "Alkohalfrei_Getränke" :return "../../assets/alkohalfreiGetränke.jpeg";
  case "Alkohlische_Getränke" :return "../../assets/liqor.jpg";
 
  default: return "../assets/pasta.jpg";
