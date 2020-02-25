@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { customerOrder } from 'src/app/models/customerorder.interface';
 import { HttpUtil } from 'src/app/services/httpUtil.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { throwError } from 'rxjs';
+import { throwError, Observable } from 'rxjs';
 import {map} from 'rxjs/operators';
 
 
@@ -29,9 +29,13 @@ export class CustomerOrderService {
             this.cartService.totalOrderPrice=0;
             this.cartService.totalNumberOfItems=0;
 
+        }else{
+            throw Observable.throw("Order not saved");  
         }
     })).subscribe(params =>{
-    })
+    },error =>{
+        this.serverError=error;
+      },)
     }
     fetchCurrentTimeSlots(): string[] {
         var allTimeSlots: string[] = [];
