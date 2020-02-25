@@ -29,6 +29,7 @@ export class AuthComponent implements OnInit {
      this.controlPanelService.token=response['jwtToken'];
      localStorage.setItem('token', response['jwtToken']);
      this.isLoading=false;
+     this.controlPanelService.isUserLoggedIn=true;
      }
    },error =>{
      this.error="Falsche Benutzer Name oder Passwort!";

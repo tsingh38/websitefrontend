@@ -32,21 +32,22 @@ import { AppViewContainerDirective } from './directives/app-view-container.direc
 import { AuthComponent } from './controlpanel/auth/auth.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { AuthInterceptorService } from './controlpanel/auth/auth-interceptor.service';
+import { NavGuardService } from './services/nav-guard.service';
 
 const appRoutes: Routes = [
 
   {path:'home',component:HomeComponent},
   {path: 'shop', component: ShopComponent, children: []},
   {path:'login',component:AuthComponent},
-  {path:'control', component:ControlpanelComponent,children:[
-    {path:'orders',component:OrdersOverviewComponent},
+  {path:'control',canActivate:[AuthGuardService], component:ControlpanelComponent,children:[
+    {path:'orders',canActivate:[AuthGuardService],component:OrdersOverviewComponent},
     {path:'catalog',component:CatalogComponent},
     {path:'login',component:AuthComponent},
     {path:'', redirectTo: 'orders', pathMatch:'full'}
   ]},
-  {path:'cart',component:CartComponent},
-  {path: 'submit',canActivate:[AuthGuardService], component:CustomerInformationComponent},
-  {path: 'completed',canActivate:[AuthGuardService], component:OrdersuccessfulComponent},
+  {path:'cart', canActivate:[NavGuardService],component:CartComponent},
+  {path: 'submit',canActivate:[NavGuardService], component:CustomerInformationComponent},
+  {path: 'completed',canActivate:[NavGuardService], component:OrdersuccessfulComponent},
   { path: '', redirectTo: '/home', pathMatch:'full'},
 
 ];
@@ -75,7 +76,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule, NgbModule, RouterModule, FormsModule,HttpClientModule, RouterModule.forRoot(appRoutes), BsDropdownModule.forRoot(), BrowserAnimationsModule
   ],
-  providers: [AuthGuardService,CartService,CustomerOrderService,MealService,{provide:HTTP_INTERCEPTORS,useClass:AuthInterceptorService,multi:true}, ControlPanelService,HttpUtil,StaticDataService],
+  providers: [AuthGuardService,CartService,CustomerOrderService, NavGuardService, MealService,{provide:HTTP_INTERCEPTORS,useClass:AuthInterceptorService,multi:true}, ControlPanelService,HttpUtil,StaticDataService],
   bootstrap: [AppComponent],
   entryComponents:[OrderHistoryViewModalComponent]
 })

@@ -19,6 +19,7 @@ export class ControlpanelComponent implements OnInit {
 
   doLogout(){
     this.controlPanelService.processLogout().subscribe(res=>{
+      this.controlPanelService.isUserLoggedIn=false;
     },error=>{
 
     },()=>{

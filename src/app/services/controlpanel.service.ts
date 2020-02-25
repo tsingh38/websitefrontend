@@ -14,6 +14,7 @@ export class ControlPanelService{
     
     private customerOrders:CustOrderStatus[]=[];
     private interval:number=5000;
+     isUserLoggedIn:boolean;
      token:string=null;
     constructor(private http:HttpUtil){
 

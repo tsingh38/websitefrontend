@@ -3,21 +3,23 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from
 import { Observable } from 'rxjs';
 import { CartService } from './cart.service';
 import { ControlPanelService } from './controlpanel.service';
+import { CustomerOrderService } from '../shop/customer-information/CustomerOrderService';
 
 @Injectable()
-export class AuthGuardService implements CanActivate{
+export class NavGuardService implements CanActivate{
 
-    constructor(private controlPanelService:ControlPanelService,private router:Router){
+    constructor(private cartService:CartService,private customerOrderService:CustomerOrderService, private router:Router){
 
     }
 
     canActivate(route:ActivatedRouteSnapshot,state:RouterStateSnapshot):Observable<boolean> | Promise<boolean> | boolean{
-if(this.controlPanelService.isUserLoggedIn || localStorage.getItem('token')!=='null') {
+if((this.cartService.order &&  this.cartService.order.length > 0) || this.customerOrderService && this.customerOrderService.orderNumberFromServer > 0)  {
     return true;
 }else{
-   this.router.navigate(['/login']);
+   this.router.navigate(['/']);
    return false;
-    }
+}
+
 
 }
 
