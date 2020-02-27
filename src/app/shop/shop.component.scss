@@ -48,7 +48,12 @@ img {
   max-height: 100%;
 }
 
-.portrait {
-  height: 180px;
+
+
+
+@media only screen and (min-width: 768px) {
+  [class*="portrait"] {
+    height: 180px;
   width: 600px;
+  }
 }
