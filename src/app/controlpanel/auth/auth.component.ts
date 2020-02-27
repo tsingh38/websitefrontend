@@ -24,7 +24,7 @@ export class AuthComponent implements OnInit {
     }
     this.isLoading=true;
    this.controlPanelService.loginUser(authForm.value.username,authForm.value.password).subscribe(response=>{
-     console.log(response);
+  
      if(response){
      this.controlPanelService.token=response['jwtToken'];
      localStorage.setItem('token', response['jwtToken']);

@@ -15,6 +15,7 @@ export class CustomerOrderService {
     orderNumberFromServer:number;
     serverError:string;
 
+
     constructor(private cartService: CartService,private httpUtil: HttpUtil) {
 
     }
@@ -23,7 +24,6 @@ export class CustomerOrderService {
     processCustomerOrder(order:customerOrder){
      this.httpUtil.saveOrder(order).pipe(map(responseData=>{
         this.orderNumberFromServer=responseData;
-        console.log( this.orderNumberFromServer);
         if( this.orderNumberFromServer > 0){
             this.cartService.order=[];
             this.cartService.totalOrderPrice=0;
@@ -63,9 +63,12 @@ export class CustomerOrderService {
     getCustomerOrder(){
         return this.cartService.order;
     }
+
+    resetOrderOnceSubmitted(){
+        this.cartService.order=null;
+    }
+
     fetchCompletedOrderNumber(){
-        //TODO Rest aufruf
-        console.log("fetching order number"+this.orderNumberFromServer);
         return this.orderNumberFromServer;
     }
 

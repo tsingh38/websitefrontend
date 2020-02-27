@@ -22,6 +22,7 @@ export class CustomerInformationComponent implements OnInit {
   phonenumber:string;
   companyname:string;
   comment:string;
+  submittingOrder=false;
   constructor( private router:Router, private customerOrderService:CustomerOrderService) { }
   @ViewChild('f', { static: false }) formRef: NgForm;
   allTimeSlots:string[]=[];
@@ -37,8 +38,8 @@ export class CustomerInformationComponent implements OnInit {
   }
 
   async onSubmit() {
-    console.log(this.formRef);
-    if(this.formRef.valid){
+    this.submittingOrder=true;
+    if(this.formRef.valid && this.customerOrderService.getCustomerOrder()){
      var  customerInformation:customerOrder ={
       address: this.customeraddress,
       pincode:this.customerpincode,
@@ -52,10 +53,14 @@ export class CustomerInformationComponent implements OnInit {
       comment:this.comment,
       paymentType:this.defaultPaymentType,
       order:this.customerOrderService.getCustomerOrder()}
-      console.log("customer order ->"+ customerInformation);
       this.customerOrderService.processCustomerOrder(DeepcopyUtil.deepCopy(customerInformation));
-      await this.customerOrderService.delay(500);
+      await this.customerOrderService.delay(1500);
+      this.submittingOrder=false;
+      this.customerOrderService.resetOrderOnceSubmitted();
       this.router.navigate(['/completed']);
+    }
+    if(!this.customerOrderService.getCustomerOrder()){
+      this.router.navigate(['/shop']);
     }
     }
   }

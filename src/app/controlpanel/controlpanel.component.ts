@@ -23,7 +23,6 @@ export class ControlpanelComponent implements OnInit {
     },error=>{
 
     },()=>{
-      console.log('user loggedout');
     localStorage.setItem('token',null);
     });
   }

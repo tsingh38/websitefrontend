@@ -75,7 +75,6 @@ if(this.selectedCategory){
   mainCategorySelected(event: Event) {
     var selectedCategory: string = (<HTMLTextAreaElement>event.target).value;
     this.selectedCategory=selectedCategory;
-    console.log(selectedCategory);
     this.productsForSelectedCategory=[];
     for (let currentProduct of this.allProductItems) {
       if (currentProduct.productCategory === selectedCategory) { 

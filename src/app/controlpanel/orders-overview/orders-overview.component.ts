@@ -50,9 +50,7 @@ export class OrdersOverviewComponent implements OnInit,OnDestroy {
   }
 
   
-  setCustOrderStatus(selectedValue:string, currentOrder:CustOrderStatus){
-    console.log(selectedValue);
-   
+  setCustOrderStatus(selectedValue:string, currentOrder:CustOrderStatus){   
     currentOrder.status=selectedValue;
     this.controlPanelService.updateOrderStatus(currentOrder,selectedValue);
   }

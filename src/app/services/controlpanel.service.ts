@@ -81,7 +81,6 @@ export class ControlPanelService{
        }else if(status==='ungültig'){
         tempcurrentCustOrder.status='2';
        }
-       console.log("tempcurrentCustOrder is going to Server" +tempcurrentCustOrder);
      this.http.updateCustOrderStatus(tempcurrentCustOrder).subscribe(params =>{
     });
     }

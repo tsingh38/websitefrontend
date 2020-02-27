@@ -18,10 +18,6 @@ export class MealService {
         this.http.fetchAllItems().pipe(map(responseData =>{
             for(let item in responseData){
                 const currentItem:productItem=responseData[item];
-                if(currentItem){
-                    console.log(parseFloat(currentItem.productBasePrice+"").toFixed(2));
-                        console.log(currentItem.productBasePrice);
-                }
                this.allProductItems.push(currentItem);
             }
         })).subscribe(params =>{

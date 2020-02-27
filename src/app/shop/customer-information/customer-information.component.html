@@ -1,4 +1,9 @@
-<div class="container w-60">
+
+
+<div *ngIf="submittingOrder" style="text-align: center;">
+    <app-loading-spinner></app-loading-spinner>
+</div>
+<div class="container w-60" *ngIf="!submittingOrder">
     <div>
     <h3 class="text-black-50">Wohin soll Deine Bestellung geliefert werden?</h3>
 </div>

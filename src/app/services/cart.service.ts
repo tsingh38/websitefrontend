@@ -25,11 +25,9 @@ export class CartService {
         var isItemPizza: boolean = (currentOrderItem.product.productCategory === 'Pizza' || currentOrderItem.product.productCategory === 'Vegatarische_Pizza');
         var isItemCalzone: boolean = (currentOrderItem.product.productCategory === 'Calzone');  
             currentOrderItem.totalPrice = this.calculatePriceOfAProduct(currentOrderItem.product, currentOrderItem.selectedOption, currentOrderItem.listOfAdditions, currentOrderItem.quantity,isItemPizza,isItemCalzone );
-            console.log(currentOrderItem.totalPrice);
             this.totalOrderPrice=+Number(this.totalOrderPrice+ currentOrderItem.totalPrice).toFixed(2);
         }
         this.totalOrderPriceEmitter.next({quantity: this.totalNumberOfItems,price:this.totalOrderPrice});
-        console.log(this.totalOrderPrice);
     }
 
 

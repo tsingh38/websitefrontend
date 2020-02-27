@@ -25,9 +25,6 @@ export class CartComponent implements OnInit, OnDestroy {
     this.cartService.totalOrderPriceEmitter.subscribe((params)=>{
       this.totalSum=params.price;
     });
-    console.log(this.totalSum);
-
-
   }
 
  /* getItemAdditionsDescription(item:orderItem){
