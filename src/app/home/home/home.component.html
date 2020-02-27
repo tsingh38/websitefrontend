@@ -1,30 +1,117 @@
 
-<div class="container-fluid">
-    <nav class="navbar fixed-top navbar-expand-sm navbar-light bg-light mb-3">
-        <div class="container">
-            <a class="navbar-brand" href="#">Navbar</a>
-            <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link"[routerLink]="['shop']" >Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Über uns</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Ihre Meinung</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/shop']">Bestellen</a>
-                    </li>
-                </ul>
-            </div>
+<div data-spy="scroll" data-target="#main-nav" id="home">
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top" id="main-nav">
+      <div class="container">
+        <div>
+            <img   class="img-thumbnail float-left" src='../../assets/lastradalogo.png' alt="Leckere gerichte">
         </div>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a href="#home" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="#explore-head-section" class="nav-link">Über uns</a>
+            </li>
+            <li class="nav-item">
+              <a href="#contact" class="nav-link">Contact us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/shop']">Bestellen</a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </nav>
-</div>
+  
+    <!-- HOME SECTION -->
+    <header id="home-section" style="background:url('../../assets/home.jpg')">
+      <div class="dark-overlay">
+        <div class="home-inner container">
+        </div>
+      </div>
+    </header>
+  
+    <!-- EXPLORE HEAD -->
+    <section id="explore-head-section" class="aboutus">
+      <div class="container ">
+        <div class="row">
+          <div class="col text-center py-5">
+            <h1 class="display-4">Über uns</h1>
+            <p class="lead">Hier kommt den Text über Lastrada.Unsere Hochwertige Lecker gerichte. Hilfe von Lumi</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    <!-- EXPLORE SECTION -->
+    <section id="explore-section" class="bg-light text-muted py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+          </div>
+          <div class="col-md-6">
+            <h3>Unseren Liefergebeit</h3>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Labore reiciendis, voluptate at alias laborum odit aliquid
+              tempore perspiciatis repudiandae hic?</p>
+            <div class="d-flex">
+              <div class="p-4 align-self-start">
+                <i class="fas fa-check fa-2x"></i>
+              </div>
+              <div class="p-4 align-self-end">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi distinctio iusto, perspiciatis mollitia natus harum?
+              </div>
+            </div>
+  
+            <div class="d-flex">
+              <div class="p-4 align-self-start">
+                <i class="fas fa-check fa-2x"></i>
+              </div>
+              <div class="p-4 align-self-end">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi distinctio iusto, perspiciatis mollitia natus harum?
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    <section id="contact" class="bg-primary">
+      <div class="container">
+        <div class="row">
+          <div class="col text-center py-5">
+            <h1 class="display-4">Kontakt</h1>
+            <p class="lead">Abt Mauch Straße 2
+                88214 Ravensburg -Weißenau
+                Tel.: 0751-769 48 75, 0751-769 48 76
+                Fax: 0751-769 32 55</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+   
+  
+  
 
-<div class="container-fluid">
-</div>
+  
+    <!-- FOOTER -->
+    <footer id="main-footer" class="bg-dark">
+      <div class="container">
+        <div class="row">
+          <div class="col text-center py-4">
+            <h3>Lastrada</h3>
+            <p>Copyright &copy;
+              <span id="year"></span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  
+   
+  
+  </div>
