@@ -41,20 +41,16 @@ export class WebsiteStatusComponent implements OnInit {
       }
       this.httpService.updateWebsiteStatus(statusObj).subscribe((res) => {
         this.success = true;
+        this.showInfotext = true;
         this.srvMessage = "Webseite Status wurde erfolgreich upgedated";
         setTimeout(function () {
-          this.showInfotext = true;
+          this.showInfotext = false;
         }.bind(this), 3000);
-        this.showInfotext = false;
       }, error => {
         this.success = false;
         this.srvMessage = "website status konnte nicht gespeichert werden";
         setTimeout(function () {
           this.showInfotext = true;
-        }.bind(this), 3000);
-        setTimeout(function () {
-          this.edited = false;
-          console.log(this.edited);
         }.bind(this), 3000);
       }, () => {
         this.statusUpdatingInProgress = false;
