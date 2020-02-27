@@ -67,7 +67,7 @@ if(this.selectedCategory){
  case "Alkohalfrei_Getränke" :return "../../assets/alkohalfreiGetränke.jpeg";
  case "Alkohlische_Getränke" :return "../../assets/liqor.jpg";
 
- default: return "../assets/pasta.jpg";
+ default: return "../../assets/indischegerichte.jpg";
 }   
 }
   }
