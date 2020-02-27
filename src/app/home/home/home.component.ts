@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpUtil } from 'src/app/services/httpUtil.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  isWebsiteOnline:boolean=false;
+  message:string; // in case website ist offline
+  constructor(private httpService:HttpUtil) { }
 
   ngOnInit() {
+    this.httpService.getWebsiteStatus().subscribe(res => {
+      this.isWebsiteOnline = res.status;
+      this.message = res.message;
+    }, error => {
+      console.log("if error");
+    })
   }
 
  

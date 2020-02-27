@@ -33,6 +33,9 @@ import { AuthComponent } from './controlpanel/auth/auth.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { AuthInterceptorService } from './controlpanel/auth/auth-interceptor.service';
 import { NavGuardService } from './services/nav-guard.service';
+import { OfflineComponent } from './home/offline/offline.component';
+import { WebsiteStatusComponent } from './controlpanel/settings/website-status/website-status.component';
+
 
 const appRoutes: Routes = [
 
@@ -42,6 +45,7 @@ const appRoutes: Routes = [
   {path:'control',canActivate:[AuthGuardService], component:ControlpanelComponent,children:[
     {path:'orders',canActivate:[AuthGuardService],component:OrdersOverviewComponent},
     {path:'catalog',component:CatalogComponent},
+    {path:'websiteStatus',canActivate:[AuthGuardService],component:WebsiteStatusComponent},
     {path:'login',component:AuthComponent},
     {path:'', redirectTo: 'orders', pathMatch:'full'}
   ]},
@@ -70,7 +74,9 @@ const appRoutes: Routes = [
   AppViewContainerDirective,
   OrderHistoryViewModalComponent,
   AuthComponent,
-  LoadingSpinnerComponent
+  LoadingSpinnerComponent,
+  OfflineComponent,
+  WebsiteStatusComponent
 
   ],
   imports: [

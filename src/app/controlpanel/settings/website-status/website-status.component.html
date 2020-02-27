@@ -1,0 +1,41 @@
+
+<div *ngIf="statusUpdatingInProgress" style="text-align: center;">
+    <app-loading-spinner></app-loading-spinner>
+</div>
+
+<div *ngIf="!statusUpdatingInProgress"> 
+    <form (ngSubmit)="onSubmit()" #f='ngForm'>
+        <div class="form-group">
+            <label>Webseite Status </label> <br>
+            <select id="websiteStatus" class="form-control"
+            [(ngModel)]="status" name="status" required>
+            <option  value="Online">
+                Online</option>
+                <option  value="Offline">
+                    Offline</option>
+        </select>
+        </div>
+
+        <div class="form-group">
+            <label>Nachricht</label> <br>
+            <textarea rows="5"  cols="160" name="comment"  placeholder="*Offline Nachricht für die Kunden"  [(ngModel)]="message">Offline Status</textarea>
+        </div>
+
+        <div class="row">
+            <div class="col text-center" >
+                <div class="form-group">
+                 <button type="submit" [disabled]="!f.valid" class=" btn btn-primary form-control pull-center btn-lg text-white w-100"> Speichern</button>
+                </div>
+
+              
+    
+            </div> 
+        </div>
+
+    </form>
+</div>
+
+<div  *ngIf="showInfotext" [ngClass]="{'text-success':success==true,'text-danger':success==false}">
+<p class="lead"> {{srvMessage}}</p>
+</div>
+

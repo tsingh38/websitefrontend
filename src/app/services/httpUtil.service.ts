@@ -5,6 +5,7 @@ import { productItem } from '../models/product.interface';
 import { catchError, retry } from 'rxjs/operators';
 import { customerOrder } from '../models/customerorder.interface';
 import { CustOrderStatus } from '../models/custOrderStatus.interface';
+import { WebsiteStatusInterface } from '../models/websiteStatus.interface';
 
 @Injectable()
 export class HttpUtil{
@@ -14,6 +15,8 @@ loginURL:string="http://localhost:8080/authenticate";
  getCustOrderURL:string="http://localhost:8080/getOrders";
  updateCustOrderUL:string="http://localhost:8080/updateOrder";
  logoutURL:string="http://localhost:8080/logout";
+ getWebsiteStatusURL:string="http://localhost:8080/getWebsiteStatus";
+ updateWebsiteStatusURL:string="http://localhost:8080/updateWebsiteStatus";
 
 
     constructor(private http:HttpClient){
@@ -23,6 +26,13 @@ fetchAllItems(){
     return this.http.get<productItem>(this.getItemsURL);
 }
 
+getWebsiteStatus(){
+  return this.http.get<WebsiteStatusInterface>(this.getWebsiteStatusURL);
+}
+
+updateWebsiteStatus(statusObj:WebsiteStatusInterface){
+  return  this.http.post<WebsiteStatusInterface>(this.updateWebsiteStatusURL,statusObj);
+}
 
 fetchAllCustOrders(ordersFetchCategory:string){
   const headerDict = {

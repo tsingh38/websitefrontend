@@ -62,9 +62,18 @@ ngb-carousel {
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
-    min-height: 700px;
+    max-height: 100px;
   }
   
+  @media(min-width:600px){ 
+    #home-section{
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+      min-height: 700px;
+    }
+    }
+
   #home-section .dark-overlay {
     position: absolute;
     top: 0;

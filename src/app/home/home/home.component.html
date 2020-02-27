@@ -1,13 +1,13 @@
+<div *ngIf="!isWebsiteOnline">
+ <app-offline text={{message}}></app-offline>
+</div>
 
-<div data-spy="scroll" data-target="#main-nav" id="home">
+<div *ngIf="isWebsiteOnline" data-spy="scroll" data-target="#main-nav" id="home">
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top" id="main-nav">
       <div class="container">
         <div>
             <img   class="img-thumbnail float-left" src='../../assets/lastradalogo.png' alt="Leckere gerichte">
         </div>
-        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-          <span class="navbar-toggler-icon"></span>
-        </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav ml-auto">
          
@@ -26,9 +26,11 @@
     </nav>
   
     <!-- HOME SECTION -->
-    <header id="home-section" style="background:url('../../assets/home.jpg')">
+    <header id="home-section"  style="background:url('../../assets/home.jpg'); background-size: cover">
       <div class="dark-overlay">
         <div class="home-inner container">
+        
+
         </div>
       </div>
     </header>
