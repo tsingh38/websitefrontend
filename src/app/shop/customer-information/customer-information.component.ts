@@ -39,7 +39,10 @@ export class CustomerInformationComponent implements OnInit {
 
   async onSubmit() {
     this.submittingOrder=true;
-    if(this.formRef.valid && this.customerOrderService.getCustomerOrder()){
+    if(!this.customerOrderService.getCustomerOrder()){
+      this.router.navigate(['/shop']);
+    }
+    else if(this.formRef.valid){
      var  customerInformation:customerOrder ={
       address: this.customeraddress,
       pincode:this.customerpincode,
@@ -59,9 +62,7 @@ export class CustomerInformationComponent implements OnInit {
       this.customerOrderService.resetOrderOnceSubmitted();
       this.router.navigate(['/completed']);
     }
-    if(!this.customerOrderService.getCustomerOrder()){
-      this.router.navigate(['/shop']);
-    }
+ 
     }
   }
 

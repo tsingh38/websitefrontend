@@ -35,6 +35,7 @@ import { AuthInterceptorService } from './controlpanel/auth/auth-interceptor.ser
 import { NavGuardService } from './services/nav-guard.service';
 import { OfflineComponent } from './home/offline/offline.component';
 import { WebsiteStatusComponent } from './controlpanel/settings/website-status/website-status.component';
+import { ChangePasswordComponent } from './controlpanel/settings/change-password/change-password.component';
 
 
 const appRoutes: Routes = [
@@ -46,6 +47,7 @@ const appRoutes: Routes = [
     {path:'orders',canActivate:[AuthGuardService],component:OrdersOverviewComponent},
     {path:'catalog',component:CatalogComponent},
     {path:'websiteStatus',canActivate:[AuthGuardService],component:WebsiteStatusComponent},
+    {path:'changeCredentials',canActivate:[AuthGuardService],component:ChangePasswordComponent},   
     {path:'login',component:AuthComponent},
     {path:'', redirectTo: 'orders', pathMatch:'full'}
   ]},
@@ -76,7 +78,8 @@ const appRoutes: Routes = [
   AuthComponent,
   LoadingSpinnerComponent,
   OfflineComponent,
-  WebsiteStatusComponent
+  WebsiteStatusComponent,
+  ChangePasswordComponent
 
   ],
   imports: [
