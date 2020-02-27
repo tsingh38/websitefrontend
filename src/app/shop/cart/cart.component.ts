@@ -71,6 +71,10 @@ this.cartService.triggerCalculationsInCart(this.orderedItems);
    this.orderedItems.splice(index,1);
     this.cartService.triggerCalculationsInCart(this.orderedItems);
   }
+
+  getPriceWith2DecimalPlaces(price:Number){
+    return parseFloat(price+"").toFixed(2);
+  }
   
 
 }

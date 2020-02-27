@@ -4,6 +4,9 @@ import { CustOrderStatus } from '../models/custOrderStatus.interface';
 import {map} from 'rxjs/operators';
 import { customerOrder } from '../models/customerorder.interface';
 import { DeepcopyUtil } from './Deepcopy';
+import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 
 
@@ -16,7 +19,7 @@ export class ControlPanelService{
     private interval:number=5000;
      isUserLoggedIn:boolean;
      token:string=null;
-    constructor(private http:HttpUtil){
+    constructor(private http:HttpUtil,private router:Router){
 
     }
 
@@ -37,11 +40,28 @@ export class ControlPanelService{
             this.customerOrders.push(tempFetchedResponseItem);
          }
      })).subscribe(responseData =>{
+       },error=>{
+        if (error.status === 500) {
+          return Observable.throw(new Error(error.status));
+      }
+      else if (error.status === 400) {
+          return Observable.throw(new Error(error.status));
+      }
+      else if (error.status === 409) {
+          return Observable.throw(new Error(error.status));
+      }
+      else if (error.status === 403) {
+        this.router.navigate(['/login']);
+      }
+       
        })
    
     return this.customerOrders;
 
     }
+
+
+    
 
     loginUser(username:string,password:string){
       return this.http.loginUser(username,password);

@@ -17,14 +17,19 @@ export class MealService {
     fetchAllItems() {
         this.http.fetchAllItems().pipe(map(responseData =>{
             for(let item in responseData){
-               this.allProductItems.push(responseData[item]);
+                const currentItem:productItem=responseData[item];
+                if(currentItem){
+                    console.log(parseFloat(currentItem.productBasePrice+"").toFixed(2));
+                        console.log(currentItem.productBasePrice);
+                }
+               this.allProductItems.push(currentItem);
             }
         })).subscribe(params =>{
         })
         return this.allProductItems;
     }
 
-    
+ 
 
 
 

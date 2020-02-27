@@ -17,7 +17,7 @@ export class CardproductComponent implements OnInit {
   listOfCheckedProductAdditions: productItemAddition[] = [];
   selectedOption: productItemOption;
   quantity:number=1;
-  productDisplayPrice:number=0;
+  productDisplayPrice:string='0';
   totalPriceInShoppingCart:number;
   constructor(private cartService:CartService,private render:Renderer2,private router:Router) { }
 
@@ -31,11 +31,11 @@ export class CardproductComponent implements OnInit {
     if(this.product.productCategory==='Pizza' || this.product.productCategory==='Vegatarische_Pizza'  || this.product.productCategory==='Calzone'){
       for(let currentOption of this.product.productOptions){
         if(currentOption.default){
-         this.productDisplayPrice= this.getPriceFromSelectedOption(currentOption);
+         this.productDisplayPrice= this.getNumberWith2DecimalPlaces(this.getPriceFromSelectedOption(currentOption));
         }
       }
     }else{
-      this.productDisplayPrice=this.product.productBasePrice;
+      this.productDisplayPrice= this.getNumberWith2DecimalPlaces(this.product.productBasePrice);
     }
 
 
@@ -108,7 +108,7 @@ if(this.quantity>1){
     for (let currentOption of this.product.productOptions) {
       if (selectedOption && currentOption.id === +selectedOption) {
         this.selectedOption = currentOption;
-        this.productDisplayPrice=this.getPriceFromSelectedOption( this.selectedOption);
+        this.productDisplayPrice=this.getNumberWith2DecimalPlaces(this.getPriceFromSelectedOption( this.selectedOption));
       }
     }
   }
@@ -136,14 +136,18 @@ if(this.quantity>1){
       if (this.product.productOptions) {
         for (let currentProduct of this.product.productOptions) {
           if (currentProduct.optionPriceForNormal) {
-            return currentProduct.optionPriceForNormal;
+            return this.getNumberWith2DecimalPlaces(currentProduct.optionPriceForNormal);
           }
         }
       }
     } else {
-      return this.product.productBasePrice;
+      return this.getNumberWith2DecimalPlaces(this.product.productBasePrice);
     }
 
+  }
+
+  getNumberWith2DecimalPlaces(mynumber:Number){
+   return parseFloat(mynumber+"").toFixed(2);
   }
   
 
@@ -160,11 +164,11 @@ if(this.quantity>1){
     if(this.product.productCategory==='Pizza' || this.product.productCategory==='Vegatarische_Pizza'  || this.product.productCategory==='Calzone'){
       for(let currentOption of this.product.productOptions){
         if(currentOption.default){
-         this.productDisplayPrice= this.getPriceFromSelectedOption(currentOption);
+         this.productDisplayPrice= this.getNumberWith2DecimalPlaces(this.getPriceFromSelectedOption(currentOption));
         }
       }
     }else{
-      this.productDisplayPrice=this.product.productBasePrice;
+      this.productDisplayPrice=this.getNumberWith2DecimalPlaces(this.product.productBasePrice);
     }
   }
   submitProductToACart(){

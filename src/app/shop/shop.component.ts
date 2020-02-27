@@ -17,7 +17,7 @@ export class ShopComponent implements OnInit {
   allProductItems: productItem[] = [];
   selectedCategory:string= "Beliebte";
   productsForSelectedCategory: productItem[];
-  totalPriceInShoppingCart:number;
+  totalPriceInShoppingCart:string;
   totalNumberOfItemsInCart:number;
   searchFieldActivated = false;
   categories: string[] = ["Beliebte", "Indische_Vorspeisen", "Salat", "Pizza", "Vegatarische_Pizza", "Calzone", "PizzabrotØ30", "Pasta","Pasta_al_Forno", "Indische_Gerichte",
@@ -29,17 +29,20 @@ export class ShopComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.totalPriceInShoppingCart=this.cartService.totalOrderPrice;
+    this.totalPriceInShoppingCart= this.getPriceWith2DecimalPlaces(this.cartService.totalOrderPrice);
   if( !this.productsForSelectedCategory  || this.productsForSelectedCategory.length < 1){
     this.productsForSelectedCategory=this.allProductItems;
   }
   this.cartService.totalOrderPriceEmitter.subscribe((param)=>{
-    this.totalPriceInShoppingCart=param.price;
+    this.totalPriceInShoppingCart=this.getPriceWith2DecimalPlaces(param.price);
     this.totalNumberOfItemsInCart=param.quantity;
   });
   }
 
 
+  getPriceWith2DecimalPlaces(price:Number){
+    return parseFloat(price+"").toFixed(2);
+  }
   getCategoryImageSource(){
 if(this.selectedCategory){
   switch(this.selectedCategory){
