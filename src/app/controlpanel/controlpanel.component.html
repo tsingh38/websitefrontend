@@ -23,8 +23,8 @@
         <li class="list-group-item" [ngClass]="{'active': step=='step2'}" (click)="step='step2'" [routerLink]="['catalog']">Katalog</li>
         <li class="list-group-item" [ngClass]="{'active': step=='step3'}" (click)="step='step3'">Einstellungen</li>
         <div class="list-group" *ngIf="step=='step3'">
-          <a href="#" class="list-group-item leftspace"  [ngClass]="{'active': step=='step4'}" (click)="step='step4'" [routerLink]="['websiteStatus']">Webseite Status</a>
-          <a href="#" class="list-group-item leftspace"[ngClass]="{'active': step=='step5'}" (click)="step='step5'" [routerLink]= "['changeCredentials']" >Passwort Ändern</a>
+          <li  class="list-group-item leftspace"  [ngClass]="{'active': step=='step4'}" (click)="step='step4'" [routerLink]="['websiteStatus']">Webseite Status</li>
+          <li  class="list-group-item leftspace"[ngClass]="{'active': step=='step5'}" (click)="step='step5'" [routerLink]= "['changeCredentials']" >Passwort Ändern</li>
         </div>
     
       </ul>
