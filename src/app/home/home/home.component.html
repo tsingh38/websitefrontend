@@ -2,7 +2,7 @@
  <app-offline text={{message}}></app-offline>
 </div>
 
-<div *ngIf="isWebsiteOnline" data-spy="scroll" data-target="#main-nav" id="home">
+<div *ngIf="isWebsiteOnline" data-spy="scroll" data-target="#main-nav" id="home" #homesection>
     <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top" id="main-nav">
       <div class="container">
         <div>
@@ -12,10 +12,10 @@
           <ul class="navbar-nav ml-auto">
          
             <li class="nav-item">
-                <a href="#explore-head-section" class="nav-link">Home</a>
+                <a (click)="homesection.scrollIntoView({ behavior: 'smooth', block: 'start' })" class="nav-link">Home</a>
               </li>
               <li class="nav-item">
-                <a href="#explore-head-section" class="nav-link">Über uns</a>
+                <a (click)="aboutUs.scrollIntoView({ behavior: 'smooth', block: 'start' })" class="nav-link">Über uns</a>
               </li>
             <li class="nav-item">
                 <a class="nav-link" [routerLink]="['/shop']">Bestellen</a>
@@ -28,7 +28,7 @@
     <!-- HOME SECTION -->
     <header id="home-section"  style="background:url('../../assets/home.jpg'); background-size: cover">
       <div class="dark-overlay">
-        <div class="home-inner container">
+        <div class="home-inner container" >
         
 
         </div>
@@ -36,7 +36,7 @@
     </header>
   
     <!-- EXPLORE HEAD -->
-    <section id="explore-head-section" class="aboutus">
+    <section id="abouts-section" class="aboutus" #aboutUs>
       <div class="container ">
         <div class="row">
           <div class="col text-center py-5">
