@@ -3,6 +3,7 @@ import { CartService } from '../services/cart.service';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { MealService } from '../services/mealservice';
 import { productItem,productItemAddition,productItemOption } from '../models/product.interface';
+import { ShopTimingsUtil } from '../services/ShopTimingsUtil.service';
 
 @Component({
   selector: 'app-shop',
@@ -31,8 +32,7 @@ export class ShopComponent implements OnInit {
   }
 
   ngOnInit() {
-    //TODO
-    this.isShopAvailable=false;
+    this.isShopAvailable=ShopTimingsUtil.isShopOpenNow();
     this.totalPriceInShoppingCart= this.getPriceWith2DecimalPlaces(this.cartService.totalOrderPrice);
   if( !this.productsForSelectedCategory  || this.productsForSelectedCategory.length < 1){
     this.productsForSelectedCategory=this.allProductItems;

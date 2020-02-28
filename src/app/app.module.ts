@@ -37,6 +37,7 @@ import { OfflineComponent } from './home/offline/offline.component';
 import { WebsiteStatusComponent } from './controlpanel/settings/website-status/website-status.component';
 import { ChangePasswordComponent } from './controlpanel/settings/change-password/change-password.component';
 import { AlertBoxComponent } from './shared/alert-box/alert-box.component';
+import { ShopTimingsUtil } from './services/ShopTimingsUtil.service';
 
 
 const appRoutes: Routes = [
