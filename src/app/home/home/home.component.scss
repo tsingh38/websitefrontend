@@ -63,16 +63,10 @@ ngb-carousel {
     background-size: cover;
     background-attachment: fixed;
     max-height: 100px;
+    min-height: 700px;
   }
   
-  @media(min-width:600px){ 
-    #home-section{
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-attachment: fixed;
-      min-height: 700px;
-    }
-    }
+
 
   #home-section .dark-overlay {
     position: absolute;
@@ -105,4 +99,16 @@ ngb-carousel {
     padding: 5px;
     border-radius: 5px;
   }
-  
+
+  .orderButton{
+    position: fixed;
+    bottom: 0px;
+    width:20%;
+ 
+  }
+  @media(min-width:600px){ 
+  .orderButton{
+    display: none;
+    visibility: hidden;
+  }
+}
