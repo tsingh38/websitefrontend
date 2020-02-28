@@ -8,7 +8,7 @@ import { HttpUtil } from 'src/app/services/httpUtil.service';
 })
 export class HomeComponent implements OnInit {
 
-  isWebsiteOnline:boolean=false;
+  isWebsiteOnline:boolean=true;
   message:string; // in case website ist offline
   constructor(private httpService:HttpUtil) { }
 
