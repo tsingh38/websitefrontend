@@ -65,7 +65,7 @@ export class CustomerOrderService {
     }
 
     resetOrderOnceSubmitted(){
-        this.cartService.order=null;
+        this.cartService.order=[];
     }
 
     fetchCompletedOrderNumber(){
