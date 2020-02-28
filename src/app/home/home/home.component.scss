@@ -106,9 +106,11 @@ ngb-carousel {
     width:20%;
  
   }
-  @media(min-width:600px){ 
+  @media(min-width:768px){ 
   .orderButton{
     display: none;
     visibility: hidden;
   }
+
+ 
 }
