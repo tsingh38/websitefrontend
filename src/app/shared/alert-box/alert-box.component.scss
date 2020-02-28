@@ -10,6 +10,21 @@
     box-shadow:0 2px 8px rgba(0,0,0,0.26);
 }
 
+@media only screen and (max-width: 600px) {
+    alert-box {
+        position:fixed;
+        top:5vh;
+        left:55vh;
+        width:60vw;
+        padding:10px;
+        z-index:100;
+        overflow-y: auto;
+        background:white;
+        box-shadow:0 2px 8px rgba(0,0,0,0.26);
+    }
+  }
+
+
 .backdrop{
 position:fixed;
 top:0;
