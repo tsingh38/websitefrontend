@@ -8,10 +8,10 @@
         <div class="form-group">
             <label>Webseite Status </label> <br>
             <select id="websiteStatus" class="form-control"
-            [(ngModel)]="status" name="status" required>
-            <option  value="Online">
+            [(ngModel)]="status"  name="status" required>
+            <option  value="Online" [selected]="Online == status">
                 Online</option>
-                <option  value="Offline">
+                <option  value="Offline" [selected]="Offline == status">
                     Offline</option>
         </select>
         </div>

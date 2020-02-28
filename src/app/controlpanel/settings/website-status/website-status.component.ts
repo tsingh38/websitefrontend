@@ -12,7 +12,7 @@ import { WebsiteStatusInterface } from 'src/app/models/websiteStatus.interface';
 
 export class WebsiteStatusComponent implements OnInit {
   @ViewChild('f', { static: false }) formRef: NgForm;
-  status: string = 'online';
+  status: string = 'Online';
   showInfotext: boolean = false;
   message: string;
   success: boolean;
@@ -22,7 +22,7 @@ export class WebsiteStatusComponent implements OnInit {
 
   ngOnInit() {
     this.httpService.getWebsiteStatus().subscribe(res => {
-      this.status = res.status ? 'online' : 'offline';
+      this.status = res.status ? 'Online' : 'Offline';
       this.message = res.message;
     }, error => {
       console.log("if error");
