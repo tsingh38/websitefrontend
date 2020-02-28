@@ -14,6 +14,7 @@ export class ShopComponent implements OnInit {
   private fragment: string;
 
   show = 3;
+  isShopAvailable:boolean;
   allProductItems: productItem[] = [];
   selectedCategory:string= "Beliebte";
   productsForSelectedCategory: productItem[];
@@ -23,12 +24,15 @@ export class ShopComponent implements OnInit {
   categories: string[] = ["Beliebte", "Indische_Vorspeisen", "Salat", "Pizza", "Vegatarische_Pizza", "Calzone", "PizzabrotØ30", "Pasta","Pasta_al_Forno", "Indische_Gerichte",
     "Gyros_Spezialitäten", "International_Gerichte", "Rösti", "Döner_kebab", "Lahmacun", "Vegatarische_Döner", "Pide", "Dessert",
     "BenAndJerrys", "Alkohalfrei_Getränke", "Alkohlische_Getränke"]
-
+    shopClosedHeaderMessage="Im Moment ist die Geschäft geschlossen";
+    shopClosedMessage="Die Bestellungen außerhalb unseren Geschäftszeiten können  nicht bearbeitet werden."
   constructor(private mealService: MealService,private cartService:CartService,private router:Router) {
     this.allProductItems = this.mealService.fetchAllItems();
   }
 
   ngOnInit() {
+    //TODO
+    this.isShopAvailable=false;
     this.totalPriceInShoppingCart= this.getPriceWith2DecimalPlaces(this.cartService.totalOrderPrice);
   if( !this.productsForSelectedCategory  || this.productsForSelectedCategory.length < 1){
     this.productsForSelectedCategory=this.allProductItems;
@@ -89,6 +93,9 @@ if(this.selectedCategory){
     this.router.navigate(['/cart']);
   }
 
+  onClose(){
+    this.isShopAvailable=true;
+  }
  
   
  

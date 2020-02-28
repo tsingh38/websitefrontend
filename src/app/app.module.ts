@@ -36,6 +36,7 @@ import { NavGuardService } from './services/nav-guard.service';
 import { OfflineComponent } from './home/offline/offline.component';
 import { WebsiteStatusComponent } from './controlpanel/settings/website-status/website-status.component';
 import { ChangePasswordComponent } from './controlpanel/settings/change-password/change-password.component';
+import { AlertBoxComponent } from './shared/alert-box/alert-box.component';
 
 
 const appRoutes: Routes = [
@@ -79,7 +80,8 @@ const appRoutes: Routes = [
   LoadingSpinnerComponent,
   OfflineComponent,
   WebsiteStatusComponent,
-  ChangePasswordComponent
+  ChangePasswordComponent,
+  AlertBoxComponent
 
   ],
   imports: [
