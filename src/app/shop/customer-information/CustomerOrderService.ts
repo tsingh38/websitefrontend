@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { customerOrder } from 'src/app/models/customerorder.interface';
 import { HttpUtil } from 'src/app/services/httpUtil.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { throwError, Observable } from 'rxjs';
+import { throwError, Observable, Subject } from 'rxjs';
 import {map} from 'rxjs/operators';
 
 
@@ -14,6 +14,7 @@ export class CustomerOrderService {
     customerOrderAndAddress:customerOrder;
     orderNumberFromServer:number;
     serverError:string;
+    orderSubmission=new Subject<{isSuccessful:boolean,orderNumber:number}>();
 
 
     constructor(private cartService: CartService,private httpUtil: HttpUtil) {
@@ -34,8 +35,10 @@ export class CustomerOrderService {
             throw Observable.throw("Order not saved");  
         }
     })).subscribe(params =>{
+        this.orderSubmission.next({isSuccessful:true,orderNumber:this.orderNumberFromServer});
     },error =>{
         this.serverError=error;
+        this.orderSubmission.next({isSuccessful:false,orderNumber:0});
       },)
     }
     fetchCurrentTimeSlots(): string[] {

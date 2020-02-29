@@ -14,8 +14,12 @@ export class OrdersuccessfulComponent implements OnInit {
   constructor(private customerOrderService:CustomerOrderService) { }
 
   ngOnInit() {
-    this.orderNumber=this.customerOrderService.fetchCompletedOrderNumber();
-    this.errorMode=(!this.orderNumber || this.orderNumber<=0);
+    this.customerOrderService.orderSubmission.subscribe(res=>{
+    this.errorMode=!res.isSuccessful;
+    this.orderNumber=res.orderNumber;
+    this.customerOrderService.resetOrderOnceSubmitted();
+    })
+  ;
   }
 
  

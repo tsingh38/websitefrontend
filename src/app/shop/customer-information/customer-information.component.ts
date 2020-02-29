@@ -5,6 +5,7 @@ import { DeepcopyUtil } from '../../services/Deepcopy';
 import { Router } from '@angular/router';
 import { customerOrder } from 'src/app/models/customerorder.interface';
 import { CustomerOrderService } from './CustomerOrderService';
+import { Subject } from 'rxjs';
 
 
 @Component({
@@ -23,12 +24,15 @@ export class CustomerInformationComponent implements OnInit {
   companyname:string;
   comment:string;
   submittingOrder=false;
+  
   constructor( private router:Router, private customerOrderService:CustomerOrderService) { }
   @ViewChild('f', { static: false }) formRef: NgForm;
   allTimeSlots:string[]=[];
   defaultPaymentType='Bar';
   defaultWishDeliveryTime='So schnell wie möglich';
   
+
+
   ngOnInit() {
   this.allTimeSlots=this.customerOrderService.fetchCurrentTimeSlots();
   }
@@ -37,7 +41,7 @@ export class CustomerInformationComponent implements OnInit {
 
   }
 
-  async onSubmit() {
+   onSubmit() {
     this.submittingOrder=true;
     if(!this.customerOrderService.getCustomerOrder()){
       this.router.navigate(['/shop']);
@@ -57,9 +61,7 @@ export class CustomerInformationComponent implements OnInit {
       paymentType:this.defaultPaymentType,
       order:this.customerOrderService.getCustomerOrder()}
       this.customerOrderService.processCustomerOrder(DeepcopyUtil.deepCopy(customerInformation));
-      await this.customerOrderService.delay(1500);
       this.submittingOrder=false;
-      this.customerOrderService.resetOrderOnceSubmitted();
       this.router.navigate(['/completed']);
     }
  
