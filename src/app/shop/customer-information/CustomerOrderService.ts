@@ -22,6 +22,7 @@ export class CustomerOrderService {
 
 
     processCustomerOrder(order:customerOrder){
+        this.orderNumberFromServer=0;
      this.httpUtil.saveOrder(order).pipe(map(responseData=>{
         this.orderNumberFromServer=responseData;
         if( this.orderNumberFromServer > 0){
@@ -66,6 +67,7 @@ export class CustomerOrderService {
 
     resetOrderOnceSubmitted(){
         this.cartService.order=[];
+       // this.orderNumberFromServer=null;
     }
 
     fetchCompletedOrderNumber(){
