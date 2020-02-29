@@ -21,7 +21,7 @@
             <div> {{currentOrder.product.description}}</div>   
             <div>{{getProductOptionDescription(currentOrder)}}</div>  </td>
            <td>{{getProductAdditionDescription(currentOrder)}}</td>
-           <td>{{currentOrder.totalPrice}}€</td>
+           <td>{{getDecimalFormattedItemPrice(currentOrder.totalPrice)}}€</td>
             </tr>  
         </tbody>
     </table>

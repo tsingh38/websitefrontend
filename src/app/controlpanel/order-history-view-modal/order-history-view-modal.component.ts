@@ -18,7 +18,7 @@ isOpen:boolean=false;
   ngOnInit() { 
     this.totalBestellungSum=0;
 for(let item of this.custorder.order){
-  this.totalBestellungSum+=item.totalPrice;
+  this.totalBestellungSum+=Number(item.totalPrice.toFixed(2));
 }
   }
 
@@ -30,14 +30,7 @@ for(let item of this.custorder.order){
 
 
 
-  /*
-<th>Artikel</th>
-                <th>Extras</th>
-                <th>Anmerkungen</th>
-                <th>Wünsch LieferZeit</th>
-                <th>Zahlungs Methode</th>
 
-  */
   getProductOptionDescription(orderItem:orderItem){
 
       return orderItem.selectedOptionStr;
@@ -64,5 +57,8 @@ for(let item of this.custorder.order){
       return additionsDescription;
   }
 
+  getDecimalFormattedItemPrice(price:number){
+    return parseFloat(price + "").toFixed(2);
+  }
   
 }
