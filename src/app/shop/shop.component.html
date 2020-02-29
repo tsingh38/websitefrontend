@@ -1,41 +1,41 @@
 <!-- Navbar dropdown and search-->
 
-    <app-alert-box *ngIf="!isShopAvailable" messageHeader={{shopClosedHeaderMessage}} message={{shopClosedMessage}}  (close)="onClose()"></app-alert-box>
+<app-alert-box *ngIf="!isShopAvailable" messageHeader={{shopClosedHeaderMessage}} message={{shopClosedMessage}}
+    (close)="onClose()"></app-alert-box>
 
 <nav class="navbar navbar-expand-sm navbar-light bg-light sticky-top" *ngIf="isShopAvailable">
     <div class="container">
         <div class="row input-group">
-            
-            <div class="input-group">
-                </div>
-                <select  id="selectCatory" (change)='mainCategorySelected($event)' class="form-control"
-                        name="currentOption">
-                        <option *ngFor="let $currentCategory of categories;">
-                            {{$currentCategory}}</option>
-                </select>
 
-           
-                </div>
+            <div class="input-group">
+            </div>
+            <select id="selectCatory" (change)='mainCategorySelected($event)' class="form-control" name="currentOption">
+                <option *ngFor="let $currentCategory of categories;">
+                    {{$currentCategory}}</option>
+            </select>
+
+
+        </div>
     </div>
 </nav>
 
 <!-- Cards Products-->
 <div class="container">
     <div class="row">
-      
+
         <div class="col-md">
-            <div class="border portrait"  id="imagecontainer">
-                <img   class="card-img mx-auto d-block" src={{getCategoryImageSource(1)}} alt="Leckere gerichte">
+            <div class="border portrait" id="imagecontainer">
+                <img class="card-img mx-auto d-block" src={{getCategoryImageSource(1)}} alt="Leckere gerichte">
             </div>
         </div>
 
         <div class="col-md">
-            <div class="border portrait multipleImage"  id="imagecontainer">
-                <img   class="card-img mx-auto d-block" src={{getCategoryImageSource(2)}} alt="Leckere gerichte">
+            <div class="border portrait multipleImage" id="imagecontainer">
+                <img class="card-img mx-auto d-block" src={{getCategoryImageSource(2)}} alt="Leckere gerichte">
             </div>
         </div>
-      
-      </div>
+
+    </div>
 
     <div class="row ">
         <div class="card col-sm-6 mt-4" *ngFor="let $product of productsForSelectedCategory;">
@@ -44,12 +44,11 @@
     </div>
 </div>
 
-<div class="row border border-secondary" *ngIf="totalPriceInShoppingCart > 0" class="bg-primary fixed-bottom text-center">
 
 
-    <i class="fa icon">&#xf07a;</i>
-         <span class='badge badge-warning' id='lblCartCount'> {{totalNumberOfItemsInCart}} </span>
-        <button type="button" class="btn text-white" (click)="submitOrder()">{{totalPriceInShoppingCart}}€</button>  
 
-  
-</div>
+
+    <button type="button" *ngIf="totalPriceInShoppingCart > 0" class="Cartbutton btn text-white bg-primary fixed-bottom" style="width: 100%;" (click)="submitOrder()"> <i class="fa icon">&#xf07a;</i>
+        <span class='badge badge-warning' id='lblCartCount'> {{totalNumberOfItemsInCart}}
+        </span>{{totalPriceInShoppingCart}}€</button>
+
