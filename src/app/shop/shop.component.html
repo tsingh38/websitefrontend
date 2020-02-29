@@ -6,24 +6,16 @@
     <div class="container">
         <div class="row input-group">
             
-            <div class="input-group-prepend">
-                <button *ngIf="!searchFieldActivated" type="button" class="input-group-text btn btn-primary btn-sm"
-                    (click)="searchFieldActivated='true'">
-                    <span class="glyphicon glyphicon-search"></span>
-                </button>
-                <button *ngIf="searchFieldActivated" type="button" class=" btn btn-primary btn-sm"
-                (click)="searchFieldActivated=!searchFieldActivated">
-                <span class="glyphicon glyphicon-remove"></span>
-            </button>
-            </div>
-                <select  *ngIf="!searchFieldActivated" id="selectCatory" (change)='mainCategorySelected($event)' class="form-control"
+            <div class="input-group">
+                </div>
+                <select  id="selectCatory" (change)='mainCategorySelected($event)' class="form-control"
                         name="currentOption">
                         <option *ngFor="let $currentCategory of categories;">
                             {{$currentCategory}}</option>
-                    </select>
-                    <input *ngIf="searchFieldActivated" type="text" class="form-control" name="searchFieldActivated">
+                </select>
+
            
-        </div>
+                </div>
     </div>
 </nav>
 
