@@ -1,5 +1,12 @@
 <ng-template appAppViewContainer></ng-template>
-<div class="container">
+
+<div *ngIf="showInfotext && !isOperationInProgress" class="text-center text-success">
+    <span>{{srvMessage}}</span>
+</div>
+<div *ngIf="isOperationInProgress" style="text-align: center;">
+    <app-loading-spinner></app-loading-spinner>
+</div>
+<div *ngIf=" !isOperationInProgress" class="container">
   <div class="row  overflow-auto">
     <select  id="ordersViewCategory" (change)='mainCategorySelected($event)'  class="form-control"
     name="currentOption">
@@ -19,8 +26,8 @@
         <tr *ngFor="let $product of productsForSelectedCategory">
             <td>{{$product.id}}</td>
             <td>{{$product.description}}</td>
-            <td> <a href="" style="color:darkslategray;"> <span class="glyphicon glyphicon-pencil"></span> </a></td>
-            <td><a href="" style="color:red;"><span class=" glyphicon glyphicon-trash"></span></a></td>
+            <td> <a  style="color:darkslategray;"> <span class="glyphicon glyphicon-pencil"></span> </a></td>
+            <td><a  style="color:red;" (click)="deleteConfirmation($product)"><span class=" glyphicon glyphicon-trash"></span></a></td>
 
         </tr>  
     </tbody>

@@ -48,9 +48,10 @@ export class WebsiteStatusComponent implements OnInit {
         }.bind(this), 3000);
       }, error => {
         this.success = false;
+        this.showInfotext = true;
         this.srvMessage = "website status konnte nicht gespeichert werden";
         setTimeout(function () {
-          this.showInfotext = true;
+          this.showInfotext = false;
         }.bind(this), 3000);
       }, () => {
         this.statusUpdatingInProgress = false;

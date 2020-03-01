@@ -19,6 +19,7 @@ export class HttpUtil {
   getWebsiteStatusURL: string = "http://localhost:8080/getWebsiteStatus";
   updateWebsiteStatusURL: string = "http://localhost:8080/updateWebsiteStatus";
   changeCredentialsURL: string = "http://localhost:8080/processChangeCredentials";
+  deleteProductURL:string="http://localhost:8080/deleteProduct";
 
 
   constructor(private http: HttpClient) {
@@ -59,6 +60,10 @@ export class HttpUtil {
     return this.http.post<number>(this.saveOrderURL, order);
   }
 
+  deleteProduct(product:productItem){
+    return this.http.post(this.deleteProductURL,product);
+  }
+  
   updateCustOrderStatus(custOrder: CustOrderStatus) {
     return this.http.post<number>(this.updateCustOrderUL, custOrder);
   }

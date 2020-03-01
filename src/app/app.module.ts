@@ -38,6 +38,8 @@ import { WebsiteStatusComponent } from './controlpanel/settings/website-status/w
 import { ChangePasswordComponent } from './controlpanel/settings/change-password/change-password.component';
 import { AlertBoxComponent } from './shared/alert-box/alert-box.component';
 import { ShopTimingsUtil } from './services/ShopTimingsUtil.service';
+import { DeleteConfirmationComponent } from './controlpanel/catalog/delete-confirmation/delete-confirmation.component';
+import { CatalogService } from './services/catalogservice';
 
 
 const appRoutes: Routes = [
@@ -83,14 +85,15 @@ const appRoutes: Routes = [
   OfflineComponent,
   WebsiteStatusComponent,
   ChangePasswordComponent,
-  AlertBoxComponent
+  AlertBoxComponent,
+  DeleteConfirmationComponent
 
   ],
   imports: [
     BrowserModule, NgbModule, RouterModule, FormsModule, HttpClientModule, RouterModule.forRoot(appRoutes), BsDropdownModule.forRoot(), BrowserAnimationsModule
   ],
-  providers: [AuthGuardService,CartService,CustomerOrderService, NavGuardService, MealService,{provide:HTTP_INTERCEPTORS,useClass:AuthInterceptorService,multi:true}, ControlPanelService,HttpUtil,StaticDataService],
+  providers: [AuthGuardService,CartService,CustomerOrderService, NavGuardService,CatalogService, MealService,{provide:HTTP_INTERCEPTORS,useClass:AuthInterceptorService,multi:true}, ControlPanelService,HttpUtil,StaticDataService],
   bootstrap: [AppComponent],
-  entryComponents:[OrderHistoryViewModalComponent]
+  entryComponents:[OrderHistoryViewModalComponent,DeleteConfirmationComponent]
 })
 export class AppModule { }

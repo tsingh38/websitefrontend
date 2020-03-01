@@ -1,7 +1,7 @@
 .alert-box{
     position:fixed;
     top:30vh;
-    left:10vh;
+    left:15vh;
     width:60vw;
     padding:16px;
     z-index:100;
@@ -20,8 +20,4 @@ width:100vw;
 height:100vh;
 z-index:50;
 background:rgba(15, 13, 13, 0.75);
-}
-
-.alert-box-actions{
-    text-align:right;
 }
