@@ -49,7 +49,8 @@ const appRoutes: Routes = [
     {path:'orders',canActivate:[AuthGuardService],component:OrdersOverviewComponent},
     {path:'catalog',component:CatalogComponent},
     {path:'websiteStatus',canActivate:[AuthGuardService],component:WebsiteStatusComponent},
-    {path:'changeCredentials',canActivate:[AuthGuardService],component:ChangePasswordComponent},   
+    {path:'changeCredentials',canActivate:[AuthGuardService],component:ChangePasswordComponent},
+    {path:'catalog',canActivate:[AuthGuardService],component:CatalogComponent},    
     {path:'login',component:AuthComponent},
     {path:'', redirectTo: 'orders', pathMatch:'full'}
   ]},

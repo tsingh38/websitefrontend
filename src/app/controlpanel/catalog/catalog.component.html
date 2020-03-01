@@ -1,1 +1,29 @@
-<p>catalog works!</p>
+<ng-template appAppViewContainer></ng-template>
+<div class="container">
+  <div class="row  overflow-auto">
+    <select  id="ordersViewCategory" (change)='mainCategorySelected($event)'  class="form-control"
+    name="currentOption">
+    <option *ngFor="let $category of categories">{{$category}}</option>
+</select>
+  </div>
+  <table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Artikel Nr.</th>
+            <th>Artikel</th>
+            <th>Ändern</th>
+            <th>Löschen</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let $product of productsForSelectedCategory">
+            <td>{{$product.id}}</td>
+            <td>{{$product.description}}</td>
+            <td> <a href="" style="color:darkslategray;"> <span class="glyphicon glyphicon-pencil"></span> </a></td>
+            <td><a href="" style="color:red;"><span class=" glyphicon glyphicon-trash"></span></a></td>
+
+        </tr>  
+    </tbody>
+</table>
+</div>
+
