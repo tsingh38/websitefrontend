@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ControlPanelService } from '../services/controlpanel.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-controlpanel',
@@ -10,10 +11,15 @@ export class ControlpanelComponent implements OnInit {
 
 
   step:string;
-  constructor(private controlPanelService:ControlPanelService) { }
+  constructor(private controlPanelService:ControlPanelService,private router:Router) { }
 
   ngOnInit()  {
-    this.step='step1';
+    console.log( this.router.url);
+    if(this.router.url=='/control/catalog'){
+      this.step='step2';
+    }else if(this.router.url=='/control/websiteStatus' || this.router.url=='/control/changeCredentials'){
+      this.step='step3';
+    }
  
   }
 
