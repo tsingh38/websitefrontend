@@ -21,6 +21,9 @@
       <ul class="list-group">      
         <li class="list-group-item active" [ngClass]="{'active': step=='step1'}" (click)="step='step1'" [routerLink]="['orders']">Bestellungen</li>
         <li class="list-group-item" [ngClass]="{'active': step=='step2'}" (click)="step='step2'" [routerLink]="['catalog']">Katalog</li>
+        <div class="list-group" *ngIf="step=='step2'">
+          <li  class="list-group-item leftspace"  [ngClass]="{'active': step=='step2_1'}" (click)="step='step2_1'" [routerLink]="['newProduct']">Neue Produkt Anlegen</li>
+        </div>
         <li class="list-group-item" [ngClass]="{'active': step=='step3'}" (click)="step='step3'">Einstellungen</li>
         <div class="list-group" *ngIf="step=='step3'">
           <li  class="list-group-item leftspace"  [ngClass]="{'active': step=='step4'}" (click)="step='step4'" [routerLink]="['websiteStatus']">Webseite Status</li>

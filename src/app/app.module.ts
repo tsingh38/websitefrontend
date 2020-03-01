@@ -40,6 +40,7 @@ import { AlertBoxComponent } from './shared/alert-box/alert-box.component';
 import { ShopTimingsUtil } from './services/ShopTimingsUtil.service';
 import { DeleteConfirmationComponent } from './controlpanel/catalog/delete-confirmation/delete-confirmation.component';
 import { CatalogService } from './services/catalogservice';
+import { NewProductComponent } from './controlpanel/catalog/new-product/new-product.component';
 
 
 const appRoutes: Routes = [
@@ -49,7 +50,9 @@ const appRoutes: Routes = [
   {path:'login',component:AuthComponent},
   {path:'control',canActivate:[AuthGuardService], component:ControlpanelComponent,children:[
     {path:'orders',canActivate:[AuthGuardService],component:OrdersOverviewComponent},
-    {path:'catalog',component:CatalogComponent},
+    {path:'catalog', canActivate:[AuthGuardService], component:CatalogComponent},
+    {path:'newProduct', canActivate:[AuthGuardService], component:NewProductComponent},
+
     {path:'websiteStatus',canActivate:[AuthGuardService],component:WebsiteStatusComponent},
     {path:'changeCredentials',canActivate:[AuthGuardService],component:ChangePasswordComponent},
     {path:'catalog',canActivate:[AuthGuardService],component:CatalogComponent},    
@@ -86,7 +89,8 @@ const appRoutes: Routes = [
   WebsiteStatusComponent,
   ChangePasswordComponent,
   AlertBoxComponent,
-  DeleteConfirmationComponent
+  DeleteConfirmationComponent,
+  NewProductComponent
 
   ],
   imports: [

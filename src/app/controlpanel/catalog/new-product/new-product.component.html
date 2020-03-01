@@ -1,0 +1,22 @@
+<div class="container">
+    <h5 class="text-black-50"> Wählen Sie bitte eine Kategorie.</h5> 
+    <select id="selectCategory" 
+    [(ngModel)]="selectedCategory" class="form-control" name="currentOption">
+        <option *ngFor="let $currentCategory of categories;">
+            {{$currentCategory}}</option>
+    </select>
+    <h5 class=" mt-4 text-black-50"> Produkt Beschreibung eingeben.</h5> 
+    <input type="text" class="form-control" name="articleDescription" [(ngModel)]="articleDescription">
+
+    <h5 class=" mt-4 text-black-50 form-inline"> Produkt Preis eingeben.</h5> 
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">€</span>
+        </div>
+        <input type="text" class="form-control" name="articlePreis"  [(ngModel)]="articleBasePrice">
+        <div class="input-group-append">
+          <span class="input-group-text">.00</span>
+        </div>
+      </div>
+
+</div>
