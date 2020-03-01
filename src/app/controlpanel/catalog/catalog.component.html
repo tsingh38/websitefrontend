@@ -1,6 +1,6 @@
 <ng-template appAppViewContainer></ng-template>
 
-<div *ngIf="showInfotext && !isOperationInProgress" class="text-center text-success">
+<div *ngIf="showInfotext && !isOperationInProgress" class="text-center" [ngClass]="{'bg-success text-white':isOperationSuccessful==true,'text-danger':isOperationSuccessful==false}">
     <span>{{srvMessage}}</span>
 </div>
 <div *ngIf="isOperationInProgress" style="text-align: center;">

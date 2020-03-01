@@ -1,10 +1,11 @@
 import { Component, OnInit, ComponentFactoryResolver, ViewChild } from '@angular/core';
-import { productItem, productItemAddition, productItemOption } from '../models/product.interface';
+import { productItemAddition, productItemOption } from '../models/product';
 import { MealService } from 'src/app/services/mealservice';
 import { AppViewContainerDirective } from 'src/app/directives/app-view-container.directive';
 import { DeleteConfirmationComponent } from './delete-confirmation/delete-confirmation.component';
 import { Subscription } from 'rxjs';
 import { CatalogService } from 'src/app/services/catalogservice';
+import { productItem } from 'src/app/models/product.interface';
 
 @Component({
   selector: 'app-catalog',
@@ -17,6 +18,7 @@ export class CatalogComponent implements OnInit {
   productsForSelectedCategory: productItem[];
   showInfotext:boolean;
   isOperationInProgress=false;
+  isOperationSuccessful:boolean;
   srvMessage:string;
   @ViewChild(AppViewContainerDirective,{static:false}) viewContainerRef:AppViewContainerDirective;
 
@@ -48,11 +50,12 @@ export class CatalogComponent implements OnInit {
 
   }
 
-  refreshTheProductsAfterDeletion(){
+  refreshTheProductsAfterDeletion(product:productItem){
+    this.allProductItems=[];
     this.allProductItems = this.mealService.fetchAllItems();
     this.productsForSelectedCategory = [];
     for (let currentProduct of this.allProductItems) {
-      if (currentProduct.productCategory === this.selectedCategory) {
+      if ((this.selectedCategory==="Beliebte") || currentProduct.productCategory === this.selectedCategory) {
         this.productsForSelectedCategory.push(currentProduct);
       }
     }
@@ -61,20 +64,24 @@ export class CatalogComponent implements OnInit {
   delete($product:productItem) {
     this.isOperationInProgress=true;
     this.catalogService.deleteProduct($product).subscribe(() => {
+      this.productsForSelectedCategory.splice(this.productsForSelectedCategory.indexOf($product),1);
       this.isOperationInProgress=false;
+     
       this.showInfotext = true;
       this.srvMessage = "Product wurde erfolgreich gelöscht";
-      this.refreshTheProductsAfterDeletion();
+      this.isOperationSuccessful=true;
       setTimeout(function () {
         this.showInfotext = false;
       }.bind(this), 3000);
     }, (error) => {
       this.showInfotext = true;
+      this.isOperationSuccessful=true;
       this.isOperationInProgress=false;
       this.srvMessage = "Product konnte nicht gelöscht werden";
       setTimeout(function () {
         this.showInfotext = false;
       }.bind(this), 3000);
+    },()=>{
     })
   }
 

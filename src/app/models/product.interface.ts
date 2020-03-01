@@ -1,21 +1,21 @@
 export interface  productItem{
-id:number,
-description:string,
-productCategory:string,
-optionDescription:string,
-productBasePrice:number,
-productAdditions:productItemAddition[],
+id:number;
+description:string;
+productCategory:string;
+optionDescription:string;
+productBasePrice:number;
+productAdditions:productItemAddition[];
 productOptions:productItemOption[]
 }
 
 export interface productItemAddition{
     id:number;
-additionDescription: string,
-additionPrice: number,
-additionsPriceForSmall: number,
-additionsPriceForNormal: number,
-additionsPriceForFamily: number,
-additionsPriceForParty: number
+additionDescription: string;
+additionPrice: number;
+additionsPriceForSmall: number;
+additionsPriceForNormal: number;
+additionsPriceForFamily: number;
+additionsPriceForParty: number;
 }
 
 
