@@ -103,14 +103,14 @@
       <h5 class="text-black-50">Auswahl eingeben</h5>
     </div>
     <div class="col-2">
-      <button>
+      <button (click)="increaseTheNumber()">
         <span class="glyphicon glyphicon-plus"></span>
       </button>
     </div>
     </div>
-    <div class="row mt-5" *ngFor="let productAddition of product.productAdditions | slice:0:show;let i = index">
+    <div class="row mt-5" *ngFor="let currentNumber of numberOfTimesOptionArray | slice:0:numberOfTimesOption;let i = index">
       <div class="col">
-        <input type="text" class="form-control" name="option1Description" placeholder="Auswahl Beschriebung Eingeben" [(ngModel)]="option1Description">
+        <input type="text" class="form-control" name="option1Description" placeholder="Auswahl Beschriebung Eingeben" [(ngModel)]="optionsOfProductArray[i]">
       </div>
     </div>
     </div>

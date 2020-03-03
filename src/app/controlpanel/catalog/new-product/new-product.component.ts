@@ -18,7 +18,9 @@ export class NewProductComponent implements OnInit {
   option1CalzoneDescription:string="klein, Ø26cm:";
   option2CalzoneDescription:string="Groß, Ø30cm:";
   hasProductOptions:string;
-  numberOfTimesOptionArray:number[];
+  numberOfTimesOption=1;
+  numberOfTimesOptionArray= [...Array(this.numberOfTimesOption).keys()] ;
+  optionsOfProductArray=[...Array(this.numberOfTimesOption).keys()] ;
 
 
 
@@ -27,10 +29,14 @@ export class NewProductComponent implements OnInit {
     "BenAndJerrys", "Alkohalfrei_Getränke", "Alkohlische_Getränke"]
   constructor() { 
 
-    this.numberOfTimesOptionArray=Array();
   }
 
   ngOnInit() {
+  }
+
+  increaseTheNumber(){
+    this.numberOfTimesOptionArray=[];
+    this.numberOfTimesOptionArray= [...Array(++this.numberOfTimesOption).keys()] ;
   }
 
 
