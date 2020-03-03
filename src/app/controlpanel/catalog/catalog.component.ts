@@ -1,5 +1,5 @@
 import { Component, OnInit, ComponentFactoryResolver, ViewChild } from '@angular/core';
-import { productItemAddition, productItemOption } from '../models/product';
+import { productItemAddition,productItemOption } from 'src/app/models/product.interface';
 import { MealService } from 'src/app/services/mealservice';
 import { AppViewContainerDirective } from 'src/app/directives/app-view-container.directive';
 import { DeleteConfirmationComponent } from './delete-confirmation/delete-confirmation.component';
