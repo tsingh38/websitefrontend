@@ -85,6 +85,7 @@
     <!--Options and Preis nur für Calzone ENds-->
 
     <!-- Produkte die nicht Pizza oder Calzone sind -->
+     <!-- Produkte Auswahl -->
 <div *ngIf="selectedCategory!='Calzone' && selectedCategory!='Pizza' && selectedCategory!='Vegatarische_Pizza'" class="mt-5">
     <div class="row">
       <h5 class="text-black-50"> Hat den Produkt Auswahl ? </h5>
@@ -110,12 +111,14 @@
     </div>
     <div class="row mt-5" *ngFor="let currentNumber of numberOfTimesOptionArray | slice:0:numberOfTimesOption;let i = index">
       <div class="col">
-        <input type="text" class="form-control" name="option1Description" placeholder="Auswahl Beschriebung Eingeben" [(ngModel)]="optionsOfProductArray[i]">
+        <input type="text" class="form-control" name="option1Description" placeholder="Auswahl Beschriebung Eingeben" [ngModel]="optionsOfProductArray[i]">
       </div>
     </div>
     </div>
   </div>
-    <div class="mt-5 text-center">
+
+   <!-- Produkte Zugehörige Artikel -->
+    <div class="mt-5 text-center" *ngIf="selectedCategory!='Calzone' && selectedCategory!='Pizza' && selectedCategory!='Vegatarische_Pizza'">
       <button class="btn btn-block btn-success"> Speichern</button>
     </div>
 </div>
