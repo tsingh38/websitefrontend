@@ -19,106 +19,166 @@
     <div class=" ml-5 input-group-prepend">
       <span class="input-group-text">€</span>
     </div>
-    <input type="text" class="form-control col-xs-3 priceinput" style="width:10%;" name="articlePrice"
+    <input type="number" min="1" step="any" class="form-control col-xs-3 priceinput" style="width:10%;" name="articlePrice"
       [(ngModel)]="articlePrice">
     <div class="input-group-append">
       <span class="input-group-text">.00</span>
     </div>
   </div>
-      <!--Options and Preis nur für Pizza -->
-      <div *ngIf="selectedCategory=='Pizza' || selectedCategory=='Vegatarische_Pizza'">
-  <div class="row mt-5">
-    <div class="col-8">
-    <input type="text" class="form-control" name="option1Description" placeholder="Auswahl Beschriebung Eingeben" [(ngModel)]="option1PizzaDescription">
+  <!--Options and Preis nur für Pizza -->
+  <div *ngIf="selectedCategory=='Pizza' || selectedCategory=='Vegatarische_Pizza'">
+    <div class="row mt-5">
+      <div class="col-8">
+        <input type="text" class="form-control" name="option1Description" placeholder="Auswahl Beschriebung Eingeben"
+          [(ngModel)]="option1PizzaDescription" [disabled]="true">
+      </div>
+      <div class="col-4">
+        <input type="number" min="1" step="any" class="form-control" style="width:20%;" name="option1Preis" placeholder="Preis"
+          [(ngModel)]="option1PizzaPreis">
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-8">
+        <input type="text" class="form-control" name="option2Description" placeholder="Auswahl Beschriebung Eingeben"
+          [(ngModel)]="option2PizzaDescription" [disabled]="true">
+      </div>
+      <div class="col-4">
+        <input type="number" min="1" step="any" style="width:20%;" name="option1Preis" placeholder="Preis"
+          [(ngModel)]="option1PizzaPreis">
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-8">
+        <input type="text" class="form-control" name="option3Description" placeholder="Auswahl Beschriebung Eingeben"
+          [(ngModel)]="option3PizzaDescription" [disabled]="true">
+      </div>
+      <div class="col-4">
+        <input type="number" min="1" step="any" class="form-control" style="width:20%;" name="option1Preis" placeholder="Preis"
+          [(ngModel)]="option3PizzaPreis">
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-8">
+        <input type="text" class="form-control" name="option4Description" placeholder="Auswahl Beschriebung Eingeben"
+          [(ngModel)]="option4PizzaDescription" [disabled]="true">
+      </div>
+      <div class="col-4">
+        <input type="number" min="1" step="any" class="form-control" style="width:20%;" name="option1Preis" placeholder="Preis"
+          [(ngModel)]="option4PizzaPreis">
+      </div>
+    </div>
   </div>
-  <div class="col-4">
-    <input type="text" class="form-control" style="width:20%;"  name="option1Preis" placeholder="Preis" [(ngModel)]="option1PizzaPreis">
-  </div>
-  </div>
-  <div class="row mt-5">
-    <div class="col-8">
-    <input type="text" class="form-control" name="option2Description" placeholder="Auswahl Beschriebung Eingeben" [(ngModel)]="option2PizzaDescription">
-  </div>
-  <div class="col-4">
-    <input type="text" class="form-control" style="width:20%;"  name="option1Preis" placeholder="Preis" [(ngModel)]="option1PizzaPreis">
-  </div>
-  </div>
-  <div class="row mt-5">
-    <div class="col-8">
-    <input type="text" class="form-control" name="option3Description" placeholder="Auswahl Beschriebung Eingeben" [(ngModel)]="option3PizzaDescription">
-  </div>
-  <div class="col-4">
-    <input type="text" class="form-control" style="width:20%;"  name="option1Preis" placeholder="Preis" [(ngModel)]="option3PizzaPreis">
-  </div>
-  </div>
-  <div class="row mt-5">
-    <div class="col-8">
-    <input type="text" class="form-control" name="option4Description" placeholder="Auswahl Beschriebung Eingeben" [(ngModel)]="option4PizzaDescription">
-  </div>
-  <div class="col-4">
-    <input type="text" class="form-control" style="width:20%;"  name="option1Preis" placeholder="Preis" [(ngModel)]="option4PizzaPreis">
-  </div>
-  </div>
-</div>
-    <!--Options and Preis nur für Pizza ENds-->
+  <!--Options and Preis nur für Pizza ENds-->
 
 
-          <!--Options and Preis nur für Calzone -->
-         <div *ngIf="selectedCategory=='Calzone'">
-  <div class="row mt-5">
-    <div class="col-8">
-    <input type="text" class="form-control" name="option1Description" placeholder="Auswahl Beschriebung Eingeben" [(ngModel)]="option1CalzoneDescription">
+  <!--Options and Preis nur für Calzone -->
+  <div *ngIf="selectedCategory=='Calzone'">
+    <div class="row mt-5">
+      <div class="col-8">
+        <input type="text" class="form-control" name="option1Description" placeholder="Auswahl Beschriebung Eingeben"
+          [(ngModel)]="option1CalzoneDescription" [disabled]="true">
+      </div>
+      <div class="col-4">
+        <input type="number" min="1" step="any" class="form-control" style="width:20%;" name="option1Preis" placeholder="Preis"
+          [(ngModel)]="option1CalzonePreis">
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-8">
+        <input type="text" class="form-control" name="option2Description" placeholder="Auswahl Beschriebung Eingeben"
+          [(ngModel)]="option2CalzoneDescription" [disabled]="true">
+      </div>
+      <div class="col-4">
+        <input type="number" min="1" step="any" class="form-control" style="width:20%;" name="option2Preis" placeholder="Preis"
+          [(ngModel)]="option2CalzonePreis">
+      </div>
+    </div>
   </div>
-  <div class="col-4">
-    <input type="text" class="form-control" style="width:20%;"  name="option1Preis" placeholder="Preis" [(ngModel)]="option1CalzonePreis">
-  </div>
-  </div>
-  <div class="row mt-5">
-    <div class="col-8">
-    <input type="text" class="form-control" name="option2Description" placeholder="Auswahl Beschriebung Eingeben" [(ngModel)]="option2CalzoneDescription">
-  </div>
-  <div class="col-4">
-    <input type="text" class="form-control" style="width:20%;"  name="option2Preis" placeholder="Preis" [(ngModel)]="option2CalzonePreis">
-  </div>
-  </div>
-</div>
-    <!--Options and Preis nur für Calzone ENds-->
+  <!--Options and Preis nur für Calzone ENds-->
 
-    <!-- Produkte die nicht Pizza oder Calzone sind -->
-     <!-- Produkte Auswahl -->
-<div *ngIf="selectedCategory!='Calzone' && selectedCategory!='Pizza' && selectedCategory!='Vegatarische_Pizza'" class="mt-5">
+  <!-- Produkte die nicht Pizza oder Calzone sind -->
+  <!-- Produkte Auswahl -->
+  <div *ngIf="selectedCategory!='Calzone' && selectedCategory!='Pizza' && selectedCategory!='Vegatarische_Pizza'"
+    class="mt-5">
     <div class="row">
       <h5 class="text-black-50"> Hat den Produkt Auswahl ? </h5>
       <div class="col">
         <select id="hasProductTheOptions" [(ngModel)]="hasProductOptions" class="form-control" name="productOptions">
           <option value="Ja">
             Ja</option>
-            <option value="Nein">
-              Nein</option>
+          <option value="Nein">
+            Nein</option>
         </select>
       </div>
     </div>
     <div class="mt-5" *ngIf="hasProductOptions=='Ja'">
-    <div class="row">
-      <div class="col-10">
-      <h5 class="text-black-50">Auswahl eingeben</h5>
-    </div>
-    <div class="col-2">
-      <button (click)="increaseTheNumber()">
-        <span class="glyphicon glyphicon-plus"></span>
-      </button>
-    </div>
-    </div>
-    <div class="row mt-5" *ngFor="let currentNumber of numberOfTimesOptionArray | slice:0:numberOfTimesOption;let i = index">
-      <div class="col">
-        <input type="text" class="form-control" name="option1Description" placeholder="Auswahl Beschriebung Eingeben" [ngModel]="optionsOfProductArray[i]">
+      <div class="row">
+        <div class="col-10">
+          <h5 class="text-black-50">Auswahl eingeben</h5>
+        </div>
+        <div class="col-2">
+          <button (click)="increaseTheOptionNumber()">
+            <span class="glyphicon glyphicon-plus"></span>
+          </button>
+        </div>
       </div>
-    </div>
+      <div class="row mt-5"
+        *ngFor="let currentNumber of numberOfTimesOptionArray | slice:0:numberOfTimesOption;let i = index">
+        <div class="col">
+          <input type="text" class="form-control" name="option1Description" placeholder="Auswahl Beschriebung Eingeben"
+            [ngModel]="optionsOfProductArray[i]">
+        </div>
+      </div>
     </div>
   </div>
 
-   <!-- Produkte Zugehörige Artikel -->
-    <div class="mt-5 text-center" *ngIf="selectedCategory!='Calzone' && selectedCategory!='Pizza' && selectedCategory!='Vegatarische_Pizza'">
-      <button class="btn btn-block btn-success"> Speichern</button>
+  <!-- Produkte Zugehörige Artikel -->
+  <div *ngIf="selectedCategory!='Calzone' && selectedCategory!='Pizza' && selectedCategory!='Vegatarische_Pizza'"
+    class="mt-5">
+    <div class="row">
+      <h5 class="text-black-50"> Produkt zugehörige Artikel </h5>
+      <div class="col">
+        <select id="hasProductTheAdditions" [(ngModel)]="hasProductAdditions" class="form-control"
+          name="productAdditions">
+          <option value="Ja">
+            Ja</option>
+          <option value="Nein">
+            Nein</option>
+        </select>
+      </div>
     </div>
+    <div class="mt-5" *ngIf="hasProductAdditions=='Ja'">
+      <div class="row">
+        <div class="col-10">
+          <h5 class="text-black-50">Auswahl und Preise eingeben</h5>
+        </div>
+        <div class="col-2">
+          <button (click)="increaseTheAdditionNumber()">
+            <span class="glyphicon glyphicon-plus"></span>
+          </button>
+        </div>
+      </div>
+      <div class="row mt-5"
+        *ngFor="let currentNumber of numberOfTimesAdditionArray | slice:0:numberOfTimesAdditions;let i = index">
+        <div class="col-8">
+          <input type="text" class="form-control" name="option1Description" placeholder="Auswahl Beschriebung Eingeben"
+            (ngModel)="additionsOfProductArray[i].additionDescription">
+        </div>
+        <div class="col-4 ">
+          <div class=" ml-5 input-group-prepend">
+            <span class="input-group-text">€</span>
+            <input type="number" class="form-control col-xs-3 priceinput" min="1" step="any"  name="articlePrice"
+              (ngModel)="additionsOfProductArray[i].additionPrice">
+            <span class="input-group-text">.00</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Produkte Zugehörige Artikel Beendet-->
+  <div class="mt-5 text-center"
+    *ngIf="selectedCategory!='Calzone' && selectedCategory!='Pizza' && selectedCategory!='Vegatarische_Pizza'">
+    <button class="btn btn-block btn-success"> Speichern</button>
+  </div>
 </div>

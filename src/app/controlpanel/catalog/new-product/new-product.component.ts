@@ -19,9 +19,12 @@ export class NewProductComponent implements OnInit {
   option2CalzoneDescription:string="Groß, Ø30cm:";
   hasProductOptions:string;
   numberOfTimesOption=1;
+  numberOfTimesAdditions=1;
+  numberOfTimesAdditionArray=[...Array(this.numberOfTimesAdditions).keys()];
   numberOfTimesOptionArray= [...Array(this.numberOfTimesOption).keys()] ;
-  optionsOfProductArray=[...Array(this.numberOfTimesOption).keys()] ;
-
+  additionsOfPrductArray=[...Array(this.numberOfTimesAdditions).keys()];
+  optionsOfProductArray=[...Array(this.numberOfTimesOption).keys()];
+  additionsOfProductArray: Array<NewProductAddition>=[];
 
 
   categories: string[] = ["Indische_Vorspeisen", "Salat", "Pizza", "Vegatarische_Pizza", "Calzone", "PizzabrotØ30", "Pasta", "Pasta_al_Forno", "Indische_Gerichte",
@@ -34,11 +37,21 @@ export class NewProductComponent implements OnInit {
   ngOnInit() {
   }
 
-  increaseTheNumber(){
+  increaseTheOptionNumber(){
     this.numberOfTimesOptionArray=[];
     this.numberOfTimesOptionArray= [...Array(++this.numberOfTimesOption).keys()] ;
   }
 
+  increaseTheAdditionNumber(){
+    this.numberOfTimesAdditionArray=[];
+    this.numberOfTimesAdditionArray= [...Array(++this.numberOfTimesAdditions).keys()] ;
+  }
 
 
+}
+
+class NewProductAddition{
+
+  additionDescription:string;
+  additionPrice:number;
 }
