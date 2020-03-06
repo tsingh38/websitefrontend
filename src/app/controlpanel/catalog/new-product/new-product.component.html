@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <h5 class="text-black-50"> Wählen Sie bitte eine Kategorie</h5>
-    <div class="col">
+    <div class="col ml-1">
       <select id="selectCategory" [(ngModel)]="selectedCategory" class="form-control" name="currentOption">
         <option *ngFor="let $currentCategory of categories;">
           {{$currentCategory}}</option>
@@ -17,7 +17,7 @@
   <div class="row mt-3">
     <h5 class="text-black-50"> Produkt Preis eingeben</h5>
     <div class=" ml-5 input-group-prepend">
-      <span class="input-group-text">€</span>
+      <span class=" ml-5 input-group-text">€</span>
     </div>
     <input type="number" min="1" step="any" class="form-control col-xs-3 priceinput" style="width:10%;"
       name="articlePrice" [(ngModel)]="articlePrice">
@@ -102,7 +102,7 @@
     class="mt-5">
     <div class="row">
       <h5 class="text-black-50"> Hat den Produkt Auswahl ? </h5>
-      <div class="col">
+      <div class=" ml-5 col">
         <select id="hasProductTheOptions" [(ngModel)]="hasProductOptions" (change)="executeOptionChangeInDropDown($event)" class="form-control" name="productOptions">
           <option value="Ja">
             Ja</option>
@@ -124,7 +124,7 @@
       </div>
       <div class="row mt-5" *ngFor="let currentOption of optionsOfProductArray;let i = index;trackBy:trackByFn">
         <div class="col">
-          <input type="text" class="form-control" placeholder="Auswahl Beschriebung Eingeben" [(ngModel)]="optionsOfProductArray[i]">
+          <input type="text" class="form-control" placeholder="*zb. Dressing für Salat" [(ngModel)]="optionsOfProductArray[i]">
         </div>
       </div>
     </div>
@@ -135,7 +135,7 @@
     class="mt-5">
     <div class="row">
       <h5 class="text-black-50"> Produkt zugehörige Artikel </h5>
-      <div class="col">
+      <div class=" ml-5 col">
         <select id="hasProductTheAdditions" [(ngModel)]="hasProductAdditions" (change)="executeAdditionChangeInDropDown($event)" class="form-control"
           name="productAdditions">
           <option value="Ja">
@@ -158,7 +158,7 @@
       </div>
       <div class="row mt-5" *ngFor="let product of additionsOfProductArray;let i = index">
         <div class="col-8">
-          <input type="text" class="form-control" placeholder="Auswahl Beschriebung Eingeben"
+          <input type="text" class="form-control" placeholder="*zb Brot mit Indische Essen"
             [(ngModel)]="product.additionDescription">
         </div>
         <div class="col-4 ">
