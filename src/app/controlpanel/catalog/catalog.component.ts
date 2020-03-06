@@ -75,7 +75,7 @@ export class CatalogComponent implements OnInit {
       }.bind(this), 3000);
     }, (error) => {
       this.showInfotext = true;
-      this.isOperationSuccessful=true;
+      this.isOperationSuccessful=false;
       this.isOperationInProgress=false;
       this.srvMessage = "Product konnte nicht gelöscht werden";
       setTimeout(function () {

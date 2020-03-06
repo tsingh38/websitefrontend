@@ -1,4 +1,4 @@
-<div *ngIf="showInfotext && !isOperationInProgress" class="text-center" [ngClass]="{'bg-success text-white':isOperationSuccessful==true,'text-danger':isOperationSuccessful==false}">
+<div *ngIf="showInfotext && !isOperationInProgress" class="text-center m-4" [ngClass]="{'text-success':isOperationSuccessful==true,'text-danger':isOperationSuccessful==false}">
   <span>{{srvMessage}}</span>
 </div>
 <div *ngIf="isOperationInProgress" style="text-align: center;">
