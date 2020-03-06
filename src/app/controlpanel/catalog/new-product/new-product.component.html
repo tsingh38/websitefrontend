@@ -1,8 +1,16 @@
+<div *ngIf="showInfotext && !isOperationInProgress" class="text-center" [ngClass]="{'bg-success text-white':isOperationSuccessful==true,'text-danger':isOperationSuccessful==false}">
+  <span>{{srvMessage}}</span>
+</div>
+<div *ngIf="isOperationInProgress" style="text-align: center;">
+  <app-loading-spinner></app-loading-spinner>
+</div>
+
+
 <div class="container">
   <div class="row">
     <h5 class="text-black-50"> Wählen Sie bitte eine Kategorie</h5>
     <div class="col ml-1">
-      <select id="selectCategory" [(ngModel)]="selectedCategory" class="form-control" name="currentOption">
+      <select id="selectCategory" [(ngModel)]="selectedCategory" (change)="resetProductForm()" class="form-control" name="currentOption">
         <option *ngFor="let $currentCategory of categories;">
           {{$currentCategory}}</option>
       </select>

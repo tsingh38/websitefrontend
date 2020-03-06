@@ -32,6 +32,10 @@ export class NewProductComponent implements OnInit {
   hasProductAdditions: string;
   optionsOfProductArray: string[] = [];
   additionsOfProductArray: Array<NewProductAddition> = [];
+  showInfotext:boolean;
+  isOperationInProgress=false;
+  isOperationSuccessful:boolean;
+  srvMessage:string;
 
 
   categories: string[] = ["Indische_Vorspeisen", "Salat", "Pizza", "Vegatarische_Pizza", "Calzone", "PizzabrotØ30", "Pasta", "Pasta_al_Forno", "Indische_Gerichte",
@@ -125,6 +129,13 @@ export class NewProductComponent implements OnInit {
     return allProductOptions;
   }
 
+  resetProductForm(){
+    this.articleDescription="";
+    this.articleDetailDescription="";
+    this.isCategoryPizza=false;
+    this.productBasePrice=0;
+  }
+
   getProductAdditions(): productItemAddition[] {
     let allProductAdditions:productItemAddition[]=[];
     for(let i=0; i<this.additionsOfProductArray.length; i++){
@@ -137,6 +148,7 @@ export class NewProductComponent implements OnInit {
      return allProductAdditions;
   }
   processNewProduct() {
+    this.isOperationInProgress=true;
     let product: productItem = {} as any;
     product.description = this.articleDescription;
     product.productCategory = this.selectedCategory;
@@ -160,11 +172,25 @@ export class NewProductComponent implements OnInit {
       product.productOptions = this.getProductOptions();
       product.productAdditions = this.getProductAdditions();
     }
-    // Post Aufruf
+    //Server Aufruf
     this.catalogService.addNewProduct(product).subscribe(()=>{
-      // In success Fall what to do 
+      this.isOperationInProgress=false;
+      this.showInfotext = true;
+      this.srvMessage = "Product wurde erfolgreich hinzufügt";
+      this.isOperationSuccessful=true;
+      setTimeout(function () {
+        this.showInfotext = false;
+      }.bind(this), 3000);
     },error=>{
-     // in error Fall what to do 
+      this.showInfotext = true;
+      this.isOperationSuccessful=true;
+      this.isOperationInProgress=false;
+      this.srvMessage = "Product konnte nicht hinzufügt werden";
+      setTimeout(function () {
+        this.showInfotext = false;
+      }.bind(this), 3000);
+    },()=>{
+     this.resetProductForm();
     })
   }
 }
