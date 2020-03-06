@@ -37,6 +37,22 @@ export class NewProductComponent implements OnInit {
     return index;
  }
 
+ executeOptionChangeInDropDown($event:Event){
+  var selectedCategory: string = (<HTMLTextAreaElement>event.target).value;
+  if(selectedCategory==='Ja'){
+    this.optionsOfProductArray.push("");
+  }
+ }
+
+
+ executeAdditionChangeInDropDown($event:Event){
+  var selectedCategory: string = (<HTMLTextAreaElement>event.target).value;
+  if(selectedCategory==='Ja'){
+    this.additionsOfProductArray.push(new NewProductAddition());
+  }
+ }
+
+
   increaseTheOptionNumber(){
     this.optionsOfProductArray.push("");
   }

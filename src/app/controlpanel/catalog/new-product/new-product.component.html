@@ -103,7 +103,7 @@
     <div class="row">
       <h5 class="text-black-50"> Hat den Produkt Auswahl ? </h5>
       <div class="col">
-        <select id="hasProductTheOptions" [(ngModel)]="hasProductOptions" class="form-control" name="productOptions">
+        <select id="hasProductTheOptions" [(ngModel)]="hasProductOptions" (change)="executeOptionChangeInDropDown($event)" class="form-control" name="productOptions">
           <option value="Ja">
             Ja</option>
           <option value="Nein">
@@ -136,7 +136,7 @@
     <div class="row">
       <h5 class="text-black-50"> Produkt zugehörige Artikel </h5>
       <div class="col">
-        <select id="hasProductTheAdditions" [(ngModel)]="hasProductAdditions" class="form-control"
+        <select id="hasProductTheAdditions" [(ngModel)]="hasProductAdditions" (change)="executeAdditionChangeInDropDown($event)" class="form-control"
           name="productAdditions">
           <option value="Ja">
             Ja</option>
