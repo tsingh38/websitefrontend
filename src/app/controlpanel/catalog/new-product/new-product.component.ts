@@ -28,8 +28,8 @@ export class NewProductComponent implements OnInit {
   option1CalzonePrice: number;
   option2CalzoneDescription: string = "Groß, Ø30cm:";
   option2CalzonePrice: number;
-  hasProductOptions: string;
-  hasProductAdditions: string;
+  hasProductOptions: string="Nein";
+  hasProductAdditions: string="Nein";
   optionsOfProductArray: string[] = [];
   additionsOfProductArray: Array<NewProductAddition> = [];
   showInfotext:boolean;
@@ -54,7 +54,7 @@ export class NewProductComponent implements OnInit {
 
   executeOptionChangeInDropDown($event: Event) {
     var selectedCategory: string = (<HTMLTextAreaElement>event.target).value;
-    if (selectedCategory === 'Ja') {
+    if (selectedCategory === 'Ja' && this.optionsOfProductArray.length < 1) {
       this.optionsOfProductArray.push("");
     }
   }
@@ -62,7 +62,7 @@ export class NewProductComponent implements OnInit {
 
   executeAdditionChangeInDropDown($event: Event) {
     var selectedCategory: string = (<HTMLTextAreaElement>event.target).value;
-    if (selectedCategory === 'Ja') {
+    if (selectedCategory === 'Ja' && this.additionsOfProductArray.length < 1) {
       this.additionsOfProductArray.push(new NewProductAddition());
     }
   }

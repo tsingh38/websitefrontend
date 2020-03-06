@@ -22,22 +22,17 @@
       <input type="text" class="form-control"  [(ngModel)]="articleDescription">
     </div>
   </div>
-  <div class="row mt-3">
+  <div class="row mt-3 mr-2">
     <h5 class="text-black-50"> Produkt Zusätzlich Beschreibung </h5>
     <div class="col">
       <input  type="text" class="form-control"  [(ngModel)]="articleDetailDescription">
     </div>
   </div>
-  <div class="row mt-3" *ngIf="selectedCategory!='Calzone' && selectedCategory!='Pizza' && selectedCategory!='Vegatarische_Pizza'">
+  <div class="row mt-3 " *ngIf="selectedCategory!='Calzone' && selectedCategory!='Pizza' && selectedCategory!='Vegatarische_Pizza'">
     <h5 class="text-black-50"> Produkt Preis eingeben</h5>
-    <div class=" ml-5 input-group-prepend">
-      <span class=" ml-5 input-group-text">€</span>
-    </div>
-    <input type="number" min="1" step="any" class="form-control col-xs-3 priceinput" style="width:10%;"
+    <span style="visibility:hidden;">dummy:text</span>
+    <input type="number" min="1" step="any" class="form-control col-xs-3  priceinput" style="width:10%;"
       name="articlePrice" [(ngModel)]="productBasePrice">
-    <div class="input-group-append">
-      <span class="input-group-text">.00</span>
-    </div>
   </div>
   <!--Options and Preis nur für Pizza -->
   <div *ngIf="selectedCategory=='Pizza' || selectedCategory=='Vegatarische_Pizza'">
@@ -176,11 +171,9 @@
             [(ngModel)]="product.additionDescription">
         </div>
         <div class="col-4 ">
-          <div class=" ml-5 input-group-prepend">
-            <span class="input-group-text">€</span>
-            <input type="number" class="form-control col-xs-3 priceinput" min="1" step="any" name="articlePrice"
+          <div class=" ml-5">
+            <input type="number" class="form-control col-xs-3 priceinput" min="1" step="any" placeholder="Preis" name="articlePrice"
               [(ngModel)]="product.additionPrice">
-            <span class="input-group-text">.00</span>
           </div>
         </div>
       </div>
