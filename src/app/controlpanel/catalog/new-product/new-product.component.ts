@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { TestBed } from '@angular/core/testing';
 
 @Component({
   selector: 'app-new-product',
@@ -18,12 +19,7 @@ export class NewProductComponent implements OnInit {
   option1CalzoneDescription:string="klein, Ø26cm:";
   option2CalzoneDescription:string="Groß, Ø30cm:";
   hasProductOptions:string;
-  numberOfTimesOption=1;
-  numberOfTimesAdditions=1;
-  numberOfTimesAdditionArray=[...Array(this.numberOfTimesAdditions).keys()];
-  numberOfTimesOptionArray= [...Array(this.numberOfTimesOption).keys()] ;
-  additionsOfPrductArray=[...Array(this.numberOfTimesAdditions).keys()];
-  optionsOfProductArray=[...Array(this.numberOfTimesOption).keys()];
+  optionsOfProductArray:string[]=[];
   additionsOfProductArray: Array<NewProductAddition>=[];
 
 
@@ -37,14 +33,16 @@ export class NewProductComponent implements OnInit {
   ngOnInit() {
   }
 
+  trackByFn(index: any, item: any) {
+    return index;
+ }
+
   increaseTheOptionNumber(){
-    this.numberOfTimesOptionArray=[];
-    this.numberOfTimesOptionArray= [...Array(++this.numberOfTimesOption).keys()] ;
+    this.optionsOfProductArray.push("");
   }
 
   increaseTheAdditionNumber(){
-    this.numberOfTimesAdditionArray=[];
-    this.numberOfTimesAdditionArray= [...Array(++this.numberOfTimesAdditions).keys()] ;
+    this.additionsOfProductArray.unshift(new NewProductAddition());
   }
 
 
@@ -54,4 +52,5 @@ class NewProductAddition{
 
   additionDescription:string;
   additionPrice:number;
+
 }
