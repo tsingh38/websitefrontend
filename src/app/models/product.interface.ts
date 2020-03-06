@@ -1,5 +1,5 @@
 export interface  productItem{
-id:number;
+id?:number;
 description:string;
 productCategory:string;
 optionDescription:string;

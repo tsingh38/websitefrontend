@@ -11,16 +11,22 @@
   <div class="row mt-3">
     <h5 class="text-black-50"> Produkt Beschreibung eingeben </h5>
     <div class="col">
-      <input type="text" class="form-control" name="articleDescription" [(ngModel)]="articleDescription">
+      <input type="text" class="form-control"  [(ngModel)]="articleDescription">
     </div>
   </div>
   <div class="row mt-3">
+    <h5 class="text-black-50"> Produkt Zusätzlich Beschreibung </h5>
+    <div class="col">
+      <input  type="text" class="form-control"  [(ngModel)]="articleDetailDescription">
+    </div>
+  </div>
+  <div class="row mt-3" *ngIf="selectedCategory!='Calzone' && selectedCategory!='Pizza' && selectedCategory!='Vegatarische_Pizza'">
     <h5 class="text-black-50"> Produkt Preis eingeben</h5>
     <div class=" ml-5 input-group-prepend">
       <span class=" ml-5 input-group-text">€</span>
     </div>
     <input type="number" min="1" step="any" class="form-control col-xs-3 priceinput" style="width:10%;"
-      name="articlePrice" [(ngModel)]="articlePrice">
+      name="articlePrice" [(ngModel)]="productBasePrice">
     <div class="input-group-append">
       <span class="input-group-text">.00</span>
     </div>
@@ -29,42 +35,42 @@
   <div *ngIf="selectedCategory=='Pizza' || selectedCategory=='Vegatarische_Pizza'">
     <div class="row mt-5">
       <div class="col-8">
-        <input type="text" class="form-control" name="option1Description" placeholder="Auswahl Beschriebung Eingeben"
+        <input type="text" class="form-control" name="option1Description" 
           [(ngModel)]="option1PizzaDescription" [disabled]="true">
       </div>
       <div class="col-4">
         <input type="number" min="1" step="any" class="form-control" style="width:20%;" name="option1Preis"
-          placeholder="Preis" [(ngModel)]="option1PizzaPreis">
+          placeholder="Preis" [(ngModel)]="option1PizzaPrice">
       </div>
     </div>
     <div class="row mt-5">
       <div class="col-8">
-        <input type="text" class="form-control" name="option2Description" placeholder="Auswahl Beschriebung Eingeben"
+        <input type="text" class="form-control" name="option2Description" 
           [(ngModel)]="option2PizzaDescription" [disabled]="true">
       </div>
       <div class="col-4">
-        <input type="number" min="1" step="any" style="width:20%;" name="option1Preis" placeholder="Preis"
-          [(ngModel)]="option1PizzaPreis">
+        <input type="number" min="1" step="any" style="width:20%;" name="option1Preis" 
+        placeholder="Preis" [(ngModel)]="option2PizzaPrice">
       </div>
     </div>
     <div class="row mt-5">
       <div class="col-8">
-        <input type="text" class="form-control" name="option3Description" placeholder="Auswahl Beschriebung Eingeben"
+        <input type="text" class="form-control" name="option3Description"
           [(ngModel)]="option3PizzaDescription" [disabled]="true">
       </div>
       <div class="col-4">
-        <input type="number" min="1" step="any" class="form-control" style="width:20%;" name="option1Preis"
-          placeholder="Preis" [(ngModel)]="option3PizzaPreis">
+        <input type="number" min="1" step="any" class="form-control" style="width:20%;" 
+          placeholder="Preis" [(ngModel)]="option3PizzaPrice">
       </div>
     </div>
     <div class="row mt-5">
       <div class="col-8">
-        <input type="text" class="form-control" name="option4Description" placeholder="Auswahl Beschriebung Eingeben"
+        <input type="text" class="form-control" name="option4Description"
           [(ngModel)]="option4PizzaDescription" [disabled]="true">
       </div>
       <div class="col-4">
-        <input type="number" min="1" step="any" class="form-control" style="width:20%;" name="option1Preis"
-          placeholder="Preis" [(ngModel)]="option4PizzaPreis">
+        <input type="number" min="1" step="any" class="form-control" style="width:20%;" 
+          placeholder="Preis" [(ngModel)]="option4PizzaPrice">
       </div>
     </div>
   </div>
@@ -80,7 +86,7 @@
       </div>
       <div class="col-4">
         <input type="number" min="1" step="any" class="form-control" style="width:20%;" name="option1Preis"
-          placeholder="Preis" [(ngModel)]="option1CalzonePreis">
+          placeholder="Preis" [(ngModel)]="option1CalzonePrice">
       </div>
     </div>
     <div class="row mt-5">
@@ -90,7 +96,7 @@
       </div>
       <div class="col-4">
         <input type="number" min="1" step="any" class="form-control" style="width:20%;" name="option2Preis"
-          placeholder="Preis" [(ngModel)]="option2CalzonePreis">
+          placeholder="Preis" [(ngModel)]="option2CalzonePrice">
       </div>
     </div>
   </div>
@@ -174,8 +180,7 @@
   </div>
 
   <!--Produkte Zugehörige Artikel Beendet-->
-  <div class="mt-5 text-center"
-    *ngIf="selectedCategory!='Calzone' && selectedCategory!='Pizza' && selectedCategory!='Vegatarische_Pizza'">
-    <button class="btn btn-block btn-success"> Speichern</button>
+  <div class="mt-5 text-center">
+    <button class="btn btn-block btn-success" (click)="processNewProduct()"> Speichern</button>
   </div>
 </div>

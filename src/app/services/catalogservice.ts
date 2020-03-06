@@ -19,6 +19,10 @@ export class CatalogService {
        return  this.http.deleteProduct(product);
     }
 
+    addNewProduct(product:productItem){
+        return this.http.addProduct(product);
+    }
+
  
 
 
