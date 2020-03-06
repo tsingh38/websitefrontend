@@ -107,6 +107,7 @@ export class NewProductComponent implements OnInit {
     calzoneOption1.optionPriceForSmall=this.option1CalzonePrice;
     calzoneOption2.productOptionDescription=this.option2CalzoneDescription;
     calzoneOption2.optionPriceForSmall=this.option2CalzonePrice;
+    calzoneOption2.default=true;
     allCalzoneOptions.push(calzoneOption1);
     allCalzoneOptions.push(calzoneOption2);
     return allCalzoneOptions;
