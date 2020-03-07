@@ -24,6 +24,7 @@ export class CustomerInformationComponent implements OnInit {
   companyname:string;
   comment:string;
   submittingOrder=false;
+  hasUserCheckedTheUnderStandingCheckbox:boolean=false;
   
   constructor( private router:Router, private customerOrderService:CustomerOrderService) { }
   @ViewChild('f', { static: false }) formRef: NgForm;
