@@ -63,7 +63,6 @@ export class EditProductComponent implements OnInit {
 
   onClose(){
     this.close.emit();
-    this.product.productAdditions.length
   }
   cancel(){
     this.onClose();

@@ -1,5 +1,5 @@
 <div class="backdrop"></div>
-<div class="alert-box text-center">
+<div class="alert-box text-center p-5">
 
     <!--  Edit Function starts-->
     <div class="float-right">
@@ -102,13 +102,13 @@
 
 
 <!--Options and Preis nur für Calzone -->
-<div *ngIf="selectedCategory=='Calzone'">
+<div *ngIf="product.productCategory =='Calzone'">
     <div class="row mt-5">
         <div class="col-8">
             <input type="text" class="form-control" [(ngModel)]="option1CalzoneDescription" [disabled]="true">
         </div>
         <div class="col-4">
-            <input type="number" min="1" step="any" class="form-control" style="width:20%;" name="option1Preis"
+            <input type="number" min="1" step="any" class="form-control" style="width:20%;"
                 placeholder="Preis" [(ngModel)]="option1CalzonePrice">
         </div>
     </div>
@@ -129,19 +129,22 @@
 <!-- Produkte Auswahl -->
 <div *ngIf="product.productCategory!='Calzone' && product.productCategory!='Pizza' && product.productCategory!='Vegatarische_Pizza' && product.productOptions.length > 0"
     class="mt-5">
-    <div class="mt-5" *ngIf="hasProductOptions=='Ja'">
-        <div class="row mt-5" *ngFor="let currentOption of this.product.productOptions;let i = index;trackBy:trackByFn">
-            <div class="col">
-                <input type="text" class="form-control" [(ngModel)]="product.productOptions[i]">
+    <div class="mt-5">
+        <div class="row mt-5" *ngFor="let currentOption of product.productOptions;let i = index;trackBy:trackByFn">
+           
+            
+            <div class="col-5">
+                <input type="text" class="form-control" [(ngModel)]="product.productOptions[i].productOptionDescription">
             </div>
+            <div class="col-7"></div>
         </div>
     </div>
 </div>
 
 <!-- Produkte Zugehörige Artikel -->
-<div *ngIf="selectedCategory!='Calzone' && selectedCategory!='Pizza' && selectedCategory!='Vegatarische_Pizza' && product.productAdditions.length > 0"
+<div *ngIf="product.productCategory!='Calzone' && product.productCategory!='Pizza' && product.productCategory!='Vegatarische_Pizza' && product.productAdditions.length > 0"
     class="mt-5">
-    <div class="mt-5" *ngIf="hasProductAdditions=='Ja'">
+    <div class="mt-5">
         <div class="row mt-5" *ngFor="let product of product.productAdditions;let i = index">
             <div class="col-8">
                 <input type="text" class="form-control" [(ngModel)]="product.additionDescription">
@@ -157,7 +160,7 @@
 </div>
 
 <!--Produkte Zugehörige Artikel Beendet-->
-<div class="mt-5 text-center fixed-bottom">
+<div class="mt-5 text-center">
     <button class="btn btn-success" (click)="processNewProduct()"> Speichern</button>
     <button class=" ml-3 btn btn-danger" (click)="cancel()"> Abrechnen</button>
 </div>
