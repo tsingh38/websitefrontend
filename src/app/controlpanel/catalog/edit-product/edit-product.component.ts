@@ -69,6 +69,32 @@ export class EditProductComponent implements OnInit {
 
 processUpdatingProduct(){
   this.isOperationInProgress=true;
+  if(this.productCategory==='Pizza' || this.productCategory==='Vegatarische_Pizza'){
+    for(let $prodcutOptions of this.product.productOptions){
+      if($prodcutOptions.productOptionDescription==='klein, Ø26cm:'){
+        $prodcutOptions.optionPriceForSmall= this.option1PizzaPrice;
+      }
+      if($prodcutOptions.productOptionDescription==='Groß, Ø30cm:'){
+        $prodcutOptions.optionPriceForNormal= this.option2PizzaPrice;
+      }
+      if($prodcutOptions.productOptionDescription==='Familie,46cm x 33cm:'){
+        $prodcutOptions.optionPriceForFamily= this.option3PizzaPrice;
+      }
+      if($prodcutOptions.productOptionDescription==='Party,60cm x 40cm:'){
+        $prodcutOptions.optionPriceForParty= this.option4PizzaPrice;
+      }
+    }
+  }
+  if(this.productCategory==='Calzone'){
+    for(let $prodcutOptions of this.product.productOptions){
+      if($prodcutOptions.productOptionDescription==='klein, Ø26cm:'){
+        $prodcutOptions.optionPriceForSmall= this.option1CalzonePrice;
+      }
+      if($prodcutOptions.productOptionDescription==='Groß, Ø30cm:'){
+        $prodcutOptions.optionPriceForNormal= this.option2CalzonePrice;
+      }
+    }
+  }
 this.catalogService.editProduct(this.product).subscribe((response)=>{
   this.isOperationInProgress=false;
       this.showInfotext = true;
