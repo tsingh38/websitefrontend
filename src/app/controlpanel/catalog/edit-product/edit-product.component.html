@@ -1,0 +1,153 @@
+<div class="backdrop"></div>
+<div class="alert-box text-center">
+    
+<!--  Edit Function starts-->
+<div class="float-right">
+    <button class="btn btn-secondary" (click)="onClose()"><span class="glyphicon glyphicon-remove float-right"></span></button></div>
+
+<div *ngIf="showInfotext && !isOperationInProgress" class="text-center m-4" [ngClass]="{'text-success':isOperationSuccessful==true,'text-danger':isOperationSuccessful==false}">
+    <span>{{srvMessage}}</span>
+  </div>
+  <div *ngIf="isOperationInProgress" style="text-align: center;">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+  
+  
+  <div class="container">
+    <div class="row">
+      <h5 class="text-black-50"> Produkt Kategorie</h5>
+      <div class="col ml-5">
+        <input type="text" class="form-control"  [ngModel]="product.productCategory" [disabled]="true">
+      </div>
+    </div>
+    <div class="row mt-3">
+      <h5 class="text-black-50"> Produkt Beschreibung </h5>
+      <div class="col">
+        <input type="text" class="form-control"  [(ngModel)]="product.description">
+      </div>
+    </div>
+    <div class="row mt-3 mr-2">
+      <h5 class="text-black-50"> Produkt Zusätzlich Beschreibung </h5>
+      <div class="col">
+        <input  type="text" class="form-control"  [(ngModel)]="product.optionDescription">
+      </div>
+    </div>
+    <div class="row mt-3 " *ngIf="product.productCategory!='Calzone' && product.productCategory!='Pizza' && product.productCategory!='Vegatarische_Pizza'">
+      <h5 class="text-black-50"> Produkt Preis</h5>
+      <span style="visibility:hidden;">dummy:text</span>
+      <input type="number" min="1" step="any" class="form-control col-xs-3  priceinput" style="width:10%;"
+       [(ngModel)]="product.productBasePrice">
+    </div>
+    <!--Options and Preis nur für Pizza -->
+    <div *ngIf="product.productCategory=='Pizza' || product.productCategory=='Vegatarische_Pizza'">
+      <div class="row mt-5">
+        <div class="col-8">
+          <input type="text" class="form-control" name="option1Description" 
+            [(ngModel)]="option1PizzaDescription" [disabled]="true">
+        </div>
+        <div class="col-4">
+          <input type="number" min="1" step="any" class="form-control" style="width:20%;"
+          [(ngModel)]="option1PizzaPrice">
+        </div>
+      </div>
+      <div class="row mt-5">
+        <div class="col-8">
+          <input type="text" class="form-control" name="option2Description" 
+            [(ngModel)]="option2PizzaDescription" [disabled]="true">
+        </div>
+        <div class="col-4">
+          <input type="number" min="1" step="any"  class="form-control" style="width:20%;" name="option1Preis" 
+         [(ngModel)]="option2PizzaPrice">
+        </div>
+      </div>
+      <div class="row mt-5">
+        <div class="col-8">
+          <input type="text" class="form-control" name="option3Description"
+            [(ngModel)]="option3PizzaDescription" [disabled]="true">
+        </div>
+        <div class="col-4">
+          <input type="number" min="1" step="any" class="form-control" style="width:20%;" 
+            placeholder="Preis" [(ngModel)]="option3PizzaPrice">
+        </div>
+      </div>
+      <div class="row mt-5">
+        <div class="col-8">
+          <input type="text" class="form-control" name="option4Description"
+            [(ngModel)]="option4PizzaDescription" [disabled]="true">
+        </div>
+        <div class="col-4">
+          <input type="number" min="1" step="any" class="form-control" style="width:20%;" 
+            placeholder="Preis" [(ngModel)]="option4PizzaPrice">
+        </div>
+      </div>
+    </div>
+    <!--Options and Preis nur für Pizza ENds-->
+  
+  
+    <!--Options and Preis nur für Calzone -->
+    <div *ngIf="selectedCategory=='Calzone'">
+      <div class="row mt-5">
+        <div class="col-8">
+          <input type="text" class="form-control"
+            [(ngModel)]="option1CalzoneDescription" [disabled]="true">
+        </div>
+        <div class="col-4">
+          <input type="number" min="1" step="any" class="form-control" style="width:20%;" name="option1Preis"
+            placeholder="Preis" [(ngModel)]="option1CalzonePrice">
+        </div>
+      </div>
+      <div class="row mt-5">
+        <div class="col-8">
+          <input type="text" class="form-control" name="option2Description" placeholder="Auswahl Beschriebung Eingeben"
+            [(ngModel)]="option2CalzoneDescription" [disabled]="true">
+        </div>
+        <div class="col-4">
+          <input type="number" min="1" step="any" class="form-control" style="width:20%;" name="option2Preis"
+            placeholder="Preis" [(ngModel)]="option2CalzonePrice">
+        </div>
+      </div>
+    </div>
+    <!--Options and Preis nur für Calzone ENds-->
+  
+    <!-- Produkte die nicht Pizza oder Calzone sind -->
+    <!-- Produkte Auswahl -->
+    <div *ngIf="product.productCategory!='Calzone' && product.productCategory!='Pizza' && product.productCategory!='Vegatarische_Pizza' && product.productOptions.length > 0"
+      class="mt-5">
+      <div class="mt-5" *ngIf="hasProductOptions=='Ja'">
+        <div class="row mt-5" *ngFor="let currentOption of this.product.productOptions;let i = index;trackBy:trackByFn">
+          <div class="col">
+            <input type="text" class="form-control"  [(ngModel)]="product.productOptions[i]">
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Produkte Zugehörige Artikel -->
+    <div *ngIf="selectedCategory!='Calzone' && selectedCategory!='Pizza' && selectedCategory!='Vegatarische_Pizza' && product.productAdditions.length > 0"
+      class="mt-5">
+      <div class="mt-5" *ngIf="hasProductAdditions=='Ja'">
+        <div class="row mt-5" *ngFor="let product of product.productAdditions;let i = index">
+          <div class="col-8">
+            <input type="text" class="form-control"
+              [(ngModel)]="product.additionDescription">
+          </div>
+          <div class="col-4 ">
+            <div class=" ml-5">
+              <input type="number" class="form-control col-xs-3 priceinput" min="1" step="any" 
+                [(ngModel)]="product.additionPrice">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!--Produkte Zugehörige Artikel Beendet-->
+    <div class="mt-5 text-center">
+      <button class="btn btn-success" (click)="processNewProduct()"> Speichern</button>
+      <button class=" ml-3 btn btn-success" (click)="cancel()"> Abrechnen</button>
+    </div>
+  </div>
+<!--  Edit Function ends-->
+
+
+</div>

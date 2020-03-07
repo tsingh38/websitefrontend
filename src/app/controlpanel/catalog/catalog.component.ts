@@ -6,6 +6,7 @@ import { DeleteConfirmationComponent } from './delete-confirmation/delete-confir
 import { Subscription } from 'rxjs';
 import { CatalogService } from 'src/app/services/catalogservice';
 import { productItem } from 'src/app/models/product.interface';
+import { EditProductComponent } from './edit-product/edit-product.component';
 
 @Component({
   selector: 'app-catalog',
@@ -84,6 +85,20 @@ export class CatalogComponent implements OnInit {
     },()=>{
     })
   }
+
+editProduct(currentProduct:productItem){
+  //TODO EditProductComponent
+  const editView=this.componentFactoryResolver.resolveComponentFactory(EditProductComponent);
+  const viewContainerReff= this.viewContainerRef.viewContainerRef;
+  viewContainerReff.clear();
+  const compRef= viewContainerReff.createComponent(editView);
+  compRef.instance.product=currentProduct;
+  this.closeSub= compRef.instance.close.subscribe(()=>{
+    this.closeSub.unsubscribe;
+    viewContainerReff.clear(); 
+  });
+}
+
 
   deleteConfirmation(currentProduct:productItem){
     const orderHistoryView=this.componentFactoryResolver.resolveComponentFactory(DeleteConfirmationComponent);

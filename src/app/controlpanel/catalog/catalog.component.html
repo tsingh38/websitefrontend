@@ -26,7 +26,7 @@
         <tr *ngFor="let $product of productsForSelectedCategory">
             <td>{{$product.id}}</td>
             <td>{{$product.description}}</td>
-            <td> <a  style="color:darkslategray;"> <span class="glyphicon glyphicon-pencil"></span> </a></td>
+            <td> <a  style="color:darkslategray;"  (click)="editProduct($product)" > <span class="glyphicon glyphicon-pencil"></span> </a></td>
             <td><a  style="color:red;" (click)="deleteConfirmation($product)"><span class=" glyphicon glyphicon-trash"></span></a></td>
 
         </tr>  

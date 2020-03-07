@@ -41,6 +41,7 @@ import { ShopTimingsUtil } from './services/ShopTimingsUtil.service';
 import { DeleteConfirmationComponent } from './controlpanel/catalog/delete-confirmation/delete-confirmation.component';
 import { CatalogService } from './services/catalogservice';
 import { NewProductComponent } from './controlpanel/catalog/new-product/new-product.component';
+import { EditProductComponent } from './controlpanel/catalog/edit-product/edit-product.component';
 
 
 const appRoutes: Routes = [
@@ -90,7 +91,8 @@ const appRoutes: Routes = [
   ChangePasswordComponent,
   AlertBoxComponent,
   DeleteConfirmationComponent,
-  NewProductComponent
+  NewProductComponent,
+  EditProductComponent
 
   ],
   imports: [
@@ -98,6 +100,6 @@ const appRoutes: Routes = [
   ],
   providers: [AuthGuardService,CartService,CustomerOrderService, NavGuardService,CatalogService, MealService,{provide:HTTP_INTERCEPTORS,useClass:AuthInterceptorService,multi:true}, ControlPanelService,HttpUtil,StaticDataService],
   bootstrap: [AppComponent],
-  entryComponents:[OrderHistoryViewModalComponent,DeleteConfirmationComponent]
+  entryComponents:[OrderHistoryViewModalComponent,EditProductComponent,DeleteConfirmationComponent]
 })
 export class AppModule { }
