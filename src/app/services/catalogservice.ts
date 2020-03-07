@@ -23,6 +23,10 @@ export class CatalogService {
         return this.http.addProduct(product);
     }
 
+    editProduct(product:productItem){
+        return this.http.editProduct(product);
+    }
+
  
 
 

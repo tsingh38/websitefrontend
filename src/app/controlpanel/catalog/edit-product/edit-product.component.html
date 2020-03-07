@@ -1,6 +1,9 @@
 <div class="backdrop"></div>
-<div class="alert-box text-center p-5">
-
+<div  class="alert-box text-center p-5" *ngIf="isOperationInProgress" style="text-align: center;">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+<div class="alert-box text-center p-5" *ngIf="!isOperationInProgress">
+  
     <!--  Edit Function starts-->
     <div class="float-right">
         <button class="btn btn-secondary" (click)="onClose()"><span
@@ -161,7 +164,7 @@
 
 <!--Produkte Zugehörige Artikel Beendet-->
 <div class="mt-5 text-center">
-    <button class="btn btn-success" (click)="processNewProduct()"> Speichern</button>
+    <button class="btn btn-success" (click)="processUpdatingProduct()"> Speichern</button>
     <button class=" ml-3 btn btn-danger" (click)="cancel()"> Abrechnen</button>
 </div>
 </div>

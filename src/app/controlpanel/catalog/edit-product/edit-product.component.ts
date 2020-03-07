@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { productItem } from 'src/app/models/product.interface';
+import { CatalogService } from 'src/app/services/catalogservice';
 
 
 @Component({
@@ -22,8 +23,12 @@ export class EditProductComponent implements OnInit {
   option1CalzonePrice: number;
   option2CalzoneDescription: string = "Groß, Ø30cm:";
   option2CalzonePrice:number;
+  showInfotext:boolean;
+  isOperationInProgress=false;
+  isOperationSuccessful:boolean;
+  srvMessage:string;
   @Output()close=new EventEmitter<void>();
-  constructor() { }
+  constructor(private catalogService:CatalogService) { }
 
   ngOnInit() {
     this.productCategory=this.product.productCategory;
@@ -60,6 +65,30 @@ export class EditProductComponent implements OnInit {
       }
     }
   }
+
+
+processUpdatingProduct(){
+  this.isOperationInProgress=true;
+this.catalogService.editProduct(this.product).subscribe((response)=>{
+  this.isOperationInProgress=false;
+      this.showInfotext = true;
+      this.srvMessage = "Product wurde erfolgreich Upgedated";
+      this.isOperationSuccessful=true;
+      setTimeout(function () {
+        this.showInfotext = false;
+        this.close.emit();
+      }.bind(this), 4000);
+},error=>{
+  this.showInfotext = true;
+  this.isOperationSuccessful=true;
+  this.isOperationInProgress=false;
+  this.srvMessage = "Product konnte nicht Upgedated werden";
+  setTimeout(function () {
+    this.showInfotext = false;
+    this.close.emit();
+  }.bind(this), 4000);
+});
+}
 
   onClose(){
     this.close.emit();
