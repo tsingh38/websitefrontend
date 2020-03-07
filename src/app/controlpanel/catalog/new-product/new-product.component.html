@@ -31,8 +31,10 @@
   <div class="row mt-3 " *ngIf="selectedCategory!='Calzone' && selectedCategory!='Pizza' && selectedCategory!='Vegatarische_Pizza'">
     <h5 class="text-black-50"> Produkt Preis eingeben</h5>
     <span style="visibility:hidden;">dummy:text</span>
+    <div class="input-group-addon">€</div>
     <input type="number" min="1" step="any" class="form-control col-xs-3  priceinput" style="width:10%;"
       name="articlePrice" [(ngModel)]="productBasePrice">
+
   </div>
   <!--Options and Preis nur für Pizza -->
   <div *ngIf="selectedCategory=='Pizza' || selectedCategory=='Vegatarische_Pizza'">

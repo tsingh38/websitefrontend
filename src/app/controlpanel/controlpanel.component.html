@@ -1,5 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <h2><a class="navbar-brand" href="#">Lastrada</a></h2>
+
+  <div>
+    <img   class="img-thumbnail float-left" src='../../assets/lastradalogo.png' alt="Leckere gerichte">
+</div>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -7,10 +10,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Account</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link"  (click)="doLogout()" [routerLink]="['/login']">Logout</a>
+        <a class="nav-link" style="font-size: 1.4rem;"   (click)="doLogout()" [routerLink]="['/login']">Logout</a>
       </li>
     </ul>
   </div>
@@ -19,15 +19,15 @@
   <div class="row">
     <div class="col-2"> 
       <ul class="list-group">      
-        <li class="list-group-item active" [ngClass]="{'active': step=='step1'}" (click)="step='step1'" [routerLink]="['orders']">Bestellungen</li>
-        <li class="list-group-item" [ngClass]="{'active': step=='step2'}" (click)="step='step2'" [routerLink]="['catalog']">Katalog</li>
+        <li class="list-group-item active" style="font-size: 1.2rem;" [ngClass]="{'active': step=='step1'}" (click)="step='step1'" [routerLink]="['orders']">Bestellungen</li>
+        <li class="list-group-item"  style="font-size: 1.2rem;" [ngClass]="{'active': step=='step2'}" (click)="step='step2'" [routerLink]="['catalog']">Katalog</li>
         <div class="list-group" *ngIf="step=='step2'">
-          <li  class="list-group-item leftspace"  [ngClass]="{'active': step=='step2_1'}" (click)="step='step2_1'" [routerLink]="['newProduct']">Neue Produkt Anlegen</li>
+          <li  class="list-group-item leftspace"  style="font-size: 1.2rem;"  [ngClass]="{'active': step=='step2_1'}" (click)="step='step2_1'" [routerLink]="['newProduct']">Neue Produkt Anlegen</li>
         </div>
-        <li class="list-group-item" [ngClass]="{'active': step=='step3'}" (click)="step='step3'">Einstellungen</li>
+        <li class="list-group-item" [ngClass]="{'active': step=='step3'}" style="font-size: 1.2rem;"  (click)="step='step3'">Einstellungen</li>
         <div class="list-group" *ngIf="step=='step3'">
-          <li  class="list-group-item leftspace"  [ngClass]="{'active': step=='step4'}" (click)="step='step4'" [routerLink]="['websiteStatus']">Webseite Status</li>
-          <li  class="list-group-item leftspace"[ngClass]="{'active': step=='step5'}" (click)="step='step5'" [routerLink]= "['changeCredentials']" >Passwort Ändern</li>
+          <li  class="list-group-item leftspace" style="font-size: 1.2rem;"  [ngClass]="{'active': step=='step4'}" (click)="step='step4'" [routerLink]="['websiteStatus']">Webseite Status</li>
+          <li  class="list-group-item leftspace" style="font-size: 1.2rem;"  [ngClass]="{'active': step=='step5'}" (click)="step='step5'" [routerLink]= "['changeCredentials']" >Passwort Ändern</li>
         </div>
     
       </ul>
