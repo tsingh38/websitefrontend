@@ -20,6 +20,7 @@ isOpen:boolean=false;
 for(let item of this.custorder.order){
   this.totalBestellungSum+=Number(item.totalPrice.toFixed(2));
 }
+this.totalBestellungSum = Number(this.totalBestellungSum.toFixed(2));
   }
 
 
