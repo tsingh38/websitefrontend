@@ -33,6 +33,7 @@ export class ShopComponent implements OnInit {
 
   ngOnInit() {
     this.isShopAvailable = ShopTimingsUtil.isShopOpenNow();
+    this.isCartVisible= this.totalPriceInShoppingCart && Number(this.totalPriceInShoppingCart) > 0;
     this.totalPriceInShoppingCart = this.getPriceWith2DecimalPlaces(this.cartService.totalOrderPrice);
     if (!this.productsForSelectedCategory || this.productsForSelectedCategory.length < 1) {
       this.productsForSelectedCategory = this.allProductItems;
@@ -40,8 +41,8 @@ export class ShopComponent implements OnInit {
     this.cartService.totalOrderPriceEmitter.subscribe((param) => {
       this.totalPriceInShoppingCart = this.getPriceWith2DecimalPlaces(param.price);
       this.totalNumberOfItemsInCart = param.quantity;
+      this.isCartVisible= this.totalPriceInShoppingCart && Number(this.totalPriceInShoppingCart) > 0;
     });
-    this.isCartVisible= this.totalPriceInShoppingCart && Number(this.totalPriceInShoppingCart) > 0;
   }
 
 
