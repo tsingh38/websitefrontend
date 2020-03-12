@@ -75,7 +75,7 @@ if(this.quantity>1){
     return this.product.productOptions && this.product.productOptions.length > 0 ? true : false;
   }
 
-  hasProductAdditions($product: productItem) {
+  hasProductAdditions() {
     return this.product.productAdditions && this.product.productAdditions.length > 0 ? true : false;
   }
 

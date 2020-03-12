@@ -9,9 +9,9 @@
             <label>Webseite Status </label> <br>
             <select id="websiteStatus" class="form-control"
             [(ngModel)]="status"  name="status" required>
-            <option  value="Online" [selected]="Online == status">
+            <option  value="Online" [selected]="'Online' == status">
                 Online</option>
-                <option  value="Offline" [selected]="Offline == status">
+                <option  value="Offline" [selected]="'Offline' == status">
                     Offline</option>
         </select>
         </div>

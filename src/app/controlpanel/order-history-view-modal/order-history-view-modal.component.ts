@@ -10,6 +10,7 @@ import { orderItem } from 'src/app/models/orderItem.interface';
 })
 export class OrderHistoryViewModalComponent implements OnInit {
 @Input()custorder:customerOrder;
+@Input()orderNumber:Number;
 @Output()close=new EventEmitter<void>();
 totalBestellungSum:number=0;
 isOpen:boolean=false;

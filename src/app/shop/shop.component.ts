@@ -20,6 +20,7 @@ export class ShopComponent implements OnInit {
   selectedCategory: string = "Beliebte";
   productsForSelectedCategory: productItem[];
   totalPriceInShoppingCart: string;
+  isCartVisible:boolean;
   totalNumberOfItemsInCart: number;
   categories: string[] = ["Beliebte", "Indische_Vorspeisen", "Salat", "Pizza", "Vegatarische_Pizza", "Calzone", "PizzabrotØ30", "Pasta", "Pasta_al_Forno", "Indische_Gerichte",
     "Gyros_Spezialitäten", "International_Gerichte", "Rösti", "Döner_kebab", "Lahmacun", "Vegatarische_Döner", "Pide", "Dessert",
@@ -40,6 +41,7 @@ export class ShopComponent implements OnInit {
       this.totalPriceInShoppingCart = this.getPriceWith2DecimalPlaces(param.price);
       this.totalNumberOfItemsInCart = param.quantity;
     });
+    this.isCartVisible= this.totalPriceInShoppingCart && Number(this.totalPriceInShoppingCart) > 0;
   }
 
 

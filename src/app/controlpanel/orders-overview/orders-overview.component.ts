@@ -17,10 +17,10 @@ export class OrdersOverviewComponent implements OnInit,OnDestroy {
 
   @ViewChild(AppViewContainerDirective,{static:false}) viewContainerRef:AppViewContainerDirective;
 
-  private customerOrders:CustOrderStatus[]=[];
+  customerOrders:CustOrderStatus[]=[];
   private alive: boolean;
   private interval: number;
-  private orderViewCategory:string[];
+  orderViewCategory:string[];
   private selectedOrderViewCategory:string;
   openHistory=false;
   private closeSub:Subscription;
@@ -69,6 +69,7 @@ export class OrdersOverviewComponent implements OnInit,OnDestroy {
    viewContainerReff.clear();
    const compRef= viewContainerReff.createComponent(orderHistoryView);
    compRef.instance.custorder=currentOrder.custOrder;
+   compRef.instance.orderNumber=currentOrder.orderNumber;
    this.closeSub= compRef.instance.close.subscribe(()=>{
     this.closeSub.unsubscribe;
     viewContainerReff.clear(); 

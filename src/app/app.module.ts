@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { ShopComponent } from './shop/shop.component';
-import { HeaderComponent } from './shop/header/header.component';
 import { FooterComponent } from './shop/footer/footer.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';

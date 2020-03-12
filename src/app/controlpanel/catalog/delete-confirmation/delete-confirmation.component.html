@@ -1,5 +1,5 @@
 <div class="backdrop"></div>
-<div class="alert-box text-center" *ngIf="!isDeletionInProgress">
+<div class="alert-box text-center">
     <h1 class="text-muted"> Achtung</h1>
     <div class="mt-2">
         <p class="text-muted"> Möchten Sie <span class="font-weight-bold">{{product.description}}</span> löschen ?</p>
@@ -7,11 +7,5 @@
     <div>
         <button class="btn btn-primary mr-5" (click)="doDelete()">Ja</button>
         <button class="btn btn-primary ml-5" (click)="cancel()">Nein</button>
-    </div>
- 
-
-    
-        <div  *ngIf="showInfotext && !isDeletionInProgress && productDeletedSuccessfully" [ngClass]="{'text-success':success==true,'text-danger':success==false}">
-    <p class="lead"> {{srvMessage}}</p>
     </div>
 </div>
