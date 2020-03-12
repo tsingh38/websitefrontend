@@ -10,7 +10,7 @@ import { CredentialsChangeInterface } from '../models/CredentialsChange.interfac
 
 @Injectable()
 export class HttpUtil {
-  loginURL: string = "http://localhost:8080/authenticate";
+ /* loginURL: string = "http://localhost:8080/authenticate";
   getItemsURL: string = "http://localhost:8080/allitems";
   saveOrderURL: string = "http://localhost:8080/saveOrder";
   getCustOrderURL: string = "http://localhost:8080/getOrders";
@@ -22,6 +22,19 @@ export class HttpUtil {
   deleteProductURL:string="http://localhost:8080/deleteProduct";
   addProductURL:string="http://localhost:8080/saveProduct";
   editProductURL:string="http://localhost:8080/editProduct";
+*/
+  loginURL: string = "http://localhost:8080/Lastrada/authenticate";
+  getItemsURL: string = "http://localhost:8080/Lastrada/allitems";
+  saveOrderURL: string = "http://localhost:8080/Lastrada/saveOrder";
+  getCustOrderURL: string = "http://localhost:8080/Lastrada/getOrders";
+  updateCustOrderUL: string = "http://localhost:8080/Lastrada/updateOrder";
+  logoutURL: string = "http://localhost:8080/Lastrada/logout";
+  getWebsiteStatusURL: string = "http://localhost:8080/Lastrada/getWebsiteStatus";
+  updateWebsiteStatusURL: string = "http://localhost:8080/Lastrada/updateWebsiteStatus";
+  changeCredentialsURL: string = "http://localhost:8080/Lastrada/processChangeCredentials";
+  deleteProductURL:string="http://localhost:8080/Lastrada/deleteProduct";
+  addProductURL:string="http://localhost:8080/Lastrada/saveProduct";
+  editProductURL:string="http://localhost:8080/Lastrada/editProduct";
 
 
   constructor(private http: HttpClient) {
