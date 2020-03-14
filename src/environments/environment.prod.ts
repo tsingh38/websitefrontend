@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  ServerURL:'http://www.pizza-lastradaravensburg.de:8080/Lastrada/'
+  ServerURL:'http://www.vs248035.vs.hosteurope.de/Lastrada/'
 };
