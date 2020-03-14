@@ -7,34 +7,24 @@ import { customerOrder } from '../models/customerorder.interface';
 import { CustOrderStatus } from '../models/custOrderStatus.interface';
 import { WebsiteStatusInterface } from '../models/websiteStatus.interface';
 import { CredentialsChangeInterface } from '../models/CredentialsChange.interface';
+import {environment} from '../../environments/environment';
 
-@Injectable()
+@Injectable() 
 export class HttpUtil {
- /* loginURL: string = "http://localhost:8080/authenticate";
-  getItemsURL: string = "http://localhost:8080/allitems";
-  saveOrderURL: string = "http://localhost:8080/saveOrder";
-  getCustOrderURL: string = "http://localhost:8080/getOrders";
-  updateCustOrderUL: string = "http://localhost:8080/updateOrder";
-  logoutURL: string = "http://localhost:8080/logout";
-  getWebsiteStatusURL: string = "http://localhost:8080/getWebsiteStatus";
-  updateWebsiteStatusURL: string = "http://localhost:8080/updateWebsiteStatus";
-  changeCredentialsURL: string = "http://localhost:8080/processChangeCredentials";
-  deleteProductURL:string="http://localhost:8080/deleteProduct";
-  addProductURL:string="http://localhost:8080/saveProduct";
-  editProductURL:string="http://localhost:8080/editProduct";
-*/
-  loginURL: string = "http://localhost:8080/Lastrada/authenticate";
-  getItemsURL: string = "http://localhost:8080/Lastrada/allitems";
-  saveOrderURL: string = "http://localhost:8080/Lastrada/saveOrder";
-  getCustOrderURL: string = "http://localhost:8080/Lastrada/getOrders";
-  updateCustOrderUL: string = "http://localhost:8080/Lastrada/updateOrder";
-  logoutURL: string = "http://localhost:8080/Lastrada/logout";
-  getWebsiteStatusURL: string = "http://localhost:8080/Lastrada/getWebsiteStatus";
-  updateWebsiteStatusURL: string = "http://localhost:8080/Lastrada/updateWebsiteStatus";
-  changeCredentialsURL: string = "http://localhost:8080/Lastrada/processChangeCredentials";
-  deleteProductURL:string="http://localhost:8080/Lastrada/deleteProduct";
-  addProductURL:string="http://localhost:8080/Lastrada/saveProduct";
-  editProductURL:string="http://localhost:8080/Lastrada/editProduct";
+  
+  loginURL: string = environment.ServerURL+'authenticate';
+  getItemsURL: string = environment.ServerURL+'allitems';
+  saveOrderURL: string = environment.ServerURL+'saveOrder';
+  getCustOrderURL: string = environment.ServerURL+'getOrders';
+  updateCustOrderUL: string = environment.ServerURL+'updateOrder';
+  logoutURL: string = environment.ServerURL+'logout';
+  getWebsiteStatusURL: string = environment.ServerURL+'getWebsiteStatus';
+  updateWebsiteStatusURL: string = environment.ServerURL+'updateWebsiteStatus';
+  changeCredentialsURL: string = environment.ServerURL+'processChangeCredentials';
+  deleteProductURL:string=environment.ServerURL+'deleteProduct';
+  addProductURL:string=environment.ServerURL+'saveProduct';
+  editProductURL:string=environment.ServerURL+'editProduct';
+
 
 
   constructor(private http: HttpClient) {
