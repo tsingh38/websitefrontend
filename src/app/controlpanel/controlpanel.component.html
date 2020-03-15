@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
   <div>
-    <img   class="img-thumbnail float-left" src='../../assets/lastradalogo.png' alt="Leckere gerichte">
+    <img   class="img-thumbnail float-left"  style="opacity: 0.5;" src='../../assets/lastradalogo1.png' alt="Leckere gerichte">
 </div>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -10,7 +10,11 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item active">
-        <a class="nav-link" style="font-size: 1.4rem;"   (click)="doLogout()" [routerLink]="['/login']">Logout</a>
+        <a class="nav-link" style="font-size: 1.2rem; margin-top: 1px;
+        margin-right: 2px;
+        position:absolute;
+        top:0;
+        right:0;"   (click)="doLogout()" [routerLink]="['/login']">Logout</a>
       </li>
     </ul>
   </div>

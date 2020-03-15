@@ -17,7 +17,10 @@ export class ControlpanelComponent implements OnInit {
     console.log( this.router.url);
     if(this.router.url=='/control/catalog'){
       this.step='step2';
-    }else if(this.router.url=='/control/websiteStatus' || this.router.url=='/control/changeCredentials'){
+    }else if(this.router.url=='/control/orders'){
+      this.step='step1';
+    }
+    else if(this.router.url=='/control/websiteStatus' || this.router.url=='/control/changeCredentials'){
       this.step='step3';
     }
  
