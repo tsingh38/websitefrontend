@@ -152,6 +152,7 @@ if(this.quantity>1){
   
 
   resetAProduct(){
+    this.listOfCheckedProductAdditions=[];
     for(let currentelRef of this.selectReference.toArray()){
       this.render.setProperty(currentelRef.nativeElement,'checked',false);
     }
