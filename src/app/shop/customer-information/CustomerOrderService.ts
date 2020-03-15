@@ -31,8 +31,6 @@ export class CustomerOrderService {
             this.cartService.totalOrderPrice=0;
             this.cartService.totalNumberOfItems=0;
 
-        }else{
-            throw Observable.throw("Order not saved");  
         }
     })).subscribe(params =>{
         this.orderSubmission.next({isSuccessful:true,orderNumber:this.orderNumberFromServer,error:''});

@@ -173,14 +173,18 @@ if(this.quantity>1){
     }
   }
   submitProductToACart(){
-  
+    var selectedOptionId=0;
+    if(this.selectedOption){
+       selectedOptionId=this.selectedOption.id;
+      }
     var currentItem: orderItem={
       product:this.product,
     selectedOption:this.selectedOption,
     selectedOptionStr:'',
     listOfAdditions:this.listOfCheckedProductAdditions,
     quantity:this.quantity,
-    totalPrice:0
+    totalPrice:0,
+    selectedOptionId:selectedOptionId
     }
     if(this.selectedOption){
       currentItem.selectedOptionStr=this.selectedOption.productOptionDescription;
