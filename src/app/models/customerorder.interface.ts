@@ -13,4 +13,5 @@ export class customerOrder{
     comment:string;
     paymentType:string;
     order:orderItem[];
+    totalPrice:number;
 }

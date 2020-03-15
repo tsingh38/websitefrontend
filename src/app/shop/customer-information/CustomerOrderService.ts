@@ -14,7 +14,7 @@ export class CustomerOrderService {
     customerOrderAndAddress:customerOrder;
     orderNumberFromServer:number;
     serverError:string;
-    orderSubmission=new Subject<{isSuccessful:boolean,orderNumber:number}>();
+    orderSubmission=new Subject<{isSuccessful:boolean,orderNumber:number,error:string}>();
 
 
     constructor(private cartService: CartService,private httpUtil: HttpUtil) {
@@ -35,10 +35,10 @@ export class CustomerOrderService {
             throw Observable.throw("Order not saved");  
         }
     })).subscribe(params =>{
-        this.orderSubmission.next({isSuccessful:true,orderNumber:this.orderNumberFromServer});
+        this.orderSubmission.next({isSuccessful:true,orderNumber:this.orderNumberFromServer,error:''});
     },error =>{
-        this.serverError=error;
-        this.orderSubmission.next({isSuccessful:false,orderNumber:0});
+        this.serverError=error.error;
+        this.orderSubmission.next({isSuccessful:false,orderNumber:0,error:this.serverError});
       },)
     }
     fetchCurrentTimeSlots(): string[] {
@@ -66,6 +66,10 @@ export class CustomerOrderService {
 
     getCustomerOrder(){
         return this.cartService.order;
+    }
+
+    getTotalPriceForCompleteOrder(){
+        return this.cartService.totalOrderPrice;
     }
 
     resetOrderOnceSubmitted(){

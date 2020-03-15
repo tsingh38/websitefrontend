@@ -61,7 +61,9 @@ export class CustomerInformationComponent implements OnInit {
       wishDeliveryTime:this.defaultWishDeliveryTime,
       comment:this.comment,
       paymentType:this.defaultPaymentType,
-      order:this.customerOrderService.getCustomerOrder()}
+      order:this.customerOrderService.getCustomerOrder(),
+      totalPrice:this.customerOrderService.getTotalPriceForCompleteOrder()
+    }
       this.customerOrderService.processCustomerOrder(DeepcopyUtil.deepCopy(customerInformation));
       this.submittingOrder=false;
       this.router.navigate(['/completed']);

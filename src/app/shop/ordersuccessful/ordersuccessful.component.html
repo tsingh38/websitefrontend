@@ -1,11 +1,11 @@
-<div *ngIf="!orderNumber" style="text-align: center;">
+<div *ngIf="!orderNumber && !errorMode" style="text-align: center;">
     <app-loading-spinner></app-loading-spinner>
 </div>
 
 <div class="rounded-lg border border-danger mt-5 p-5" *ngIf="errorMode">
     <h3 class="text-center">Fehler</h3>
-
-    <span class="text-danger info">Es tut uns Leid. Ein Fehler ist aufgetreten.Versuchen Sie es nochmal oder Sie können
+    <span class="text-danger info" style=" font-size: 1.4rem;">{{error}}</span>
+    <span class="text-danger info" style=" font-size: 1.4rem;">Es tut uns Leid. Ein Fehler ist aufgetreten.Versuchen Sie es nochmal oder Sie können
         uns auch Telefonisch erreichen.</span>
     <br>
 </div>
