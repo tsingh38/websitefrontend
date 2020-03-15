@@ -10,7 +10,7 @@ export class ShopTimingsUtil {
     static isTodaySunday(): boolean {
         var d = new Date();
         var n = d.getDay();
-        return n === 7;
+        return n === 0;
     }
 
 

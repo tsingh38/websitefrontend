@@ -134,6 +134,8 @@ export class NewProductComponent implements OnInit {
     this.articleDetailDescription="";
     this.isCategoryPizza=false;
     this.productBasePrice=0;
+    this.optionsOfProductArray= [];
+    this.additionsOfProductArray = [];
   }
 
   getProductAdditions(): productItemAddition[] {
@@ -155,18 +157,19 @@ export class NewProductComponent implements OnInit {
     product.optionDescription = this.articleDetailDescription;
     product.productBasePrice = this.productBasePrice;
 
-    if (this.hasProductOptions === 'Nein' && this.hasProductAdditions === 'Nein') {
-      product.productAdditions = [];
-      product.productOptions = [];
-    } else if (this.selectedCategory === "Pizza" || this.selectedCategory === "Vegatarische_Pizza") {
+  if (this.selectedCategory === "Pizza" || this.selectedCategory === "Vegatarische_Pizza") {
       product.productBasePrice = null;
       product.productOptions = this.getPizzaOptionsPrice();
       product.productAdditions = [];
       // Pizza Additions will added on server itself
-    } else if (this.selectedCategory === "Calzone") {
+    }  else if (this.selectedCategory === "Calzone") {
       product.productBasePrice = null;
       product.productOptions = this.getCalzoneOptionsWithPrice();
       product.productAdditions = [];
+    }
+    else if (this.hasProductOptions === 'Nein' && this.hasProductAdditions === 'Nein') {
+      product.productAdditions = [];
+      product.productOptions = [];
     }
     else {
       product.productOptions = this.getProductOptions();
