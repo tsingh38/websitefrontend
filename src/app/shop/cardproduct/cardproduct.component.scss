@@ -21,3 +21,19 @@
 .productDetail{
 height:10rem;
 }
+
+.orderButtonOnlyForMobile{
+    width:30%;
+    position: fixed;
+    right:    0;
+    top:45%;
+ 
+  }
+  @media(min-width:768px){ 
+  .orderButtonOnlyForMobile{
+    display: none;
+    visibility: hidden;
+  }
+
+ 
+}
