@@ -137,7 +137,7 @@
             
                 <label class="ml-5"> Sie erklären sich damit einverstanden,daß Ihre
                     Daten zur Bearbeitung Ihres Anliegens verwendet werden. Weitere Informationen und Widerrufshinweise
-                    finden Sie in der. <a href="https://dejure.org/gesetze/DSGVO" target="_blank"> Datenschutzerklärung.</a>
+                    finden Sie in der. <a href="http://xyz.com" target="_blank"> Datenschutzerklärung.</a>
                 </label>
             </div>
         </div>
@@ -145,7 +145,7 @@
         <div class="row">
             <div class="col text-center">
                 <div class="form-group">
-                    <button type="submit" [disabled]="!f.valid && !hasUserCheckedTheUnderStandingCheckbox"
+                    <button type="submit" [disabled]="!f.valid || !hasUserCheckedTheUnderStandingCheckbox"
                         class=" btn btn-primary form-control pull-center btn-lg text-white w-100"> Bestellung
                         abschließen</button>
                 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnChanges } from '@angular/core';
 import { CartService } from '../../services/cart.service';
 import { NgForm } from '@angular/forms';
 import { DeepcopyUtil } from '../../services/Deepcopy';
@@ -31,7 +31,7 @@ export class CustomerInformationComponent implements OnInit {
   allTimeSlots:string[]=[];
   defaultPaymentType='Bar';
   defaultWishDeliveryTime='So schnell wie möglich';
-  
+
 
 
   ngOnInit() {
@@ -39,8 +39,9 @@ export class CustomerInformationComponent implements OnInit {
   }
 
   fetchCurrentTimeSlots(){
-
   }
+
+
 
    onSubmit() {
     this.submittingOrder=true;
@@ -65,7 +66,7 @@ export class CustomerInformationComponent implements OnInit {
       this.submittingOrder=false;
       this.router.navigate(['/completed']);
     }
- 
+    this.submittingOrder=false;
     }
   }
 
