@@ -1,7 +1,8 @@
-<div class="container w-60 border border-secondary bg bg-light">
+<div class="container w-60  mt-md-10 h-75 border border-secondary smallscreenbgColor">
             <h1 class="text-black-50 text-center mb-5 ">Warenkorb</h1>  
+            <h3  *ngIf="orderedItems.length  == 0"  class="text-black-50 text-center mb-5 ">Warenkorb ist leer</h3>
         <hr/>
-        <div class="row mt-5" *ngFor="let item of orderedItems;let i=index">
+        <div class="row mt-5" *ngFor="let item of orderedItems;let i=index" >
             <div class="col-xs-1">
                 <span>{{item.quantity}}x</span>
             </div>
@@ -15,7 +16,7 @@
                     <button type="button" class="btn btn-default border border-success btn-sm align-bottom  float-right" (click)="increaseTheQuantity(item)"><span class="vertical-align: baseline;">+</span></button>
                   </div>
             </div>
-            <div class="col-xs-1 float-right">
+            <div class="col-xs-1 float-right" style="font-size: 1rem;">
                 {{getPriceWith2DecimalPlaces(item.totalPrice)}}€
             </div>
             <div class="col-xs-2">
@@ -29,9 +30,11 @@
             <span class="text-black-50 font-weight-bold">Gesamt Summe</span>
             <span class="float-right font-weight-bold">{{getPriceWith2DecimalPlaces(totalSum)}}€</span>
         </div>
+        <div  *ngIf="orderedItems.length > 0 "  [routerLink]="['/submit']" style="margin:auto"  class="btn btn-secondary  pull-center btn text-white w-100">Bestellen</div>
+
+
 
         
     </div>
-    <div  *ngIf="orderedItems.length > 0 "  [routerLink]="['/submit']" class="btn btn-primary fixed-bottom  pull-center btn-lg text-white w-100">Bestellen</div>
-
-    
+    <div  *ngIf="orderedItems.length > 0 "  [routerLink]="['/submit']" class="btn btn-primary  OrderButtonMobile fixed-bottom  pull-center btn-lg text-white w-100">Bestellen</div>
+        
