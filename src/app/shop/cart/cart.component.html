@@ -3,7 +3,7 @@
             <h3  *ngIf="orderedItems.length  == 0"  class="text-black-50 text-center mb-5 ">Warenkorb ist leer</h3>
         <hr/>
         <div class="row mt-5" *ngFor="let item of orderedItems;let i=index" >
-            <div class="col-xs-1">
+            <div class="col-xs-1" style="font-size: 1rem;">
                 <span>{{item.quantity}}x</span>
             </div>
             <div class="col-xs-5">
