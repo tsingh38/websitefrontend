@@ -95,7 +95,7 @@ const appRoutes: Routes = [
 
   ],
   imports: [
-    BrowserModule, NgbModule, RouterModule, FormsModule, HttpClientModule, RouterModule.forRoot(appRoutes), BsDropdownModule.forRoot(), BrowserAnimationsModule
+    BrowserModule, NgbModule, RouterModule, FormsModule, HttpClientModule,RouterModule.forRoot(appRoutes, {useHash: true}), BsDropdownModule.forRoot(), BrowserAnimationsModule
   ],
   providers: [AuthGuardService,CartService,CustomerOrderService, NavGuardService,CatalogService, MealService,{provide:HTTP_INTERCEPTORS,useClass:AuthInterceptorService,multi:true}, ControlPanelService,HttpUtil,StaticDataService],
   bootstrap: [AppComponent],
