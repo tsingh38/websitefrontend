@@ -47,7 +47,9 @@ export class CustomerInformationComponent implements OnInit {
   doCloseWindow(){
     this.openSecurityRules=false;
   }
-
+  openSecurityRulesWindow(){
+    this.openSecurityRules=true;
+  }
 
    onSubmit() {
     this.submittingOrder=true;
