@@ -14,7 +14,7 @@ export class DataSecurityCustomerComponent implements OnInit {
   
   }
 
-  onButtonClick(){
+  onButtonClick(event:Event){
     this.close.emit(null);
   }
 }
