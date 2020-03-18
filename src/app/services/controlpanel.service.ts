@@ -41,19 +41,7 @@ export class ControlPanelService{
          }
      })).subscribe(responseData =>{
        },error=>{
-        if (error.status === 500) {
-          return Observable.throw(new Error(error.status));
-      }
-      else if (error.status === 400) {
-          return Observable.throw(new Error(error.status));
-      }
-      else if (error.status === 409) {
-          return Observable.throw(new Error(error.status));
-      }
-      else if (error.status === 403) {
-        this.router.navigate(['/login']);
-      }
-       
+      this.router.navigate(['/login']);       
        })
    
     return this.customerOrders;

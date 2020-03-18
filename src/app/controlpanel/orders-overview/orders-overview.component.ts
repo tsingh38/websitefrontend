@@ -40,6 +40,7 @@ export class OrdersOverviewComponent implements OnInit,OnDestroy {
     .subscribe(() => {
     this.customerOrders=this.controlPanelService.getAllTheOrders(this.selectedOrderViewCategory);
     }); 
+    
   }
 
   ngOnDestroy(){
