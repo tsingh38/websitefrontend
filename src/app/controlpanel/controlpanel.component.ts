@@ -29,10 +29,15 @@ export class ControlpanelComponent implements OnInit {
   doLogout(){
     this.controlPanelService.processLogout().subscribe(res=>{
       this.controlPanelService.isUserLoggedIn=false;
+      localStorage.removeItem('token');
+      localStorage.clear();
     },error=>{
-
+      this.controlPanelService.isUserLoggedIn=false;
+      localStorage.removeItem('token');
+      localStorage.clear();
     },()=>{
-    localStorage.setItem('token',null);
+      localStorage.removeItem('token');
+      localStorage.clear();
     });
   }
 
