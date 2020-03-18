@@ -15,6 +15,7 @@ import { Subject } from 'rxjs';
 })
 export class CustomerInformationComponent implements OnInit {
   customeraddress:string;
+  openSecurityRules:boolean;
   customerpincode:string;
   customerCity:string;
   floor:number;
@@ -26,7 +27,9 @@ export class CustomerInformationComponent implements OnInit {
   submittingOrder=false;
   hasUserCheckedTheUnderStandingCheckbox:boolean=false;
   
-  constructor( private router:Router, private customerOrderService:CustomerOrderService) { }
+  constructor( private router:Router, private customerOrderService:CustomerOrderService) {
+    this.openSecurityRules=false;
+   }
   @ViewChild('f', { static: false }) formRef: NgForm;
   allTimeSlots:string[]=[];
   defaultPaymentType='Bar';
@@ -41,6 +44,9 @@ export class CustomerInformationComponent implements OnInit {
   fetchCurrentTimeSlots(){
   }
 
+  doCloseWindow(){
+    this.openSecurityRules=false;
+  }
 
 
    onSubmit() {

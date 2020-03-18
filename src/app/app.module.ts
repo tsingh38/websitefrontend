@@ -41,6 +41,7 @@ import { DeleteConfirmationComponent } from './controlpanel/catalog/delete-confi
 import { CatalogService } from './services/catalogservice';
 import { NewProductComponent } from './controlpanel/catalog/new-product/new-product.component';
 import { EditProductComponent } from './controlpanel/catalog/edit-product/edit-product.component';
+import { DataSecurityCustomerComponent } from './shop/customer-information/data-security-customer/data-security-customer.component';
 
 
 const appRoutes: Routes = [
@@ -91,7 +92,8 @@ const appRoutes: Routes = [
   AlertBoxComponent,
   DeleteConfirmationComponent,
   NewProductComponent,
-  EditProductComponent
+  EditProductComponent,
+  DataSecurityCustomerComponent
 
   ],
   imports: [

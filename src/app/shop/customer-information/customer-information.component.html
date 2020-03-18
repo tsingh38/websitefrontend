@@ -135,9 +135,9 @@
             <div class="col p-3">
                 <input type="checkbox" class="form-check-input" id="exampleCheck1" name="customerUnderstandingCheckbox" [(ngModel)]="hasUserCheckedTheUnderStandingCheckbox" required #dataCheckBox>
             
-                <label class="ml-5"> Sie erklären sich damit einverstanden,daß Ihre
+                <label class="ml-5"> Sie erklären sich damit einverstanden,dass Ihre
                     Daten zur Bearbeitung Ihres Anliegens verwendet werden. Weitere Informationen und Widerrufshinweise
-                    finden Sie in der. <a href="http://xyz.com" target="_blank"> Datenschutzerklärung.</a>
+                    finden Sie in der. <a class="text-primary" (click)="openSecurityRules='true'" > Datenschutzerklärung.</a>
                 </label>
             </div>
         </div>
@@ -158,3 +158,5 @@
         <hr>
     </form>
 </div>
+
+<div *ngIf="openSecurityRules"><app-data-security-customer (close)="doCloseWindow()"></app-data-security-customer></div>

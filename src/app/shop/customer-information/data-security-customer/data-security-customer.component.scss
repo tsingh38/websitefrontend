@@ -1,0 +1,31 @@
+.alert-box{
+    position:fixed;
+    top:10vh;
+    left:10vh;
+    height:50vh;
+    width:60vw;
+    padding:16px;
+    z-index:100;
+    overflow-y: auto;
+    background:white;
+    box-shadow:0 2px 8px rgba(0,0,0,0.26);
+}
+
+
+*{
+	font-size: 1.4rem;
+}
+
+
+
+
+
+.backdrop{
+position:fixed;
+top:0;
+left:0;
+width:100vw;
+height:100vh;
+z-index:50;
+background:rgba(15, 13, 13, 0.75);
+}
