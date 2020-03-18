@@ -1,6 +1,7 @@
 <div class="card-body">
     <h4 class="card-title">{{product.description}}</h4>
     <p class="card-text text-black-50">{{getProductDetailedDescription()}}</p>
+    <p *ngIf="!this.product.optionDescription" style="visibility: hidden;" class="card-text text-black-50">This is some random text to make the layout proper.Adding extra characters</p>
     <p class="card-text font-weight-bold">{{productDisplayPrice}}€</p>
     <select  *ngIf="hasProductOptions()" id="selectProductCategory" class="form-control"
         (change)="setUserSelectedOption($event)" name="currentOption">
