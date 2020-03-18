@@ -51,6 +51,17 @@ export class CartComponent implements OnInit, OnDestroy {
 
   }
 
+  getExtrasText(item: orderItem){
+  var extrasText="";
+    if(item.listOfAdditions && item.listOfAdditions.length > 0){
+      var extrasText="mit ";
+      for(let productItemAddition of item.listOfAdditions){
+        extrasText+= " "+productItemAddition.additionDescription;
+      }
+
+    }
+  return extrasText;
+  }
 
   decreaseTheQuantity(item: orderItem){
     if(item.quantity > 1){
