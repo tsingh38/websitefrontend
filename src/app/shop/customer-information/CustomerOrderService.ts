@@ -5,6 +5,7 @@ import { HttpUtil } from 'src/app/services/httpUtil.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { throwError, Observable, Subject } from 'rxjs';
 import {map} from 'rxjs/operators';
+import { ShopTimingsUtil } from 'src/app/services/ShopTimingsUtil.service';
 
 
 @Injectable()
@@ -55,7 +56,9 @@ export class CustomerOrderService {
             }else{
              firstFutureDate = futureHours + ":" + futureMinutes;
             }
+            if(ShopTimingsUtil.isShopOpenAtGivenTime(firstFutureDate)){
             allTimeSlots.push(firstFutureDate);
+            }
             
         }
         return allTimeSlots;

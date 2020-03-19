@@ -3,6 +3,7 @@ import { productItem, productItemAddition, productItemOption } from 'src/app/mod
 import { orderItem } from 'src/app/models/orderItem.interface';
 import { CartService } from 'src/app/services/cart.service';
 import { Router } from '@angular/router';
+import { ShopUtil } from 'src/app/services/ShopUtil';
 
 @Component({
   selector: 'app-cardproduct',
@@ -31,11 +32,11 @@ export class CardproductComponent implements OnInit {
     if(this.product.productCategory==='Pizza' || this.product.productCategory==='Vegatarische_Pizza'  || this.product.productCategory==='Calzone'){
       for(let currentOption of this.product.productOptions){
         if(currentOption.default){
-         this.productDisplayPrice= this.getNumberWith2DecimalPlaces(this.getPriceFromSelectedOption(currentOption));
+         this.productDisplayPrice= ShopUtil.getNumberWith2DecimalPlaces(this.getPriceFromSelectedOption(currentOption));
         }
       }
     }else{
-      this.productDisplayPrice= this.getNumberWith2DecimalPlaces(this.product.productBasePrice);
+      this.productDisplayPrice= ShopUtil.getNumberWith2DecimalPlaces(this.product.productBasePrice);
     }
 
 
@@ -86,19 +87,19 @@ if(this.quantity>1){
   displayProductAdditionPriceForSelectedOption(productAddition: productItemAddition) {
     if (this.selectedOption && (this.product.productCategory === 'Pizza' || this.product.productCategory === 'Calzone' || this.product.productCategory === 'Vegatarische_Pizza')) {
       if (this.selectedOption.optionPriceForFamily) {
-        return productAddition.additionsPriceForFamily;
+        return ShopUtil.getNumberWith2DecimalPlaces(productAddition.additionsPriceForFamily);
       }
       if (this.selectedOption.optionPriceForNormal) {
-        return productAddition.additionsPriceForNormal;
+        return ShopUtil.getNumberWith2DecimalPlaces(productAddition.additionsPriceForNormal);
       }
       if (this.selectedOption.optionPriceForParty) {
-        return productAddition.additionsPriceForParty;
+        return ShopUtil.getNumberWith2DecimalPlaces(productAddition.additionsPriceForParty);
       }
       if (this.selectedOption.optionPriceForSmall) {
-        return productAddition.additionsPriceForSmall;
+        return ShopUtil.getNumberWith2DecimalPlaces(productAddition.additionsPriceForSmall);
       }
     } else {
-      return productAddition.additionPrice;
+      return ShopUtil.getNumberWith2DecimalPlaces(productAddition.additionPrice);
     }
   }
 
@@ -108,7 +109,7 @@ if(this.quantity>1){
     for (let currentOption of this.product.productOptions) {
       if (selectedOption && currentOption.id === +selectedOption) {
         this.selectedOption = currentOption;
-        this.productDisplayPrice=this.getNumberWith2DecimalPlaces(this.getPriceFromSelectedOption( this.selectedOption));
+        this.productDisplayPrice=ShopUtil.getNumberWith2DecimalPlaces(this.getPriceFromSelectedOption( this.selectedOption));
       }
     }
   }
@@ -136,20 +137,17 @@ if(this.quantity>1){
       if (this.product.productOptions) {
         for (let currentProduct of this.product.productOptions) {
           if (currentProduct.optionPriceForNormal) {
-            return this.getNumberWith2DecimalPlaces(currentProduct.optionPriceForNormal);
+            return ShopUtil.getNumberWith2DecimalPlaces(currentProduct.optionPriceForNormal);
           }
         }
       }
     } else {
-      return this.getNumberWith2DecimalPlaces(this.product.productBasePrice);
+      return ShopUtil.getNumberWith2DecimalPlaces(this.product.productBasePrice);
     }
 
   }
 
-  getNumberWith2DecimalPlaces(mynumber:Number){
-   return parseFloat(mynumber+"").toFixed(2);
-  }
-  
+
 
   resetAProduct(){
     this.listOfCheckedProductAdditions=[];
@@ -165,11 +163,11 @@ if(this.quantity>1){
     if(this.product.productCategory==='Pizza' || this.product.productCategory==='Vegatarische_Pizza'  || this.product.productCategory==='Calzone'){
       for(let currentOption of this.product.productOptions){
         if(currentOption.default){
-         this.productDisplayPrice= this.getNumberWith2DecimalPlaces(this.getPriceFromSelectedOption(currentOption));
+         this.productDisplayPrice= ShopUtil.getNumberWith2DecimalPlaces(this.getPriceFromSelectedOption(currentOption));
         }
       }
     }else{
-      this.productDisplayPrice=this.getNumberWith2DecimalPlaces(this.product.productBasePrice);
+      this.productDisplayPrice=ShopUtil.getNumberWith2DecimalPlaces(this.product.productBasePrice);
     }
   }
   submitProductToACart(){

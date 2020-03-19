@@ -14,13 +14,18 @@ export class ShopTimingsUtil {
     }
 
 
-    public static isShopOpenNow() {
+    public static isShopOpenAtGivenTime(time:string){
+       return this.isShopOpenNow(time.split(":")[0],time.split(":")[1]);
+    }
+
+
+    public static isShopOpenNow($hour:any,$min:any) {
         if (ShopTimingsUtil.isTodayMonday()) {
             return false;
         }else {
             var date = new Date();
-            var hours = date.getHours();
-            var mins = date.getMinutes();
+            var hours = $hour?$hour: date.getHours();
+            var mins = $min?$min: date.getMinutes();
             if (ShopTimingsUtil.isTodaySunday()) {
                 if (hours >= 12 && (hours < 22)) {
                     return true;
@@ -33,10 +38,9 @@ export class ShopTimingsUtil {
                     return true;
                 }
 
-            }
-
-            
+            }          
         }
+
         return false;
     }
 }

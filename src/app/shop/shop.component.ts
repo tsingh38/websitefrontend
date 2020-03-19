@@ -32,7 +32,7 @@ export class ShopComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.isShopAvailable = ShopTimingsUtil.isShopOpenNow();
+    this.isShopAvailable = ShopTimingsUtil.isShopOpenNow(null,null);
     this.isCartVisible= this.totalPriceInShoppingCart && Number(this.totalPriceInShoppingCart) > 0;
     this.totalPriceInShoppingCart = this.getPriceWith2DecimalPlaces(this.cartService.totalOrderPrice);
     if (!this.productsForSelectedCategory || this.productsForSelectedCategory.length < 1) {
@@ -149,6 +149,9 @@ export class ShopComponent implements OnInit {
     var selectedCategory: string = (<HTMLTextAreaElement>event.target).value;
     this.selectedCategory = selectedCategory;
     this.productsForSelectedCategory = [];
+    if('Beliebte'===this.selectedCategory){
+      this.productsForSelectedCategory=this.allProductItems;
+    }
     for (let currentProduct of this.allProductItems) {
       if (currentProduct.productCategory === selectedCategory) {
         this.productsForSelectedCategory.push(currentProduct);
