@@ -33,12 +33,23 @@ export class OrdersOverviewComponent implements OnInit,OnDestroy {
     this.selectedOrderViewCategory='Alle';
    }
 
-
+   anyNewOrder():boolean{
+    for(let order of this.customerOrders){
+      if(order.status==='unbearbeitet'){
+        this.playAudio();
+      }
+    }
+      return false;
+   }
   ngOnInit() {
     this.customerOrders=this.controlPanelService.getAllTheOrders(this.selectedOrderViewCategory);
-    interval( this.interval)
+    interval( this.interval).pipe(map(responseData=>{
+      if(this.anyNewOrder()){
+        this.playAudio();
+      }
+    }))
     .subscribe(() => {
-    this.customerOrders=this.controlPanelService.getAllTheOrders(this.selectedOrderViewCategory);
+    this.customerOrders=this.controlPanelService.getAllTheOrders(this.selectedOrderViewCategory)
     }); 
     
   }
@@ -50,7 +61,13 @@ export class OrdersOverviewComponent implements OnInit,OnDestroy {
   
   }
 
-  
+  playAudio(){
+    let audio = new Audio();
+    audio.src = "../../assets/Ding-dong.wav";
+    audio.load();
+    audio.play();
+  }
+
   setCustOrderStatus(selectedValue:string, currentOrder:CustOrderStatus){   
     currentOrder.status=selectedValue;
     this.controlPanelService.updateOrderStatus(currentOrder,selectedValue);
