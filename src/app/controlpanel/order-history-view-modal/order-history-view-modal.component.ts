@@ -9,7 +9,7 @@ import { orderItem } from 'src/app/models/orderItem.interface';
   styleUrls: ['./order-history-view-modal.component.scss']
 })
 export class OrderHistoryViewModalComponent implements OnInit {
-@Input()custorder:customerOrder;
+@Input()custorder:customerOrder; 
 @Input()orderNumber:Number;
 @Output()close=new EventEmitter<void>();
 totalBestellungSum:number=0;
