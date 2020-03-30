@@ -20,7 +20,7 @@ export class ControlpanelComponent implements OnInit {
     }else if(this.router.url=='/control/orders'){
       this.step='step1';
     }
-    else if(this.router.url=='/control/websiteStatus' || this.router.url=='/control/changeCredentials'){
+    else if(this.router.url=='/control/websiteStatus' || this.router.url=='/control/orderNotification' ||this.router.url=='/control/changeCredentials'){
       this.step='step3';
     }
  

@@ -8,6 +8,7 @@ import { CustOrderStatus } from '../models/custOrderStatus.interface';
 import { WebsiteStatusInterface } from '../models/websiteStatus.interface';
 import { CredentialsChangeInterface } from '../models/CredentialsChange.interface';
 import {environment} from '../../environments/environment';
+import { OrderNotificationSoundInterface } from '../models/orderNotificationSound.interface';
 
 @Injectable() 
 export class HttpUtil {
@@ -24,6 +25,8 @@ export class HttpUtil {
   deleteProductURL:string=environment.ServerURL+'deleteProduct';
   addProductURL:string=environment.ServerURL+'saveProduct';
   editProductURL:string=environment.ServerURL+'editProduct';
+  getOrderSound:string=environment.ServerURL+'getNotificationStatus';
+  updateOrderSound:string=environment.ServerURL+'updateNotificationStatus';
 
 
 
@@ -34,6 +37,14 @@ export class HttpUtil {
     return this.http.get<productItem>(this.getItemsURL);
   }
 
+
+  getNewOrderNotificationStatus(){
+    return this.http.get<OrderNotificationSoundInterface>(this.getOrderSound);
+  }
+
+  updateNotificationSoundStatus(statusObj: OrderNotificationSoundInterface) {
+    return this.http.post<OrderNotificationSoundInterface>(this.updateOrderSound, statusObj);
+  }
 
   changeCredentials(credObj: CredentialsChangeInterface) {
     return this.http.post(this.changeCredentialsURL, credObj);

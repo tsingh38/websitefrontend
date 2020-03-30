@@ -42,6 +42,7 @@ import { CatalogService } from './services/catalogservice';
 import { NewProductComponent } from './controlpanel/catalog/new-product/new-product.component';
 import { EditProductComponent } from './controlpanel/catalog/edit-product/edit-product.component';
 import { DataSecurityCustomerComponent } from './shop/customer-information/data-security-customer/data-security-customer.component';
+import { OrderNotificationComponent } from './controlpanel/settings/order-notification/order-notification.component';
 
 
 const appRoutes: Routes = [
@@ -56,6 +57,7 @@ const appRoutes: Routes = [
 
     {path:'websiteStatus',canActivate:[AuthGuardService],component:WebsiteStatusComponent},
     {path:'changeCredentials',canActivate:[AuthGuardService],component:ChangePasswordComponent},
+     {path:'orderNotification',canActivate:[AuthGuardService],component:OrderNotificationComponent},
     {path:'catalog',canActivate:[AuthGuardService],component:CatalogComponent},    
     {path:'login',component:AuthComponent},
     {path:'', redirectTo: 'orders', pathMatch:'full'}
@@ -93,7 +95,8 @@ const appRoutes: Routes = [
   DeleteConfirmationComponent,
   NewProductComponent,
   EditProductComponent,
-  DataSecurityCustomerComponent
+  DataSecurityCustomerComponent,
+  OrderNotificationComponent
 
   ],
   imports: [

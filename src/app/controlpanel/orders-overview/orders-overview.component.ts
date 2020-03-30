@@ -41,6 +41,7 @@ export class OrdersOverviewComponent implements OnInit,OnDestroy {
     }
       return false;
    }
+   
   ngOnInit() {
     this.customerOrders=this.controlPanelService.getAllTheOrders(this.selectedOrderViewCategory);
     interval( this.interval).pipe(map(responseData=>{
