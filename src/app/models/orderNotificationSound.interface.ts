@@ -1,4 +1,5 @@
 export class OrderNotificationSoundInterface{
+  id?:number;  
   toneOn:Boolean;
-    pathOfTone?:string;
+  toneName:string;
   }

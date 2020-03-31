@@ -5,40 +5,32 @@
 
 <div *ngIf="!statusUpdatingInProgress"> 
     <form (ngSubmit)="onSubmit()" #f='ngForm'>
-        <div class="form-group">
-            <label>Aktuelle Klingel </label> 
-            <span class="ml-5 text-success">{{currentSelectedSound}}</span>
-        <span class="ml-4 glyphicon glyphicon-volume-up" style="color:greenyellow" (click)="playAudio()"></span>
-        </div>
         <div class="form-group mt-5">
             <label>Neue Bestellung Klingel Status </label> <br>
             <select id="newOrderNotificationStatus" class="form-control"
-            [(ngModel)]="notificationStatus"  name="status" required>
+            [(ngModel)]="notificationStatus" (change)="updateCheckboxesOnChange()" name="status" required>
             <option  value="An" [selected]="'An' == notificationStatus">
                  <span>An</span></option>
                 <option  value="Aus" [selected]="'Aus' == notificationStatus">
                     <span>Aus</span></option>
             </select>
         </div>
-      
-        
-        <div class="row">
-            <div class="col" >
-                <div class="form-group">
-                 <button type="submit" (click)="updateTheStatus()" class=" btn btn-primary  pull-left btn-lg text-white"> Speichern</button>
-                </div>
-            </div> 
-        </div>
 
         <div class="form-group mt-5">
             <label>Klingel Ändern</label> <br>
-             <input type="file" id="sound" [disabled]="notificationStatus=='Aus'"   [(ngModel)]="updatedNotificationFile"  name="notificationSound" accept=".wav">  
+            <div *ngFor="let currentSound of allSounds; let i = index"> 
+             <input type="checkbox" id="sound"  [checked]="currentSound.toneOn"   [disabled]="notificationStatus=='Aus'" (change)="handleStatusChange($event,i)">  
+           
+             <span class="ml-5">{{currentSound.toneName}}</span>
+             <span class="ml-4 glyphicon glyphicon-volume-up" style="color:rebeccapurple" (click)="playAudio(currentSound)"></span>
+
+            </div>
         </div>
 
         <div class="row">
             <div class="col text-center" >
                 <div class="form-group">
-                    <button type="submit" (click)="updateTheSoundFile()"  [disabled]="notificationStatus=='Aus'"  class=" btn btn-primary  pull-left btn-lg text-white"> Speichern</button>
+                    <button type="submit"    class=" btn btn-primary  pull-left btn-lg text-white"> Speichern</button>
                    </div>
 
               

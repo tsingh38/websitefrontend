@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  ServerURL:'http://www.localhost:8080/'
+  ServerURL:'http://www.localhost:8080/',
+  soundsURL:' ../../assets/sounds/'
 };
 
 /*

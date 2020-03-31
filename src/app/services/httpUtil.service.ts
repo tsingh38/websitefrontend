@@ -25,8 +25,8 @@ export class HttpUtil {
   deleteProductURL:string=environment.ServerURL+'deleteProduct';
   addProductURL:string=environment.ServerURL+'saveProduct';
   editProductURL:string=environment.ServerURL+'editProduct';
-  getOrderSound:string=environment.ServerURL+'getNotificationStatus';
-  updateOrderSound:string=environment.ServerURL+'updateNotificationStatus';
+  getAllSounds:string=environment.ServerURL+'getAllSounds';
+  updateNotificationStatus:string=environment.ServerURL+'updateNotificationStatus';
 
 
 
@@ -38,12 +38,12 @@ export class HttpUtil {
   }
 
 
-  getNewOrderNotificationStatus(){
-    return this.http.get<OrderNotificationSoundInterface>(this.getOrderSound);
+  getNotificationSounds(){
+    return this.http.get<OrderNotificationSoundInterface[]>(this.getAllSounds);
   }
 
-  updateNotificationSoundStatus(statusObj: OrderNotificationSoundInterface) {
-    return this.http.post<OrderNotificationSoundInterface>(this.updateOrderSound, statusObj);
+  updateNotificationSoundStatus(statusObj: OrderNotificationSoundInterface[]) {
+    return this.http.post<OrderNotificationSoundInterface[]>(this.updateNotificationStatus, statusObj);
   }
 
   changeCredentials(credObj: CredentialsChangeInterface) {

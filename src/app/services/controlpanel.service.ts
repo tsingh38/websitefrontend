@@ -7,6 +7,7 @@ import { DeepcopyUtil } from './Deepcopy';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 
 
@@ -57,6 +58,23 @@ export class ControlPanelService{
     processLogout(){
       return this.http.logoutUser();
     }
+
+    
+    playNotificationSound(){
+      var soundSrc="";
+      var isSoundOn:Boolean;
+     let audio = new Audio();
+     this.http.getNotificationSounds().subscribe((res)=>{
+       for(let sound of res){
+         if(sound.toneOn && this.router.url=='/control/orders' && this.isUserLoggedIn){
+          audio.src = environment.soundsURL+sound.toneName;
+          audio.load();
+          audio.play();
+          break;
+         }
+       }
+    })
+  }
 
 
     updateOrderStatus( currentCustOrder:CustOrderStatus,status:string){
