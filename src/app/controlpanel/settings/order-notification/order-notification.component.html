@@ -1,7 +1,4 @@
 
-<div *ngIf="statusUpdatingInProgress" style="text-align: center;">
-    <app-loading-spinner></app-loading-spinner>
-</div>
 
 <div *ngIf="!statusUpdatingInProgress"> 
     <form (ngSubmit)="onSubmit()" #f='ngForm'>

@@ -10,14 +10,14 @@ import { environment } from 'src/environments/environment';
 })
 export class OrderNotificationComponent implements OnInit {
 
-  private notificationStatus:string='Aus';
-  private currentSelectedSound:string='';
-  private updatedNotificationFile:string="";
-  private allSounds:OrderNotificationSoundInterface[]=[];
+   notificationStatus:string='Aus';
+   currentSelectedSound:string='';
+   updatedNotificationFile:string="";
+   allSounds:OrderNotificationSoundInterface[]=[];
   constructor(private httpService:HttpUtil) { }
-  private showInfotext:boolean=false;
-  private srvMessage:string="";
-  private success:boolean=false;
+   showInfotext:boolean=false;
+   srvMessage:string="";
+   success:boolean=false;
 
   ngOnInit() {
     this.httpService.getNotificationSounds().subscribe(res => {
