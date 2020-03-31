@@ -74,9 +74,8 @@ export class OrderNotificationComponent implements OnInit {
     }
   }
 
-  handleStatusChange(event:Event,changedIndex:number){
-    var isChecked:Boolean=event.target.checked;
-    if(!isChecked){
+  handleStatusChange(checked:Boolean,changedIndex:number){
+    if(!checked){
       this.allSounds[changedIndex].toneOn=false;
     }else{
     let i=0;

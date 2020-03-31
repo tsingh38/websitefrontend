@@ -19,7 +19,7 @@
         <div class="form-group mt-5">
             <label>Klingel Ändern</label> <br>
             <div *ngFor="let currentSound of allSounds; let i = index"> 
-             <input type="checkbox" id="sound"  [checked]="currentSound.toneOn"   [disabled]="notificationStatus=='Aus'" (change)="handleStatusChange($event,i)">  
+             <input type="checkbox" id="sound"  [checked]="currentSound.toneOn"   [disabled]="notificationStatus=='Aus'" (change)="handleStatusChange($event.target.checked,i)">  
            
              <span class="ml-5">{{currentSound.toneName}}</span>
              <span class="ml-4 glyphicon glyphicon-volume-up" style="color:rebeccapurple" (click)="playAudio(currentSound)"></span>
