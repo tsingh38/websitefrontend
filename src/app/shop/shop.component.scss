@@ -30,6 +30,11 @@
   .mainButtonForMobile {
     display:none;
   }
+  .noShoppingcartForSmallDevices {
+    position: fixed!important;
+    right:0px;
+    height:100px;
+  }
 }
 
 #shoppingCartInXL{
